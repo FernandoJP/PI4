@@ -19,7 +19,7 @@
             </md-card-title>
 
             <!--In�cio do Formul�rio-->
-            <form id="formulario" name="formulario">
+            <div id="formulario">
                 <header id="form-header">
                     <h2>Novo Produto </h2><span class="today-date"><i class="fa fa-calendar"></i>  {{date| date:'dd/MM/yyyy'}}</span>
                 </header>
@@ -27,115 +27,119 @@
                     <md-tab id="tab1" ng-disabled>
                         <md-tab-label>1 - Dados Pessoais</md-tab-label>
                         <md-tab-body>
-
-                            <div id="form-body">
-                                <div id="tab1-content">
-                                    <div layout="row" style="margin-top:10px;">
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                            <form name="formulario">
+                                <div id="form-body">
+                                    <div id="tab1-content">
+                                        <div layout="row" style="margin-top:10px;">
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : nomeInvalido}">
-                                            <label>Nome</label>
-                                            <input name="nome" ng-model="dadosPessoais.nome">
-                                        </md-input-container>
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>Nome</label>
+                                                <input name="nome" ng-model="dadosPessoais.nome">
+                                            </md-input-container>
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : cpfInvalido}">
-                                            <label>CPF</label>
-                                            <input name="cpf" ng-model="dadosPessoais.cpf">
-                                        </md-input-container>
-                                    </div>
-                                    <div layout="row">
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>CPF</label>
+                                                <input name="cpf" ng-model="dadosPessoais.cpf">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : emailInvalido}">
-                                            <label>E-mail</label>
-                                            <input type="email" name="email" ng-model="dadosPessoais.email">
-                                        </md-input-container>
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>E-mail</label>
+                                                <input type="email" name="email" ng-model="dadosPessoais.email">
+                                            </md-input-container>
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : telefoneInvalido}">
-                                            <label>Telefone</label>
-                                            <input name="telefone" ng-model="dadosPessoais.telefone">
-                                        </md-input-container>
-                                    </div>
-                                    <div layout="row">
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>Telefone</label>
+                                                <input name="telefone" ng-model="dadosPessoais.telefone">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : cepInvalido}">
-                                            <label>CEP</label>
-                                            <input name="cep" ng-model="dadosPessoais.cep">
-                                        </md-input-container>
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>CEP</label>
+                                                <input name="cep" ng-model="dadosPessoais.cep">
+                                            </md-input-container>
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : logradouroInvalido}">
-                                            <label>Logradouro</label>
-                                            <input name="logradouro" ng-model="dadosPessoais.logradouro">
-                                        </md-input-container>
-                                    </div>
-                                    <div layout="row">
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>Logradouro</label>
+                                                <input name="logradouro" ng-model="dadosPessoais.logradouro">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : cidadeInvalido}">
-                                            <label>Cidade</label>
-                                            <input name="cidade" ng-model="dadosPessoais.cidade">
-                                        </md-input-container>
+                                                <label>Cidade</label>
+                                                <input name="cidade" ng-model="dadosPessoais.cidade">
+                                            </md-input-container>
 
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : estadoInvalido}">
-                                            <label>Estado</label>
-                                            <input name="estado" ng-model="dadosPessoais.estado">
-                                        </md-input-container>
-                                    </div>
-                                    <div layout="row">
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                <label>Estado</label>
+                                                <input name="estado" ng-model="dadosPessoais.estado">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout="row">
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : tipoAcessoInvalido}">
-                                            <label>Tipo de Acesso</label>
-                                            <md-select class="md-accent"  name="type" ng-model="dadosPessoais.tipoAcesso">
-                                                <md-option value="app">Cliente</md-option>
-                                                <md-option value="web">Funcion�rio</md-option>
-                                            </md-select>
-                                        </md-input-container>
+                                                <label>Tipo de Acesso</label>
+                                                <md-select class="md-accent"  name="type" ng-model="dadosPessoais.tipoAcesso">
+                                                    <md-option value="app">Cliente</md-option>
+                                                    <md-option value="web">Funcion�rio</md-option>
+                                                </md-select>
+                                            </md-input-container>
 
-                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
                                                 'md-input-invalid'
                                                 : cargoInvalido}">
-                                            <label>Cargo</label>
-                                            <input name="cargo" ng-model="dadosPessoais.cargo">
-                                        </md-input-container>
-                                    </div>
-                                    <div class="form-actions noborder">             
-                                        <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
-                                        <md-button class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais)"><i class="material-icons">keyboard_arrow_right</i>Próximo</md-button>
+                                                <label>Cargo</label>
+                                                <input name="cargo" ng-model="dadosPessoais.cargo">
+                                            </md-input-container>
+                                        </div>
+                                        <div class="form-actions noborder">             
+                                            <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
+                                            <md-button class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais)"><i class="material-icons">keyboard_arrow_right</i>Próximo</md-button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            </form>
                         </md-tab-body>
                     </md-tab>
                     <md-tab id="tab2">
                         <md-tab-label>2 - Autenticação</md-tab-label>
                         <md-tab-body>
-                            <md-content style="margin-top:25px;">
-                                <md-input-container class="md-icon-float md-accent">
-                                    <label>Login</label>
-                                    <md-icon md-font-icon="fa fa-user" style="color:#444444"></md-icon>
-                                    <input required name="userName" ng-model="autenticacao.userName">
-                                    <div ng-messages="autenticacao.userName.$error">
-                                        <div ng-message="required">Este campo é obrigatório.</div>
-                                    </div>
-                                </md-input-container>
+                            <form name="autenticacao">
+                                <md-content style="margin-top:25px;">
+                                    <md-input-container class="md-icon-float md-accent">
+                                        <label>Login</label>
+                                        <md-icon md-font-icon="fa fa-user" style="color:#444444"></md-icon>
+                                        <input required name="userName" ng-model="autenticacao.userName">
+                                        <div ng-messages="autenticacao.userName.$error">
+                                            <div ng-message="required" ng-if="autenticacao.userName.$error">Este campo é obrigatório.</div>
+                                        </div>
 
-                            </md-content>
+                                    </md-input-container>
+                                </md-content>
+                            </form>
                             <md-content>
                                 <md-input-container class="md-icon-float md-accent">
                                     <label>Senha</label>
                                     <md-icon md-font-icon="fa fa-lock" style="color:#444444"></md-icon>
-                                    <input required minlength="4" maxlength="20" ng-model="autenticacao.senha">
+                                    <input required minlength="4" maxlength="20" name="senha" ng-model="autenticacao.senha">
                                     <div ng-messages="autenticacao.senha.$error">
-                                        <div ng-message="required">Este campo é obrigatório.</div>
-                                        <div ng-message="md-minlength">
+                                        <div ng-message="required" ng-if="autenticacao.senha.$error.required">
+                                            Este campo é obrigatório.
+                                        </div>
+                                        <div ng-message="md-minlength" ng-if="autenticacao.senha.$error.minlength">
                                             Your email must be between 10 and 100 characters long and should be a valid email address.
                                         </div>
                                     </div>
@@ -149,9 +153,7 @@
                         </md-tab-body>
                     </md-tab>
                 </md-tabs>
-
-            </form>
-            <!--Fim do formul�rio -->
+            </div>
         </md-card>
     </md-content>
 
