@@ -1,0 +1,141 @@
+/*Angular Material Sidenav*/
+md-content.md-default-theme {
+    /*background-color: #ededed;*/
+    background-color: #fff;
+}
+md-divider{
+    color: #ededed;
+}
+md-card {
+    background-color: #fff;
+    h2:first-of-type {
+        margin-top: 0;
+    }
+}
+md-toolbar {
+    .md-button.md-default-theme {
+        border-radius: 99%; // round toolbar buttons
+    }
+}
+h2 {
+    font-weight: 400;
+}
+.md-toolbar-tools-bottom {
+    font-size: small;
+    & :last-child {
+        opacity: 0.8;
+    }
+}
+md-toolbar:not(.md-hue-1),
+.md-fab {
+
+}
+md-sidenav {
+    ng-md-icon {
+        position: relative;
+        top: 5px; // adjust for svg viewbox
+    }
+}
+.user-avatar {
+    border-radius: 99%;
+}
+
+md-sidenav{
+    margin-top: 64px;
+}
+
+md-toolbar{
+    position: absolute;
+    left: 0;
+}
+
+md-sidenav md-list{
+    margin-top: 130px;
+}
+
+md-sidenav .fa-2x {
+    font-size: 1.7em;
+}
+
+.collapsable{
+    min-height: 20px;
+    overflow: hidden;
+}
+.collapsable.collapsed{
+    height: 0;
+    min-height: 0;
+}
+
+md-sidenav md-item-content{
+    cursor:pointer;
+}
+
+md-sidenav .fa{
+    color:#444;
+}
+
+/*Conteúdo do site*/
+#conteudo md-card{
+    position: relative;
+    top: 84px;
+    margin:0 20px 0 20px;
+}
+
+#conteudo md-card-title{
+    max-height: 70px;
+}
+
+#conteudo{
+    background: #f3f3f3;
+}
+
+/*Formulário*/
+form#formulario{
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+    border:1px solid #5C6A77;
+    margin-bottom: 25px;
+}
+
+#form-header{
+    background:#5C6A77;
+    color:white;
+    height: 67px;
+}
+
+#form-header{
+    padding: 1px 25px 1px 25px;
+}
+
+#form-header .today-date{
+    padding: 26px 1px 26px 1px;
+}
+
+#form-header h2{
+    float: left;
+}
+
+.today-date{
+    float:right;
+}
+
+#form-body{
+    padding:1px 25px 1px 25px;
+}
+
+#formulario .form-actions{
+    float:right; margin-bottom:20px;
+}
+
+#formulario .form-actions i{
+    vertical-align: middle
+}
+
+#formulario md-tabs{
+    width:100%;
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
+    background: rgb(3,169,244);
+}

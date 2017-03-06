@@ -1,0 +1,15 @@
+#formulario .md-input-focused md-icon{
+    color:#03a9f4 !important;
+}
+#tab-content-2 md-content{
+    text-align: center;
+}
+#tab-content-2{
+    
+}
+#tab-content-2 div[ng-messages]{
+    text-align: left;
+}
+#tab-content-2 input{
+    width: 300px;
+}
