@@ -1,6 +1,11 @@
-#formulario .md-input-focused md-icon{
+.vermelho{
+    color:red !important;
+}
+
+.azul{
     color:#03a9f4 !important;
 }
+
 #tab-content-2 md-content{
     text-align: center;
 }
