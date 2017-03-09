@@ -6,6 +6,10 @@
     color:#03a9f4 !important;
 }
 
+.clarear{
+    opacity:0.7;
+}
+
 #tab-content-2 md-content{
     text-align: center;
 }

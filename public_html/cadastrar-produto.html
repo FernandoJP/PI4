@@ -117,53 +117,32 @@
                     <md-tab id="tab2">
                         <md-tab-label>2 - Autenticação</md-tab-label>
                         <md-tab-body>
-                            <form name="autenticacao">
-                                
-                                <md-content>
-                                    <md-input-container class="md-icon-float md-accent"  md-is-error="autenticacao.senha.$invalid && (autenticacao.$submitted || autenticacao.senha.$dirty)">
-                                        <label>Senha</label>
-                                        <md-icon md-font-icon="fa fa-lock" style="color:#444444"></md-icon>
-                                        <input required minlength="4" maxlength="20" name="senha" ng-model="autenticacao.senha">
-                                        <div ng-messages="autenticacao.senha.$error"  ng-if="autenticacao.$submitted || autenticacao.senha.$touched">
-                                            <div ng-message="required" ng-if="autenticacao.senha.$error.required">
-                                                Este campo é obrigatório.
-                                            </div>
-                                            <div ng-message="md-minlength" ng-if="autenticacao.senha.$error.minlength">
-                                                Your email must be between 10 and 100 characters long and should be a valid email address.
-                                            </div>
-                                        </div>
-                                    </md-input-container>
-
-                                </md-content>
-                                <div class="form-actions noborder">             
-                                    <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
-                                    <md-button class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
-                                </div>
-                            </form>
                             <form name="formAutenticacao" class="container-fluid" ng-submit="formAutenticacao.$valid && submit()" novalidate>
                                 <div class="row">
                                     <div class="col-xs-8">
-                                        <md-input-container class="md-icon-float md-accent">
-                                            <label>Name</label>
-                                            <md-icon md-font-icon="fa fa-user" style="color:#444444"></md-icon>
-                                            <input name="login" ng-model="dadosAutenticacao.login" ng-required="true">
-                                            <div ng-messages="formAutenticacao.login.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.login.$touched">
-                                                <div ng-message="required">O campo login é obrigatório.</div>
+                                         <md-input-container class="md-icon-float md-accent" >
+                                            <label>Nome de usuário *</label>
+                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{'clarear': focusA==true}"></md-icon>
+                                            <input name="userName" ng-model="dadosAutenticacao.userName" ng-required="true" ng-minlength="5" ng-maxlength="50" required="" ng-focus="focusA = true" ng-blur="focusA = false">
+                                            <div ng-messages="formAutenticacao.userName.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.userName.$touched">
+                                                <div ng-message="required">O campo nome de usuário é obrigatório.</div>
                                             </div>
-                                        </md-input-container>
-                                        <md-input-container class="md-icon-float md-accent">
-                                            <label>Senha</label>
-                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{'vermelho': formAutenticacao.senha.$error.required, 'azul':focus&&!formAutenticacao.senha.$error.required}"></md-icon>
-                                            <input name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" required="" ng-focus="focus=true" ng-blur="focus=false">
+                                        </md-input-container><br />
+                                        <md-input-container class="md-icon-float md-accent" >
+                                            <label>Senha *</label>
+                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{'clarear': focusB==true}"></md-icon>
+                                            <input name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
                                             <div ng-messages="formAutenticacao.senha.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.senha.$touched">
                                                 <div ng-message="required">O campo senha é obrigatório.</div>
                                             </div>
                                         </md-input-container>
-                                        <h2>senha inválida: {{formAutenticacao.senha.$error.required}}</h2>
+
                                     </div>
                                 </div>
-                                <md-button type="button" ng-click="reset()">RESET</md-button>
-                                <md-button class="md-primary">SUBMIT</md-button>
+                                <div class="form-actions noborder">             
+                                    <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
+                                    <md-button class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
+                                </div>
                             </form>
                         </md-tab-body>
                     </md-tab>
