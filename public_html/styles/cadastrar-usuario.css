@@ -1,3 +1,4 @@
+
 .vermelho{
     color:red !important;
 }
@@ -21,4 +22,18 @@
 }
 #tab-content-2 input{
     width: 300px;
+}
+
+.formAutenticacao{
+    text-align: center;
+}
+
+md-content {
+    overflow-y: visible ;
+    overflow-x: visible ;
+}
+
+md-content[md-scroll-y] {
+     overflow-y: visible ; 
+     overflow-x: visible ; 
 }
