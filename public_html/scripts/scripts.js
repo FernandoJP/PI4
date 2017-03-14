@@ -1,103 +1,21 @@
-var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
+
+var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'brCidadesEstados']);
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
-        
+
         //Início validação de formulário
         $scope.email = true;
-    $scope.error = false;
-    $scope.date = new Date();
-    
-    $scope.fazerLogin = function (dados) {
         $scope.error = false;
-        $scope.emailInvalido = false;
-        $scope.senhaInvalida = false;
-        console.log(dados);
-        if (dados) {
-            console.log("dados.senha: " + dados.senha);
-            if (!dados.senha) {
-                $scope.senhaInvalida = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informar o campo de senha!";
-            }
-            if (!dados.email || !/.+@.+(\.).+$/.test(dados.email)) {
-                $scope.emailInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informar um valor vÃ¡lido para o campo de e-mail!";
-            }
-        } else {
-            $scope.emailInvalido = true;
-            $scope.senhaInvalida = true;
-            $scope.error = true;
-            $scope.msgErro = "Por favor, informar um valor vÃ¡lido para o campo de e-mail!";  
+        $scope.date = new Date();
+
+        $scope.fazerLogin = function (dados) {
+            
         }
-        delete dados;
-        $scope.contatoForm.$setPristine();
-    };
-    
-    
-    $scope.validarDadosPessoais = function (dados) {
-        $scope.error = false;
-        $scope.nomeInvalido = false;
-        $scope.cpfInvalido = false;
-        $scope.telefoneInvalido = false;
-        $scope.logradouroInvalido = false;
-        $scope.cepInvalido = false;
-        $scope.cidadeInvalido = false;
-        $scope.estadoInvalido = false;
-        if (dados) {
-            if (!dados.estado) {
-                $scope.estadoInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo de estado!";
-            }
-            if (!dados.cidade) {
-                $scope.cidadeInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo de cidade!";
-            }
-            if (!dados.cep) {
-                $scope.cepInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo CEP!";
-            }
-            if (!dados.logradouro) {
-                $scope.logradouroInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo de logradouro!";
-            }
-            if (!dados.telefone) {
-                $scope.telefoneInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo de telefone!";
-            }
-            if (!dados.cpf) {
-                $scope.cpfInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo de CPF!";
-            }
-            if (!dados.nome) {
-                $scope.nomeInvalido = true;
-                $scope.error = true;
-                $scope.msgErro = "Por favor, informe o campo de nome!";
-            }
-        } else {
-            $scope.nomeInvalido = true;
-            $scope.cpfInvalido = true;
-            $scope.telefoneInvalido = true;
-            $scope.logradouroInvalido = true;
-            $scope.cepInvalido = true;
-            $scope.cidadeInvalido = true;
-            $scope.estadoInvalido = true;
-            $scope.error = true;
-            $scope.msgErro = "Por favor, informar um valor válido para o campo nome!";
-        }
-    }
-        //Fim validação de formulário
-        
+
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
         };
-       
+
         $scope.admin = [{
                 link: '',
                 title: 'Cadastrar Produto',
@@ -113,7 +31,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 title: 'Cadastrar Local de Entrega',
                 icon: 'fa fa-home fa-2x'
             }];
-        
+
 
     }]);
 

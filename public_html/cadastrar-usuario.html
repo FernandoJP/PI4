@@ -31,16 +31,17 @@
                                 <div id="form-body">
                                     <div id="tab1-content">
                                         <div layout="row" style="margin-top:10px;">
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': nomeInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>Nome</label>
                                                 <input name="nome" ng-model="dadosPessoais.nome" ng-required="true">
                                                 <div ng-messages="formularioDados.nome.$error" ng-if="formularioDados.$submitted || formularioDados.nome.$touched">
                                                     <div ng-message="required">O campo nome é de preenchimento obrigatório.</div>
                                                 </div>
                                             </md-input-container>
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': cpfInvalido}">
+                                            <md-input-container flex="50" class="md-accent" ng-class="{
+                                                    'md-input-invalid': cpfInvalido}">
                                                 <label>CPF</label>
-                                                <input name="cpf" ng-model="dadosPessoais.cpf" ng-required="true" ng-pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})">
+                                                <input name="cpf" ng-model="dadosPessoais.cpf" ng-required="true" ng-pattern="/^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$/">
                                                 <div ng-messages="formularioDados.cpf.$error" ng-if="formularioDados.$submitted || formularioDados.cpf.$touched">
                                                     <div ng-message="required">O campo CPF é de preenchimento obrigatório.</div>
                                                     <div ng-message="pattern">Por favor informar um número de CPF válido.</div>
@@ -48,48 +49,66 @@
                                             </md-input-container>
                                         </div>
                                         <div layout="row">
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': emailInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>E-mail</label>
-                                                <input type="email" name="email" ng-model="dadosPessoais.email">
+                                                <input type="email" name="email" ng-model="dadosPessoais.email" ng-required="true" ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/">
+                                                <div ng-messages="formularioDados.email.$error" ng-if="formularioDados.$submitted || formularioDados.email.$touched">
+                                                    <div ng-message="required">O campo email é de preenchimento obrigatório.</div>
+                                                    <div ng-message="pattern">Por favor informar um e-mail válido.</div>
+                                                </div>
                                             </md-input-container>
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': telefoneInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>Telefone</label>
-                                                <input name="telefone" ng-model="dadosPessoais.telefone">
+                                                <input name="telefone" ng-model="dadosPessoais.telefone" ng-required="true">
+                                                <div ng-messages="formularioDados.telefone.$error" ng-if="formularioDados.$submitted || formularioDados.telefone.$touched">
+                                                    <div ng-message="required">O campo telefone é de preenchimento obrigatório.</div>
+                                                </div>
                                             </md-input-container>
                                         </div>
                                         <div layout="row">
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': cepInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>CEP</label>
-                                                <input name="cep" ng-model="dadosPessoais.cep">
+                                                <input name="cep" ng-model="dadosPessoais.cep" ng-required="true">
+                                                <div ng-messages="formularioDados.cep.$error" ng-if="formularioDados.$submitted || formularioDados.cep.$touched">
+                                                    <div ng-message="required">O campo CEP é de preenchimento obrigatório.</div>
+                                                </div>
                                             </md-input-container>
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': logradouroInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>Logradouro</label>
-                                                <input name="logradouro" ng-model="dadosPessoais.logradouro">
+                                                <input name="logradouro" ng-model="dadosPessoais.logradouro" ng-required="true">
+                                                <div ng-messages="formularioDados.logradouro.$error" ng-if="formularioDados.$submitted || formularioDados.logradouro.$touched">
+                                                    <div ng-message="required">O campo logradouro é de preenchimento obrigatório.</div>
+                                                </div>
                                             </md-input-container>
                                         </div>
                                         <div layout="row">
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': cidadeInvalido}">
-                                                <label>Cidade</label>
-                                                <input name="cidade" ng-model="dadosPessoais.cidade">
-                                            </md-input-container>
-
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': estadoInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>Estado</label>
-                                                <input name="estado" ng-model="dadosPessoais.estado">
+                                                <select ng-model="selectedState" ng-options="estado.sigla as estado.nome for estado in estados" ng-change="buscarCidadesPorSigla(estado.sigla)">Select a State</select>
+                                            </md-input-container>
+                                            <md-input-container flex="50" class="md-accent">
+                                                <label>Cidade</label>
+                                                <select ng-model="selectedCity" ng-options="cidade for cidade in vm.cities">  Select a City</select>
                                             </md-input-container>
                                         </div>
                                         <div layout="row">
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': tipoAcessoInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>Tipo de Acesso</label>
-                                                <md-select class="md-accent"  name="type" ng-model="dadosPessoais.tipoAcesso">
+                                                <md-select class="md-accent"  name="tipoAcesso" ng-model="dadosPessoais.tipoAcesso" ng-required="true">
                                                     <md-option value="app">Cliente</md-option>
-                                                    <md-option value="web">Funcion�rio</md-option>
+                                                    <md-option value="web">Funcionário</md-option>
                                                 </md-select>
+                                                <div ng-messages="formularioDados.tipoAcesso.$error" ng-if="formularioDados.$submitted || formularioDados.tipoAcesso.$touched">
+                                                    <div ng-message="required">O campo tipo de acesso é de preenchimento obrigatório.</div>
+                                                </div>
                                             </md-input-container>
 
-                                            <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': cargoInvalido}">
+                                            <md-input-container flex="50" class="md-accent">
                                                 <label>Cargo</label>
-                                                <input name="cargo" ng-model="dadosPessoais.cargo">
+                                                <input name="cargo" ng-model="dadosPessoais.cargo" ng-required="true">
+                                                <div ng-messages="formularioDados.cargo.$error" ng-if="formularioDados.$submitted || formularioDados.cargo.$touched">
+                                                    <div ng-message="required">O campo cargo é de preenchimento obrigatório.</div>
+                                                </div>
                                             </md-input-container>
                                         </div>
                                         <div class="form-actions noborder">             
@@ -109,7 +128,8 @@
                                     <div class="col-xs-8">
                                         <md-input-container class="md-icon-float md-accent" >
                                             <label>Nome de usuário</label>
-                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{'clarear': focusA == true}"></md-icon>
+                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{
+                                                    'clarear': focusA == true}"></md-icon>
                                             <input name="userName" ng-model="dadosAutenticacao.userName" ng-required="true" ng-minlength="5" ng-maxlength="50" required="" ng-focus="focusA = true" ng-blur="focusA = false">
                                             <div ng-messages="formAutenticacao.userName.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.userName.$touched">
                                                 <div ng-message="required">O campo nome de usuário é de preenchimento obrigatório.</div>
@@ -117,7 +137,8 @@
                                         </md-input-container><br />
                                         <md-input-container class="md-icon-float md-accent" >
                                             <label>Senha</label>
-                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{'clarear': focusB == true}"></md-icon>
+                                            <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{
+                                                    'clarear': focusB == true}"></md-icon>
                                             <input name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
                                             <div ng-messages="formAutenticacao.senha.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.senha.$touched">
                                                 <div ng-message="required">O campo senha é de preenchimento obrigatório.</div>
@@ -137,6 +158,5 @@
             </div>
         </md-card>
     </md-content>
-
 </body>
 </html>
