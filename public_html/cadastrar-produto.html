@@ -40,9 +40,10 @@
                                             </md-input-container>
                                             <md-input-container flex="50" class="md-accent" ng-class="{'md-input-invalid': cpfInvalido}">
                                                 <label>CPF</label>
-                                                <input name="cpf" ng-model="dadosPessoais.cpf" ng-required="true">
+                                                <input name="cpf" ng-model="dadosPessoais.cpf" ng-required="true" ng-pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})">
                                                 <div ng-messages="formularioDados.cpf.$error" ng-if="formularioDados.$submitted || formularioDados.cpf.$touched">
                                                     <div ng-message="required">O campo CPF é de preenchimento obrigatório.</div>
+                                                    <div ng-message="pattern">Por favor informar um número de CPF válido.</div>
                                                 </div>
                                             </md-input-container>
                                         </div>
