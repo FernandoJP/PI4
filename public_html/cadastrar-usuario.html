@@ -84,19 +84,23 @@
                                         <div layout="row">
                                             <md-input-container flex="50" class="md-accent">
                                                 <label>Estado</label>
-                                                <select ng-model="selectedState" ng-options="estado.sigla as estado.nome for estado in estados" ng-change="buscarCidadesPorSigla(estado.sigla)">Select a State</select>
+                                                <select ng-model="selectedState" id="estados">
+                                                    <option value=""></option>
+                                                </select>
                                             </md-input-container>
                                             <md-input-container flex="50" class="md-accent">
                                                 <label>Cidade</label>
-                                                <select ng-model="selectedCity" ng-options="cidade for cidade in vm.cities">  Select a City</select>
+                                                <select ng-model="selectedCity" id="cidades">
+                                                    <option value=""></option>
+                                                </select>
                                             </md-input-container>
                                         </div>
                                         <div layout="row">
                                             <md-input-container flex="50" class="md-accent">
                                                 <label>Tipo de Acesso</label>
                                                 <md-select class="md-accent"  name="tipoAcesso" ng-model="dadosPessoais.tipoAcesso" ng-required="true">
-                                                    <md-option value="app">Cliente</md-option>
-                                                    <md-option value="web">Funcionário</md-option>
+                                                    <md-option value="cliente">Cliente</md-option>
+                                                    <md-option value="funcionario">Funcionário</md-option>
                                                 </md-select>
                                                 <div ng-messages="formularioDados.tipoAcesso.$error" ng-if="formularioDados.$submitted || formularioDados.tipoAcesso.$touched">
                                                     <div ng-message="required">O campo tipo de acesso é de preenchimento obrigatório.</div>

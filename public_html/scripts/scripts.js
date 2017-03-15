@@ -1,5 +1,5 @@
 
-var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'brCidadesEstados']);
+var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
 
@@ -8,8 +8,18 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $scope.error = false;
         $scope.date = new Date();
 
+
+        preencherEstadoCidade();
+
+        $scope.validarDadosPessoais = function(dadosPessoais){
+            console.log(dadosPessoais.tipoAcesso);
+            console.log(dadosPessoais.nome);
+            console.log(dadosPessoais.cpf);
+            console.log(dadosPessoais.logradouro);
+        }
+
         $scope.fazerLogin = function (dados) {
-            
+
         }
 
         $scope.toggleSidenav = function (menuId) {
@@ -62,3 +72,38 @@ app.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('input', 'default')
             .primaryPalette('grey')
 });
+
+function preencherEstadoCidade() {
+    $.getJSON('scripts/estados_cidades.json', function (data) {
+
+        var items = [];
+        var options = '<option value="">escolha um estado</option>';
+
+        $.each(data, function (key, val) {
+            options += '<option value="' + val.nome + '">' + val.nome + '</option>';
+        });
+        $("#estados").html(options);
+
+        $("#estados").change(function () {
+
+            var options_cidades = '';
+            var str = "";
+
+            $("#estados option:selected").each(function () {
+                str += $(this).text();
+            });
+
+            $.each(data, function (key, val) {
+                if (val.nome == str) {
+                    $.each(val.cidades, function (key_city, val_city) {
+                        options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
+                    });
+                }
+            });
+
+            $("#cidades").html(options_cidades);
+
+        }).change();
+
+    });
+}
