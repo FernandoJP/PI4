@@ -1,5 +1,5 @@
 
-var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
+var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons','br.cidades.estados']);
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
 
@@ -7,9 +7,6 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $scope.email = true;
         $scope.error = false;
         $scope.date = new Date();
-
-
-        preencherEstadoCidade();
 
         $scope.validarDadosPessoais = function(dadosPessoais){
             console.log(dadosPessoais.tipoAcesso);
@@ -73,37 +70,20 @@ app.config(function ($mdThemingProvider) {
             .primaryPalette('grey')
 });
 
-function preencherEstadoCidade() {
-    $.getJSON('scripts/estados_cidades.json', function (data) {
+            
+app.controller('DemoController', DemoController);
 
-        var items = [];
-        var options = '<option value="">escolha um estado</option>';
+function DemoController(brCidadesEstados) {
+    var vm = this;
+    vm.states = brCidadesEstados.estados;
+    console.log(brCidadesEstados.estados);
 
-        $.each(data, function (key, val) {
-            options += '<option value="' + val.nome + '">' + val.nome + '</option>';
-        });
-        $("#estados").html(options);
+    vm.buscarCidadesPorSigla = function(sigla){
+        vm.cities = brCidadesEstados.buscarCidadesPorSigla(sigla);
+        console.log(brCidadesEstados);
+        console.log(brCidadesEstados.buscarCidadesPorSigla);
+        console.log('vm.cities:');        
+        console.log(vm.cities);
 
-        $("#estados").change(function () {
-
-            var options_cidades = '';
-            var str = "";
-
-            $("#estados option:selected").each(function () {
-                str += $(this).text();
-            });
-
-            $.each(data, function (key, val) {
-                if (val.nome == str) {
-                    $.each(val.cidades, function (key_city, val_city) {
-                        options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
-                    });
-                }
-            });
-
-            $("#cidades").html(options_cidades);
-
-        }).change();
-
-    });
+    };
 }

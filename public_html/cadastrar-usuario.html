@@ -81,18 +81,18 @@
                                                 </div>
                                             </md-input-container>
                                         </div>
-                                        <div layout="row">
+                                        <div layout="row" ng-controller="DemoController as vm">
                                             <md-input-container flex="50" class="md-accent">
                                                 <label>Estado</label>
-                                                <select ng-model="selectedState" id="estados">
-                                                    <option value=""></option>
-                                                </select>
+                                                <md-select class="md-accent" ng-model="dadosPessoais.estado" ng-change="vm.buscarCidadesPorSigla(dadosPessoais.estado)">
+                                                <md-option ng-repeat="state in vm.states">{{state.nome}}</md-option>
+                                                </md-select>
                                             </md-input-container>
-                                            <md-input-container flex="50" class="md-accent">
+                                            <md-input-container flex="50" class="md-accent" ng-if="dadosPessoais.estado">
                                                 <label>Cidade</label>
-                                                <select ng-model="selectedCity" id="cidades">
-                                                    <option value=""></option>
-                                                </select>
+                                                <md-select class="md-accent" ng-model="dadosPessoais.cidade">
+                                                    <md-option ng-repeat="city in vm.cities">{{city}}</md-option>
+                                                </md-select>
                                             </md-input-container>
                                         </div>
                                         <div layout="row">
@@ -121,6 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                Válido:{{formularioDados.$valid}}
                             </form>
                         </md-tab-body>
                     </md-tab>
