@@ -23,7 +23,7 @@
                 <header id="form-header">
                     <h2>Novo Usuário </h2><span class="today-date"><i class="fa fa-calendar"></i>  {{date| date:'dd/MM/yyyy'}}</span>
                 </header>
-                <md-tabs md-dynamic-height md-stretch-tabs="always" class="md-primary" md-selected="data.selectedIndex">
+                <md-tabs md-dynamic-height md-stretch-tabs="always" class="md-primary" md-selected="tracking.selectedIndex">
                     <md-tab id="tab1" ng-disabled>
                         <md-tab-label>1 - Dados Pessoais</md-tab-label>
                         <md-tab-body>
@@ -31,6 +31,7 @@
                                 <div id="form-body">
                                     <div id="tab1-content">
                                         <div layout="row" style="margin-top:10px;">
+                                             <button ng-click="tracking.displayMap();">teste</button>
                                             <md-input-container flex="50" class="md-accent">
                                                 <label>Nome</label>
                                                 <input name="nome" ng-model="dadosPessoais.nome" ng-required="true">
@@ -117,12 +118,12 @@
                                         </div>
                                         <div class="form-actions noborder">             
                                             <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
-                                            <md-button class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais)"><i class="material-icons">keyboard_arrow_right</i>Próximo</md-button>
+                                            <md-button class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais, formularioDados)"><i class="material-icons">keyboard_arrow_right</i>Próximo</md-button>
                                         </div>
                                     </div>
                                 </div>
-                                Válido:{{formularioDados.$valid}}
                             </form>
+                            
                         </md-tab-body>
                     </md-tab>
                     <md-tab id="tab2">

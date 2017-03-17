@@ -1,5 +1,5 @@
 
-var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons','br.cidades.estados']);
+var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados']);
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
 
@@ -8,20 +8,33 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $scope.error = false;
         $scope.date = new Date();
 
-        $scope.validarDadosPessoais = function(dadosPessoais){
-            console.log(dadosPessoais.tipoAcesso);
-            console.log(dadosPessoais.nome);
-            console.log(dadosPessoais.cpf);
-            console.log(dadosPessoais.logradouro);
+        var self = this;
+        self.selectedIndex = 0;
+        self.displayMap = function () {
+            self.selectedIndex = 1;
+        };
+
+        $scope.validarDadosPessoais = function (dadosPessoais, formularioDados) {
+            console.log(formularioDados.$valid);
+            if (formularioDados.$valid) {
+                //enviar requisição via $http
+                $scope.selectedIndex = 2;
+                //enviar requisição via $http
+
+            }
+            $scope.selectedIndex.inputTab = 1;
         }
 
         $scope.fazerLogin = function (dados) {
-
         }
 
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
         };
+
+        $scope.someMethod = function () {
+            alert('teste');
+        }
 
         $scope.admin = [{
                 link: '',
@@ -70,7 +83,7 @@ app.config(function ($mdThemingProvider) {
             .primaryPalette('grey')
 });
 
-            
+
 app.controller('DemoController', DemoController);
 
 function DemoController(brCidadesEstados) {
@@ -78,11 +91,11 @@ function DemoController(brCidadesEstados) {
     vm.states = brCidadesEstados.estados;
     console.log(brCidadesEstados.estados);
 
-    vm.buscarCidadesPorSigla = function(sigla){
+    vm.buscarCidadesPorSigla = function (sigla) {
         vm.cities = brCidadesEstados.buscarCidadesPorSigla(sigla);
         console.log(brCidadesEstados);
         console.log(brCidadesEstados.buscarCidadesPorSigla);
-        console.log('vm.cities:');        
+        console.log('vm.cities:');
         console.log(vm.cities);
 
     };
