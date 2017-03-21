@@ -14,34 +14,15 @@ md-card {
 }
 md-toolbar {
     .md-button.md-default-theme {
-        border-radius: 99%; // round toolbar buttons
+        border-radius: 99%;
     }
 }
 h2 {
     font-weight: 400;
 }
-.md-toolbar-tools-bottom {
-    font-size: small;
-    & :last-child {
-        opacity: 0.8;
-    }
-}
-md-toolbar:not(.md-hue-1),
-.md-fab {
 
-}
-md-sidenav {
-    ng-md-icon {
-        position: relative;
-        top: 5px; // adjust for svg viewbox
-    }
-}
 .user-avatar {
     border-radius: 99%;
-}
-
-md-sidenav{
-    margin-top: 64px;
 }
 
 md-toolbar{
@@ -49,8 +30,12 @@ md-toolbar{
     left: 0;
 }
 
+md-toolbar.md-toolbar-tools.md-hue-2.layout-align-start-center.layout-row{
+        background:#333;
+}
+
 md-sidenav md-list{
-    margin-top: 130px;
+    margin-top: -20px;
 }
 
 md-sidenav .fa-2x {
@@ -75,11 +60,11 @@ md-sidenav .fa{
 }
 
 /*Conteúdo do site*/
-#conteudo md-card{
+#conteudo md-card.principal{
     min-height: 600px;
     position: relative;
     top: 84px;
-    margin:0 20px 0 20px;
+    margin: 10px 30px 30px 30px;
 }
 
 #conteudo md-card-title{
@@ -139,4 +124,40 @@ md-sidenav .fa{
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
     background: red;
+}
+
+/*Menu do header*/
+#topNav button{
+    color:#fff;
+}
+
+md-menu-item md-icon{
+    width:auto;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+#menu-mobile{
+    margin-top:35px;
+}
+
+#menu-mobile a{
+    text-decoration: none !important; 
+    color:#222;
+}
+
+a{
+    text-decoration: none !important; 
+    color:#222;
+}
+
+.nav-botao-mais{
+    margin-right: 1px !important;
+}
+
+.badge{
+    bottom: 6px;
+    position: relative;
 }

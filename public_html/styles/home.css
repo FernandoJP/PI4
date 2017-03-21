@@ -1,0 +1,60 @@
+#produtos md-card-title-text span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    transition:0.2s;
+    color:#106cc8;
+}
+
+#produtos md-card{
+    cursor:pointer;
+}
+
+.dialog-detalhes-livro{
+    padding:25px 25px 5px 25px;
+}
+
+.dialog-img-livro{
+    max-height: 400px;
+    margin-right:25px;
+    float:left;
+}
+
+.dialog-descricao-livro{
+    font-size:1.1em;
+    margin-right:25px;
+}
+
+.dialog-preco-livro{
+    font-size:1.2em;
+    font-weight: bold;
+}
+.dialog-preco-livro span{
+    font-weight: normal;
+}
+
+@media (max-width: 960px) {
+    .dialog-detalhes-livro{
+        clear: both;
+    }
+    #produtos{
+        display: block;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .dialog-img-livro{
+        display: block;
+        margin-left:auto;
+        margin-right:auto;
+        float: none;
+    }
+
+    .dialog-descricao-livro{
+        float: none;
+    }
+}
+
+/* Toast */
+md-toast{
+    margin-top:60px;
+}

@@ -2,36 +2,72 @@
 <html lang="pt-br" ng-app="StarterApp">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width"> 
         <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="plugins/angular-sweet-alert/sweetalert.css">
         <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/home.css">
         <link href="plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet"> 
     </head>
     <body layout="row" ng-controller="AppCtrl">
-
-        <div ng-include="'menu.html'"></div>
         <div ng-include="'header.html'"></div>
 
-        <div layout="column" class="relative" layout-fill role="main">
-            <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
-                <ng-md-icon icon="menu"></ng-md-icon>
-            </md-button>
-            <div ng-include="'cadastrar-usuario.html'"></div>
+    <md-content flex md-scroll-y id="conteudo">
+        <md-card class="principal md-whiteframe-6dp">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Produtos</span>
+                    <span class="md-subhead">dfjsdjfksddsfsdf</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
 
-        </div>
-        <script src="plugins/jquery/jquery-3.1.1.min.js"></script>
-        <!-- Angular Material Dependencies -->
-        <script src="plugins/angular/angular.min.js"></script>
-        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-        <script src="node_modules/angular-aria/angular-aria.min.js"></script>
-        <script src="node_modules/angular-messages/angular-messages.min.js"></script>
-        <script src="node_modules/angular-material/angular-material.min.js"></script>
-        <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
-        <script src="plugins/cidade-estado/cidades-estados.js"></script> 
-        <script src="plugins/angular-sweet-alert/sweetalert.min.js"></script>
-        <script src="scripts/scripts.js"></script>
+            <!-- Início da exibição de produtos -->
+            <div class='md-padding' layout="row" layout-wrap id="produtos">
+                <md-card ng-repeat="produto in produtos" style="width:230px;position:relative;" class="md-whiteframe-3dp">
+                    <div ng-click="showCustom($event, produto)" md-ink-ripple>
+                    <img ng-src="{{produto.img}}" class="md-card-image" alt="Livro {{produto.nome}}" title="Livro {{produto.nome}}" style="max-height: 290px;">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{produto.nome}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>
+                            {{produto.preco}}
+                        </p>
+                    </md-card-content>
+                     </div>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-icon-button" ng-click="adicionarAoCarrinho(produto)">
+                            <i class="material-icons">add_shopping_cart</i>
+                        </md-button>
+                        <md-button class="md-raised md-primary">
+                            Comprar
+                        </md-button>
+                    </md-card-actions>
+                   
+                </md-card>
+            </div>
+
+            <!-- Fim da exibição de produtos -->
+        </md-card>
+    </md-content>
 
 
-    </body>
+    <script src="plugins/jquery/jquery-3.1.1.min.js"></script>
+    <!-- Angular Material Dependencies -->
+    <script src="plugins/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
+    <script src="plugins/cidade-estado/cidades-estados.js"></script> 
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/home.js"></script>
+</body>
 </html>

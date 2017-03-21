@@ -3,11 +3,7 @@ var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ng
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
 
-        //Início validação de formulário
-        $scope.email = true;
-        $scope.error = false;
         $scope.date = new Date();
-
         var self = this;
         self.selectedIndex = 0;
         self.displayMap = function () {
@@ -25,16 +21,10 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $scope.selectedIndex.inputTab = 1;
         }
 
-        $scope.fazerLogin = function (dados) {
-        }
-
         $scope.toggleSidenav = function (menuId) {
+            console.log('abrindo sidbar');
             $mdSidenav(menuId).toggle();
         };
-
-        $scope.someMethod = function () {
-            alert('teste');
-        }
 
         $scope.admin = [{
                 link: '',
@@ -89,14 +79,7 @@ app.controller('DemoController', DemoController);
 function DemoController(brCidadesEstados) {
     var vm = this;
     vm.states = brCidadesEstados.estados;
-    console.log(brCidadesEstados.estados);
-
     vm.buscarCidadesPorSigla = function (sigla) {
         vm.cities = brCidadesEstados.buscarCidadesPorSigla(sigla);
-        console.log(brCidadesEstados);
-        console.log(brCidadesEstados.buscarCidadesPorSigla);
-        console.log('vm.cities:');
-        console.log(vm.cities);
-
     };
 }
