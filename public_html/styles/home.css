@@ -9,6 +9,10 @@
     cursor:pointer;
 }
 
+#conteudo md-card-title{
+    max-height: 70px;
+}
+
 .dialog-detalhes-livro{
     padding:25px 25px 5px 25px;
 }

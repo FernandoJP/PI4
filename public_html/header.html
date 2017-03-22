@@ -94,13 +94,11 @@
             </md-menu-bar>
         </div>
         <span flex></span>
-        <md-button
-            class="md-icon-button"
-            aria-label="Favorite"
-            ng-click="ctrl.showToolbarMenu($event, ctrl.favorite)">
-            <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
-        </md-button>
-
+        <a href="carrinho-compras.html" title="Ir para o carrinho de compras. " alt="Ir para o carrinho de compras. ">
+            <md-button class="md-icon-button">
+                <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
+            </md-button>
+        </a>
         <md-menu id="menu-desktop" md-position-mode="target-right target">
             <md-button
                 class="md-icon-button nav-botao-mais"

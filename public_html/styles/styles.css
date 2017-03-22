@@ -67,10 +67,6 @@ md-sidenav .fa{
     margin: 10px 30px 30px 30px;
 }
 
-#conteudo md-card-title{
-    max-height: 70px;
-}
-
 #conteudo{
     background: #f3f3f3;
 }

@@ -8,65 +8,51 @@
         <link rel="stylesheet" href="plugins/angular-sweet-alert/sweetalert.css">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/carrinho-compras.css">
-        <link href="plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="plugins/font-awesome-4.6.3/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="plugins/materialize/css/materialize.css">
     </head>
     <body layout="row" ng-controller="AppCtrl">
         <div ng-include="'header.html'"></div>
 
     <md-content flex md-scroll-y id="conteudo">
-        <md-card ng-repeat="produto in carrinho" class="principal md-whiteframe-6dp">
+        <md-card class="principal md-whiteframe-6dp">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Carrinho</span>
                     <span class="md-subhead"> <i class="fa fa-shopping-cart" style="font-size:1.4em;" aria-hidden="true"></i><span style="margin-left:10px;">Você tem <strong>1 livro</strong> e um total de <strong>R$10,00</strong> reais no carrinho de compras. </span> </span>
                 </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media"></div>
+                </md-card-title-media>
             </md-card-title>
-            <md-card class="produto-do-carrinho">
-                <md-card-title>
-                    <md-card-title-media>
-                        <img ng-src="{{produto.img}}" class="md-card-image md-media-lg card-media img-produto-do-carrinho" alt="Livro {{produto.nome}}" title="Livro {{produto.nome}}">
-                    </md-card-title-media>
-                    <md-card-title-text>
-                        <span class="md-headline">Card with image</span>
-                        <span class="md-subhead">Large</span>
-                    </md-card-title-text>
 
-                </md-card-title>
-                <md-card-actions layout="row" layout-align="end center">
-                    <md-button>Action 1</md-button>
-                    <md-button>Action 2</md-button>
-                </md-card-actions>
-            </md-card>
+            <!-- Início da exibição dos produtos do carrinho -->
+            <table class="tabela-produtos highlight bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Livro</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-            <!-- Início da exibição de produtos -->
-            <div class='md-padding' layout="row" layout-wrap id="produtos">
-                <md-card ng-repeat="produto in carrinho" style="position:relative;" class="md-whiteframe-3dp">
-                    <div ng-click="showCustom($event, produto)" md-ink-ripple>
-                        <img ng-src="{{produto.img}}" class="md-card-image" alt="Livro {{produto.nome}}" title="Livro {{produto.nome}}" style="max-height: 290px;">
-                        <md-card-title>
-                            <md-card-title-text>
-                                <span class="md-headline">{{produto.nome}}</span>
-                            </md-card-title-text>
-                        </md-card-title>
-                        <md-card-content>
-                            <p>
-                                {{produto.preco}}
-                            </p>
-                        </md-card-content>
-                    </div>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-icon-button" ng-click="adicionarAoCarrinho(produto)">
-                            <i class="material-icons">add_shopping_cart</i>
-                        </md-button>
-                        <md-button class="md-raised md-primary">
-                            Comprar
-                        </md-button>
-                    </md-card-actions>
-
-                </md-card>
-            </div>
-
-            <!-- Fim da exibição de produtos -->
+                <tbody>
+                    <tr>
+                        <td><img src="images/livro-o-poder-do-habito.jpg" class="img-livro"/></td>
+                        <td>Nome</td>
+                        <td>R$125,00</td>
+                        <td>5</td>
+                        <td>
+                            <md-button class="md-icon-button">
+                            <i class="material-icons botao-remover">close</i>
+                            </md-button>
+                        </td>
+                    </tr>    
+                </tbody>
+            </table>
+            <!-- Fim da exibição dos produtos do carrinho -->
         </md-card>
     </md-content>
 
