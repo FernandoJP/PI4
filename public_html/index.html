@@ -29,27 +29,38 @@
             <div class='md-padding' layout="row" layout-wrap id="produtos">
                 <md-card ng-repeat="produto in produtos" style="width:230px;position:relative;" class="md-whiteframe-3dp">
                     <div ng-click="showCustom($event, produto)" md-ink-ripple>
-                    <img ng-src="{{produto.img}}" class="md-card-image" alt="Livro {{produto.nome}}" title="Livro {{produto.nome}}" style="max-height: 290px;">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">{{produto.nome}}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            {{produto.preco}}
-                        </p>
-                    </md-card-content>
-                     </div>
+                        <img ng-src="{{produto.img}}" class="md-card-image" alt="Livro {{produto.nome}}" title="Livro {{produto.nome}}" style="max-height: 290px;">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{produto.nome}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <p>
+                                {{produto.preco}}
+                            </p>
+                        </md-card-content>
+                    </div>
                     <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-icon-button" ng-click="adicionarAoCarrinho(produto)">
-                            <i class="material-icons">add_shopping_cart</i>
-                        </md-button>
-                        <md-button class="md-raised md-primary">
-                            Comprar
-                        </md-button>
+                        <section ng-hide="!qtdProdutos" class="secao-qtd-produtos animate-show-hide">
+                            <md-button class="md-icon-button botao-retirar md-raised md-primary left md-icon-button">
+                                <i class="material-icons">remove</i>
+                            </md-button>
+                            <span class="qtd-produtos">Comprar {{produto.quantidade}}</span>
+                            <md-button class="md-icon-button botao-adicionar md-raised md-primary left md-icon-button">
+                                <i class="material-icons">add</i>
+                            </md-button>
+                        </section>
+                        <section ng-hide="qtdProdutos">
+                            <md-button class="md-icon-button" ng-click="adicionarAoCarrinho(produto);mostrarQtdProdutos()">
+                                <i class="material-icons">add_shopping_cart</i>
+                            </md-button>
+                            <md-button class="md-raised md-primary">
+                                Comprar
+                            </md-button>
+                        </section>
                     </md-card-actions>
-                   
+
                 </md-card>
             </div>
 
