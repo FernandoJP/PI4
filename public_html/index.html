@@ -12,7 +12,7 @@
     </head>
     <body layout="row" ng-controller="AppCtrl">
         <div ng-include="'header.html'"></div>
-
+ 
     <md-content flex md-scroll-y id="conteudo">
         <md-card class="principal md-whiteframe-6dp">
             <md-card-title>
@@ -32,7 +32,7 @@
                         <img ng-src="{{produto.img}}" class="md-card-image" alt="Livro {{produto.nome}}" title="Livro {{produto.nome}}" style="max-height: 290px;">
                         <md-card-title>
                             <md-card-title-text>
-                                <span class="md-headline">{{produto.nome}}</span>
+                                <span class="md-headline">{{produto.title}}</span>
                             </md-card-title-text>
                         </md-card-title>
                         <md-card-content>
