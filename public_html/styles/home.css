@@ -62,3 +62,14 @@
 md-toast{
     margin-top:60px;
 }
+
+.secao-qtd-produtos{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qtd-produtos{
+    display: inline-block;
+    position: relative;
+    top: -5px;
+}

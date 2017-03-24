@@ -45,18 +45,18 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 clickOutsideToClose: true,
                 scope: $scope,
                 preserveScope: true,
-                template:'<md-dialog class="dialog-detalhes-livro">' +
-                            '<md-dialog-content>' +
-                                '<h1>' + dadosProduto.nome + '</h1>' +
-                                '<img class="dialog-img-livro" src="' + dadosProduto.img + '" title="Livro ' + dadosProduto.nome + '. " alt="Livro ' + dadosProduto.nome + '. "/>' +
-                                '<div class="dialog-descricao-livro"><p>' + dadosProduto.descricao + '</p></div>' +
-                            '</md-dialog-content>' +
-                            '<md-dialog-actions layout="row">' +
-                            '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.preco + '</span></div>' +
-                            '<span flex></span>' +
-                            '<md-button class="md-icon-button"><i class="material-icons">add_shopping_cart</i></md-button>' +
-                            '<md-button class="md-raised md-primary">Comprar</md-button>' +
-                            '<md-dialog-actions>' +
+                template: '<md-dialog class="dialog-detalhes-livro">' +
+                        '<md-dialog-content>' +
+                        '<h1>' + dadosProduto.nome + '</h1>' +
+                        '<img class="dialog-img-livro" src="' + dadosProduto.img + '" title="Livro ' + dadosProduto.nome + '. " alt="Livro ' + dadosProduto.nome + '. "/>' +
+                        '<div class="dialog-descricao-livro"><p>' + dadosProduto.descricao + '</p></div>' +
+                        '</md-dialog-content>' +
+                        '<md-dialog-actions layout="row">' +
+                        '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.preco + '</span></div>' +
+                        '<span flex></span>' +
+                        '<md-button class="md-icon-button"><i class="material-icons">add_shopping_cart</i></md-button>' +
+                        '<md-button class="md-raised md-primary">Comprar</md-button>' +
+                        '<md-dialog-actions>' +
                         '</md-dialog>',
                 controller: function DialogController($scope, $mdDialog) {
                     $scope.closeDialog = function () {
@@ -68,6 +68,21 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         ;
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
+        };
+
+        $scope.alterarQtdProdutos = function (operacao) {
+            if ($scope.qtdProdutos) {
+                if (operacao == 'adicionar') {
+                    $scope.qtdProdutos++;
+
+                } else if (operacao == 'remover') {
+                    if ($scope.qtdProdutos != 1) {
+                        $scope.qtdProdutos--;
+                    }
+                }
+            } else {
+                $scope.qtdProdutos = 1;
+            }
         };
 
         $scope.adicionarAoCarrinho = function (produto) {
