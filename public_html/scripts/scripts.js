@@ -1,7 +1,7 @@
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog','$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http) {
 
         $scope.date = new Date();
         var self = this;
@@ -11,14 +11,21 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         };
 
         $scope.validarDadosPessoais = function (dadosPessoais, formularioDados) {
-            console.log(formularioDados.$valid);
             if (formularioDados.$valid) {
-                //enviar requisição via $http
+
                 $scope.selectedIndex = 2;
                 //enviar requisição via $http
 
             }
-            $scope.selectedIndex.inputTab = 1;
+        }
+
+        $scope.validarDadosAutenticacao = function (dadosAutenticacao, formularioDados) {
+            console.log('validarDadosAutenticacao');
+                $http.post('http://67.205.164.145/api/client', {name: 'Fernando é zika', cpf: '54545', email: 'dsfdf@a.com', is_employee: 0}).then(function (response) {
+                    console.log(response);
+                }, function (response) {
+                    console.log(response);
+                });
         }
 
         $scope.toggleSidenav = function (menuId) {
@@ -42,6 +49,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 icon: 'fa fa-home fa-2x'
             }];
 
+        console.log($scope.nome);
 
     }]);
 
@@ -83,3 +91,4 @@ function DemoController(brCidadesEstados) {
         vm.cities = brCidadesEstados.buscarCidadesPorSigla(sigla);
     };
 }
+

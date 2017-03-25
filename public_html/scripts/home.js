@@ -19,12 +19,12 @@ var app = angular.module('StarterApp', ['ngAnimate', 'ngAria','ngMaterial', 'ngM
                         preserveScope: true,
                         template: '<md-dialog class="dialog-detalhes-livro">' +
                         '<md-dialog-content>' +
-                        '<h1>' + dadosProduto.nome + '</h1>' +
-                        '<img class="dialog-img-livro" src="' + dadosProduto.img + '" title="Livro ' + dadosProduto.nome + '. " alt="Livro ' + dadosProduto.nome + '. "/>' +
-                        '<div class="dialog-descricao-livro"><p>' + dadosProduto.descricao + '</p></div>' +
+                        '<h1>' + dadosProduto.title + '</h1>' +
+                        '<img class="dialog-img-livro" src="data:image/png;base64,' + dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.title + '. "/>' +
+                        '<div class="dialog-descricao-livro"><p>' + dadosProduto.title + '</p></div>' +
                         '</md-dialog-content>' +
                         '<md-dialog-actions layout="row">' +
-                        '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.preco + '</span></div>' +
+                        '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.price + '</span></div>' +
                         '<span flex></span>' +
                         '<md-button class="md-icon-button"><i class="material-icons">add_shopping_cart</i></md-button>' +
                         '<md-button class="md-raised md-primary">Comprar</md-button>' +
