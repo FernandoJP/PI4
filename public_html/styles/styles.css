@@ -119,7 +119,7 @@ md-sidenav .fa{
 }
 
 md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar{
-    background: red;
+    background: rgb(39,39,69);
 }
 
 /*Menu do header*/
@@ -156,4 +156,8 @@ a{
 .badge{
     bottom: 6px;
     position: relative;
+}
+
+#conteudo md-card-title {
+    max-height: 90px;
 }

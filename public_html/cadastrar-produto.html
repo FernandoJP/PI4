@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="StarterApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width"> 
+        <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="plugins/angular-sweet-alert/sweetalert.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/cadastrar-produto.css">
+        <link href="plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet"> 
+    </head>
+    <body layout="row" ng-controller="AppCtrl as ctrl">
+        <div ng-include="'header.html'"></div>
+        <div layout="column" class="relative" layout-fill role="main">
+            <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+                <ng-md-icon icon="menu"></ng-md-icon>
+            </md-button>
+
+            <md-content flex md-scroll-y  id="conteudo">
+                <md-card class="principal md-whiteframe-6dp">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Cadastrar Produto</span>
+                            <span class="md-subhead">Use este formulário para novos produtos no sistema.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-lg card-media"></div>
+                        </md-card-title-media>
+                    </md-card-title>
+
+                    <!--Início do Formulário-->
+                    <div id="formulario">
+                        <header id="form-header">
+                            <h2>Novo Produto </h2><span class="today-date"><i class="fa fa-calendar"></i>  {{date| date:'dd/MM/yyyy'}}</span>
+                        </header>
+                        <form name="formularioDados">
+                            <div id="form-body">
+                                <div id="tab1-content">
+                                    <div layout="row" style="margin-top:10px;">
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>Nome</label>
+                                            <input name="nome" ng-model="dadosPessoais.nome" ng-required="true">
+                                            <div ng-messages="formularioDados.nome.$error" ng-if="formularioDados.$submitted || formularioDados.nome.$touched">
+                                                <div ng-message="required">O campo nome é de preenchimento obrigatório.</div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container flex="50" class="md-accent" ng-class="{
+                                                    'md-input-invalid': cpfInvalido}">
+                                            <label>CPF</label>
+                                            <input name="cpf" ng-model="dadosPessoais.cpf" ng-required="true" ng-pattern="/^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$/">
+                                            <div ng-messages="formularioDados.cpf.$error" ng-if="formularioDados.$submitted || formularioDados.cpf.$touched">
+                                                <div ng-message="required">O campo CPF é de preenchimento obrigatório.</div>
+                                                <div ng-message="pattern">Por favor informar um número de CPF válido.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row">
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>E-mail</label>
+                                            <input type="email" name="email" ng-model="dadosPessoais.email" ng-required="true" ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/">
+                                            <div ng-messages="formularioDados.email.$error" ng-if="formularioDados.$submitted || formularioDados.email.$touched">
+                                                <div ng-message="required">O campo email é de preenchimento obrigatório.</div>
+                                                <div ng-message="pattern">Por favor informar um e-mail válido.</div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>Telefone</label>
+                                            <input name="telefone" ng-model="dadosPessoais.telefone" ng-required="true">
+                                            <div ng-messages="formularioDados.telefone.$error" ng-if="formularioDados.$submitted || formularioDados.telefone.$touched">
+                                                <div ng-message="required">O campo telefone é de preenchimento obrigatório.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row">
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>CEP</label>
+                                            <input name="cep" ng-model="dadosPessoais.cep" ng-required="true">
+                                            <div ng-messages="formularioDados.cep.$error" ng-if="formularioDados.$submitted || formularioDados.cep.$touched">
+                                                <div ng-message="required">O campo CEP é de preenchimento obrigatório.</div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>Logradouro</label>
+                                            <input name="logradouro" ng-model="dadosPessoais.logradouro" ng-required="true">
+                                            <div ng-messages="formularioDados.logradouro.$error" ng-if="formularioDados.$submitted || formularioDados.logradouro.$touched">
+                                                <div ng-message="required">O campo logradouro é de preenchimento obrigatório.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row" ng-controller="DemoController as vm">
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>Estado</label>
+                                            <md-select class="md-accent" ng-model="dadosPessoais.estado" ng-change="vm.buscarCidadesPorSigla(dadosPessoais.estado)">
+                                                <md-option ng-repeat="state in vm.states">{{state.nome}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <md-input-container flex="50" class="md-accent" ng-if="dadosPessoais.estado">
+                                            <label>Cidade</label>
+                                            <md-select class="md-accent" ng-model="dadosPessoais.cidade">
+                                                <md-option ng-repeat="city in vm.cities">{{city}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row">
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>Tipo de Acesso</label>
+                                            <md-select class="md-accent"  name="tipoAcesso" ng-model="dadosPessoais.tipoAcesso" ng-required="true">
+                                                <md-option value="cliente">Cliente</md-option>
+                                                <md-option value="funcionario">Funcionário</md-option>
+                                            </md-select>
+                                            <div ng-messages="formularioDados.tipoAcesso.$error" ng-if="formularioDados.$submitted || formularioDados.tipoAcesso.$touched">
+                                                <div ng-message="required">O campo tipo de acesso é de preenchimento obrigatório.</div>
+                                            </div>
+                                        </md-input-container>
+
+                                        <md-input-container flex="50" class="md-accent">
+                                            <label>Cargo</label>
+                                            <input name="cargo" ng-model="dadosPessoais.cargo" ng-required="true">
+                                            <div ng-messages="formularioDados.cargo.$error" ng-if="formularioDados.$submitted || formularioDados.cargo.$touched">
+                                                <div ng-message="required">O campo cargo é de preenchimento obrigatório.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="form-actions noborder">             
+                                        <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
+                                        <md-button class="md-raised md-primary" ng-click="validarDadosAutenticacao(dadosAutenticacao)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>              
+                    </div>
+                </md-card>
+            </md-content>
+        </div>
+        <script src="plugins/jquery/jquery-3.1.1.min.js"></script>
+        <!-- Angular Material Dependencies -->
+        <script src="plugins/angular/angular.min.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+        <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+        <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+        <script src="node_modules/angular-material/angular-material.min.js"></script>
+        <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
+        <script src="plugins/cidade-estado/cidades-estados.js"></script> 
+        <script src="plugins/angular-sweet-alert/sweetalert.min.js"></script>
+        <script src="scripts/cadastrar-produto.js"></script>
+    </body>
+</html>

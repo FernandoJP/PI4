@@ -36,6 +36,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
     
     
     $scope.validarDadosPessoais = function (dados) {
+        $scope.changeTab();
         $scope.error = false;
         $scope.nomeInvalido = false;
         $scope.cpfInvalido = false;
