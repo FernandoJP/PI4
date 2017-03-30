@@ -35,76 +35,72 @@
                             <h2>Novo Produto </h2><span class="today-date"><i class="fa fa-calendar"></i>  {{date| date:'dd/MM/yyyy'}}</span>
                         </header>
                         <form name="formularioDados">
-                            <div id="form-body">
-                                <div id="tab1-content">
-                                    <div layout="row" style="margin-top:10px;">
-                                        <md-input-container flex="50" class="md-accent">
-                                            <label>ISBN</label>
-                                            <input placeholder="ex: 85-359-0277-5" name="isbn" ng-model="dadosProduto.isbn" ng-required="true" ng-pattern="/(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})$/">
-                                            <div ng-messages="formularioDados.isbn.$error" ng-if="formularioDados.$submitted || formularioDados.isbn.$touched">
-                                                <div ng-message="required">O campo ISBN é de preenchimento obrigatório.</div>
-                                                <div ng-message="pattern">Por favor informar um número de ISBN válido.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container flex="50" class="md-accent">
-                                            <label>Título</label>
-                                            <input name="titulo" ng-model="dadosProduto.titulo" ng-required="true">
-                                            <div ng-messages="formularioDados.titulo.$error" ng-if="formularioDados.$submitted || formularioDados.titulo.$touched">
-                                                <div ng-message="required">O campo título é de preenchimento obrigatório.</div>
-                                            </div>
-                                        </md-input-container>
+                            <div id="form-body" style="margin-top:10px;">
+                                <md-input-container flex="50" flex-md="100" flex-sm="100" class="md-accent">
+                                    <label>ISBN</label>
+                                    <input placeholder="ex: 85-359-0277-5" name="isbn" ng-model="dadosProduto.isbn" ng-required="true" ng-pattern="/(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})$/">
+                                    <div ng-messages="formularioDados.isbn.$error" ng-if="formularioDados.$submitted || formularioDados.isbn.$touched">
+                                        <div ng-message="required">O campo ISBN é de preenchimento obrigatório.</div>
+                                        <div ng-message="pattern">Por favor informar um número de ISBN válido.</div>
                                     </div>
-                                    <div layout="row">
-                                        <md-input-container flex="50" class="md-accent">
-                                            <label>Autor</label>
-                                            <input name="autor" ng-model="dadosProduto.autor" ng-required="true" ng-pattern="/^([ \u00c0-\u01ffa-zA-Z'\-])+$/">
-                                            <div ng-messages="formularioDados.autor.$error" ng-if="formularioDados.$submitted || formularioDados.autor.$touched">
-                                                <div ng-message="required">O campo autor é de preenchimento obrigatório.</div>
-                                                <div ng-message="pattern">Por favor informar um valor válido para o campo Autor.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container flex="50" class="md-accent">
-                                            <label>Ano de Publicação</label>
-                                            <input name="anoPublicacao" ng-model="dadosProduto.anoPublicacao" ng-required="true" ng-pattern="/^(19|20)\d{2}$/">
-                                            <div ng-messages="formularioDados.anoPublicacao.$error" ng-if="formularioDados.$submitted || formularioDados.anoPublicacao.$touched">
-                                                <div ng-message="required">O campo ano de publicação é de preenchimento obrigatório.</div>
-                                                <div ng-message="pattern">Por favor informar um valor válido para o campo autor.</div>
-                                            </div>
-                                        </md-input-container>
+                                </md-input-container>
+                                <md-input-container flex="50" flex-md="100" class="md-accent">
+                                    <label>Título</label>
+                                    <input name="titulo" ng-model="dadosProduto.titulo" ng-required="true">
+                                    <div ng-messages="formularioDados.titulo.$error" ng-if="formularioDados.$submitted || formularioDados.titulo.$touched">
+                                        <div ng-message="required">O campo título é de preenchimento obrigatório.</div>
                                     </div>
-                                    <div layout="row">
-                                        <md-input-container flex="33" class="md-accent">
-                                            <label>Editora</label>
-                                            <input name="editora" ng-model="dadosProduto.editora" ng-required="true">
-                                            <div ng-messages="formularioDados.editora.$error" ng-if="formularioDados.$submitted || formularioDados.editora.$touched">
-                                                <div ng-message="required">O campo editora é de preenchimento obrigatório.</div>
-                                            </div>
-                                        </md-input-container>
+                                </md-input-container>
 
-                                        <md-input-container flex="25" class="md-accent">
-                                            <label>Preço</label>
-                                            <input type="number" name="preco" ng-model="dadosProduto.preco" ng-required="true">
-                                            <span class="unit">£</span>
-                                            <div ng-messages="formularioDados.preco.$error" ng-if="formularioDados.$submitted || formularioDados.preco.$touched">
-                                                <div ng-message="required">O campo preço é de preenchimento obrigatório.</div>
-                                            </div>
-                                        </md-input-container>
-                                        <md-input-container flex="33" class="md-accent">
-                                            <label>Quantidade</label>
-                                            <input type="number" name="quantidade" ng-model="dadosProduto.quantidade" ng-pattern="/^[1-9]\d*$/"
-           ng-maxlength="9" ng-required="true">
-                                            <div ng-messages="formularioDados.quantidade.$error" ng-if="formularioDados.$submitted || formularioDados.quantidade.$touched">
-                                                <div ng-message="required">O campo quantidade é de preenchimento obrigatório.</div>
-                                                <div ng-message="pattern">Valor informado é muito pequeno. </div>
-                                                <div ng-message="maxlength">Valor informado é muito grande. </div>
-                                            </div>
-                                        </md-input-container>
-                                    </div>
+                                <div layout="row">
+                                    <md-input-container flex="50" class="md-accent">
+                                        <label>Autor</label>
+                                        <input name="autor" ng-model="dadosProduto.autor" ng-required="true" ng-pattern="/^([ \u00c0-\u01ffa-zA-Z'\-])+$/">
+                                        <div ng-messages="formularioDados.autor.$error" ng-if="formularioDados.$submitted || formularioDados.autor.$touched">
+                                            <div ng-message="required">O campo autor é de preenchimento obrigatório.</div>
+                                            <div ng-message="pattern">Por favor informar um valor válido para o campo Autor.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex="50" class="md-accent">
+                                        <label>Ano de Publicação</label>
+                                        <input name="anoPublicacao" ng-model="dadosProduto.anoPublicacao" ng-required="true" ng-pattern="/^(19|20)\d{2}$/">
+                                        <div ng-messages="formularioDados.anoPublicacao.$error" ng-if="formularioDados.$submitted || formularioDados.anoPublicacao.$touched">
+                                            <div ng-message="required">O campo ano de publicação é de preenchimento obrigatório.</div>
+                                            <div ng-message="pattern">Por favor informar um valor válido para o campo ano de publicação.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div layout="row">
+                                    <md-input-container flex="33" class="md-accent">
+                                        <label>Editora</label>
+                                        <input name="editora" ng-model="dadosProduto.editora" ng-required="true">
+                                        <div ng-messages="formularioDados.editora.$error" ng-if="formularioDados.$submitted || formularioDados.editora.$touched">
+                                            <div ng-message="required">O campo editora é de preenchimento obrigatório.</div>
+                                        </div>
+                                    </md-input-container>
 
-                                    <div class="form-actions noborder">             
-                                        <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
-                                        <md-button class="md-raised md-primary" ng-click="validarDadosAutenticacao(dadosAutenticacao)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
-                                    </div>
+                                    <md-input-container flex="25" class="md-accent">
+                                        <label>Preço</label>
+                                        <input type="number" name="preco" ng-model="dadosProduto.preco" ng-required="true">
+                                        <div ng-messages="formularioDados.preco.$error" ng-if="formularioDados.$submitted || formularioDados.preco.$touched">
+                                            <div ng-message="required">O campo preço é de preenchimento obrigatório.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container flex="33" class="md-accent">
+                                        <label>Quantidade</label>
+                                        <input type="number" name="quantidade" ng-model="dadosProduto.quantidade" ng-pattern="/^[1-9]\d*$/"
+                                               ng-maxlength="9" ng-required="true">
+                                        <div ng-messages="formularioDados.quantidade.$error" ng-if="formularioDados.$submitted || formularioDados.quantidade.$touched">
+                                            <div ng-message="required">O campo quantidade é de preenchimento obrigatório.</div>
+                                            <div ng-message="pattern">Valor informado é muito pequeno. </div>
+                                            <div ng-message="maxlength">Valor informado é muito grande. </div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+                                <div class="form-actions noborder">             
+                                    <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
+                                    <md-button class="md-raised md-primary" ng-click="validarDados(dadosProduto, formularioDados)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
                                 </div>
                             </div>
                         </form>              

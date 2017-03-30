@@ -10,10 +10,10 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             self.selectedIndex = 1;
         };
 
-        $scope.validarDadosPessoais = function (dadosPessoais, formularioDados) {
+        $scope.validarDados = function (dadosProduto, formularioDados) {
             $scope.submitted = true;
+            console.log(dadosProduto);
             if (formularioDados.$valid) {
-                $scope.selectedIndex = 2;
                 //enviar requisição via $http
 
             }
