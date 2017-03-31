@@ -169,4 +169,8 @@ a{
     .col-50{
         width: 100%;
     }
+    #formulario h2{
+        margin-left:auto;
+        margin-right:auto;
+    }
 }
