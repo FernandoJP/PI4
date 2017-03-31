@@ -39,8 +39,8 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td><img src="images/livro-o-poder-do-habito.jpg" class="img-livro"/></td>
+                    <tr ng-repeat="produto in carrinho">
+                        <td><img ng-src="data:image/png;base64,{{produto.image}}" class="img-livro"/></td>
                         <td>Nome</td>
                         <td>R$125,00</td>
                         <td>5</td>
@@ -49,6 +49,7 @@
                             <i class="material-icons botao-remover">close</i>
                             </md-button>
                         </td>
+                        {{produto.image}}
                     </tr>    
                 </tbody>
             </table>
