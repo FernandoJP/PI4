@@ -1,7 +1,7 @@
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http) {
 
         $scope.date = new Date();
         var self = this;
@@ -15,11 +15,61 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $scope.validarDadosPessoais = function (dadosPessoais, formularioDados) {
             $scope.submitted = true;
             console.log('mudando tab');
+            console.log(dadosPessoais.tipoAcesso);
+            var tpAcesso = 0;
+            
+            if(dadosPessoais.tipoAcesso="funcionario"){
+                tpAcesso = 1;                
+            }
+            console.log(tpAcesso);
             $scope.selectedIndex = 2;
+            ;      
+            
+            $http({
+                url: 'http://67.205.164.145/api/client',
+                method: "POST",
+                data: {
+                    "name": dadosPessoais.nome,
+                    "cpf": dadosPessoais.cpf,
+                    "email": dadosPessoais.email,
+                    "is_employee": tpAcesso
+                }
+            })
+                    .then(function (response) {
+                        console.log(response);
+                    },
+                            function (response) { // optional
+                                console.log(response.data);
+                            });
+
             if (formularioDados.$valid) {
                 $scope.travarTab1 = true;
                 $scope.travarTab2 = false;
-                //enviar requisição via $http
+
+                
+            }
+        };
+
+        $scope.validarDadosAutenticacao = function (dadosPessoais, formularioDados) {
+            $scope.submitted = true;
+            if (formularioDados.$valid) {
+                $http({
+                    url: 'http://67.205.164.145/api/client',
+                    method: "POST",
+                    data: {
+                        "name": "Dr. Benjamin Roque Santiago Neto",
+                        "cpf": "112.425.222-12",
+                        "email": "inacsfdio86@sdfsfduol.com.br",
+                        "is_employee": 1
+                    }
+                }).then(function (response) {
+                    console.log(response);
+                },
+                        function (response) { // optional
+                            console.log(response.data);
+                        });
+
+
             }
         }
 
