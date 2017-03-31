@@ -31,7 +31,7 @@ md-toolbar{
 }
 
 md-toolbar.md-toolbar-tools.md-hue-2.layout-align-start-center.layout-row{
-        background:#333;
+    background:#333;
 }
 
 md-sidenav md-list{
@@ -160,4 +160,13 @@ a{
 
 #conteudo md-card-title {
     max-height: 90px;
+}
+.col-50{
+    display: inline-block;
+    width: 48%;
+}
+@media (max-width: 960px) {
+    .col-50{
+        width: 100%;
+    }
 }
