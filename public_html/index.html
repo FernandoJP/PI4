@@ -42,17 +42,17 @@
                         </md-card-content>
                     </div>
                     <md-card-actions layout="row" layout-align="end center">
-                        <section ng-hide="!qtdProdutos" class="secao-qtd-produtos animate-show-hide">
-                            <md-button class="md-icon-button botao-retirar md-raised md-primary left md-icon-button" ng-click="produto.alterarQtdProdutos('remover')">
+                        <section ng-hide="!produto.showAmount" class="secao-qtd-produtos animate-show-hide">
+                            <md-button class="md-icon-button botao-retirar md-raised md-primary left md-icon-button" ng-click="alterarQtdProdutos('remover', produto)">
                                 <i class="material-icons">remove</i>
                             </md-button>
-                            <div class="qtd-produtos">{{qtdProdutos}}</div>
-                            <md-button class="md-icon-button botao-adicionar md-raised md-primary left md-icon-button" ng-click="produto.alterarQtdProdutos('adicionar')">
+                            <div class="qtd-produtos">{{produto.desiredQuantity}}</div>
+                            <md-button class="md-icon-button botao-adicionar md-raised md-primary left md-icon-button" ng-click="alterarQtdProdutos('adicionar', produto)">
                                 <i class="material-icons">add</i>
                             </md-button>
                         </section>
-                        <section ng-hide="qtdProdutos">
-                            <md-button class="md-icon-button" ng-click="adicionarAoCarrinho(produto);alterarQtdProdutos('adicionar')">
+                        <section ng-hide="produto.showAmount" class="secao-action-buttons">
+                            <md-button class="md-icon-button" ng-click="adicionarAoCarrinho(produto);alterarQtdProdutos('adicionar', produto);produto.showAmount=true">
                                 <i class="material-icons">add_shopping_cart</i>
                             </md-button>
                             <md-button class="md-raised md-primary">

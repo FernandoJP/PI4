@@ -9,7 +9,12 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $http.get("http://67.205.164.145/api/book").then(function (response) {
             $scope.produtos = response.data;
-            console.log(response.data);
+            for (var i = 0; i < $scope.produtos.length; i++) {
+                $scope.produtos[i].quantity = 10;
+                $scope.produtos[i].desiredQuantity = 0;
+                $scope.produtos[i].showQuantity = false;
+                console.log($scope.produtos);
+            }
         });
 
         $scope.showCustom = function (event, dadosProduto) {
@@ -41,20 +46,24 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
         };
-        $scope.alterarQtdProdutos = function (operacao) {
-            if ($scope.qtdProdutos) {
-                if (operacao == 'adicionar') {
-                    $scope.qtdProdutos++;
-                } else if (operacao == 'remover') {
-                    if ($scope.qtdProdutos != 1) {
-                        $scope.qtdProdutos--;
-                    }
+        $scope.alterarQtdProdutos = function (operacao, produto) {
+            var index = $scope.produtos.findIndex(x => x.id === produto.id);
+            console.log(index);
+
+            if (operacao === 'adicionar') {
+                console.log(!(produto.desiredQuantity + '===' + $scope.produtos[index].quantity));
+                if (!(produto.desiredQuantity === $scope.produtos[index].quantity)) {
+                    $scope.produtos[index].desiredQuantity++;
+                } else {
+                    $scope.showCustomToast('Não há em estoque essa quantidade! ');
                 }
-            } else {
-                $scope.qtdProdutos = 1;
+            } else if (operacao === 'remover') {
+                if ($scope.produtos[index].desiredQuantity !== 1) {
+                    $scope.produtos[index].desiredQuantity--;
+                }
             }
-            console.log($scope.qtdProdutos);
         };
+
         $scope.adicionarAoCarrinho = function (produto) {
             if (JSON.parse(localStorage.getItem("produtos"))) {
                 var itensAdicionados = JSON.parse(localStorage.getItem("produtos"));
@@ -71,7 +80,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     .textContent('Livro adicionado com sucesso no carrinho. ')
                     .action('Desfazer')
                     .highlightAction(false)
-                    .hideDelay(5000)
+                    .hideDelay(4000)
                     .position('top right');
             $mdToast.show(toast).then(function (response) {
                 if (response == 'ok') { //se clicou em desfazer 
@@ -90,13 +99,23 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
             });
         };
+        $scope.showCustomToast = function (msg) {
+            var toast = $mdToast.simple()
+                    .textContent(msg)
+                    .highlightAction(false)
+                    .hideDelay(4000)
+                    .position('top right');
+            $mdToast.show(toast).then(function (response) {
+
+            });
+        };
     }]);
 function mostrarItensLocalStorage() {
     console.dir(JSON.parse(localStorage.getItem("produtos")));
 }
 ;
 
-  app.config(function ($mdThemingProvider) {
+app.config(function ($mdThemingProvider) {
     var customBlueMap = $mdThemingProvider.extendPalette('blue-grey', {
         'contrastDefaultColor': 'light',
         'contrastDarkColors': ['50'],

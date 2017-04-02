@@ -5,6 +5,11 @@
     color:#106cc8;
 }
 
+#produtos{
+    align-items: center;
+    justify-content: center;
+}
+
 #produtos md-card{
     cursor:pointer;
 }
@@ -40,11 +45,12 @@
     .dialog-detalhes-livro{
         clear: both;
     }
+    /*
     #produtos{
         display: block;
         margin-left:auto;
         margin-right:auto;
-    }
+    }*/
 
     .dialog-img-livro{
         display: block;
@@ -72,4 +78,16 @@ md-toast{
     display: inline-block;
     position: relative;
     top: -5px;
+}
+
+.secao-action-buttons, .secao-qtd-produtos{
+
+}
+
+#produtos > md-card > div{
+    height: 310px;
+}
+
+md-card{
+
 }
