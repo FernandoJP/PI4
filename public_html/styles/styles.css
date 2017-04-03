@@ -149,10 +149,6 @@ a{
     color:#222;
 }
 
-.nav-botao-mais{
-    margin-right: 1px !important;
-}
-
 .badge{
     bottom: 6px;
     position: relative;
@@ -163,18 +159,33 @@ a{
 }
 
 .animate-show-hide.ng-hide {
-  opacity: 0;
+    opacity: 0;
 }
 
 .animate-show-hide.ng-hide-add,
 .animate-show-hide.ng-hide-remove {
-  transition: all linear 0.3s;
+    transition: all linear 0.3s;
 }
 
 .col-50{
     display: inline-block;
     width: 48%;
 }
+
+.search-btn{
+    fill:#dee0e3;
+}
+.search-btn ng-md-icon{
+    margin-top: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input{
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 960px) {
     .col-50{
         width: 100%;

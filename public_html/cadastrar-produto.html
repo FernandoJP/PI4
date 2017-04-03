@@ -85,6 +85,11 @@
                                         <div ng-message="maxlength">Valor informado é muito grande. </div>
                                     </div>
                                 </md-input-container>
+                                <div class="col-50">
+                                    <input id="input-imagem-produto" ng-model="dadosProduto.inputImagemProduto" type='file'>
+                                    <p ng-model="dadosProduto.inputImagemProduto" ng-bind="inputImagemProduto"></p>
+                                    <img id="img" height="150">
+                                </div>
                                 <md-input-container class="md-accent col-50">
                                     <label>Quantidade</label>
                                     <input type="number" name="quantidade" ng-model="dadosProduto.quantidade" ng-pattern="/^[1-9]\d*$/" ng-maxlength="9" ng-required="true">
