@@ -10,6 +10,27 @@
         <ul class="docs-menu">
             <li class="parent-list-item">
             <md-list id="menu-mobile">
+                <md-subheader>Site</md-subheader>
+                <md-list-item>
+                    <a href="index.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <div class="inset">Página Inicial</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="carrinho-compras.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-shopping-cart fa-2x"></i>
+                            </div>
+                            <div class="inset">Carrinho de Compras</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
                 <md-subheader>Cadastro</md-subheader>
                 <md-list-item>
                     <a href="cadastrar-produto.html">
@@ -31,18 +52,7 @@
                         </md-item-content>
                     </a>
                 </md-list-item>
-                <md-list-item>
-                    <a href="cadastrar-local-entrega.html">
-                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                            <div class="inset">
-                                <img src="images/icon-add-local-entrega.png"/>
-                            </div>
-                            <div class="inset">Cadastrar Local de Entrega</div>
-                        </md-item-content>
-                    </a>
-                </md-list-item>
-            </md-list>
-            </li>
+                </li>
         </ul>
     </md-content>
 </md-sidenav>
@@ -84,21 +94,14 @@
                                 </md-button>
                             </md-menu-item>
                         </a>
-                        <a href="cadastrar-local-entrega.html">
-                            <md-menu-item class="md-indent">
-                                <md-button>
-                                    <span class="md-alt-text">Cadastrar Local de Entrega</span>
-                                </md-button>
-                            </md-menu-item>
-                        </a>
                     </md-menu-content>
                 </md-menu>
             </md-menu-bar>
         </div>
         <span flex></span>
-            <md-button class="md-icon-button search-btn" aria-label="Search" ng-click="showSearch = !showSearch">
-                <i class="material-icons">search</i>
-            </md-button>
+        <md-button class="md-icon-button search-btn" aria-label="Search" ng-click="showSearch = !showSearch">
+            <i class="material-icons">search</i>
+        </md-button>
         <a href="carrinho-compras.html" title="Ir para o carrinho de compras. " alt="Ir para o carrinho de compras. ">
             <md-button class="md-icon-button">
                 <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
@@ -112,13 +115,6 @@
                 <i class="material-icons">more_vert</i>
             </md-button>
             <md-menu-content>
-                <a href="#">
-                    <md-menu-item class="md-indent">
-                        <md-button>
-                            <span class="md-alt-text"> &nbsp;Dashboard&nbsp; </span>
-                        </md-button>
-                    </md-menu-item>
-                </a>
                 <a href="#">
                     <md-menu-item class="md-indent">
                         <md-button>
@@ -145,29 +141,29 @@
                 <i class="material-icons">search</i>
             </md-button>
             <md-menu id="menu-desktop" md-position-mode="target-right target">
-            <md-button
-                class="md-icon-button nav-botao-mais"
-                aria-label="More"
-                ng-click="$mdOpenMenu()" style="margin-right: 25px">
-                <i class="material-icons">more_vert</i>
-            </md-button>
-            <md-menu-content>
-                <a href="#">
-                    <md-menu-item class="md-indent">
-                        <md-button>
-                            <span class="md-alt-text"> &nbsp;Dashboard&nbsp; </span>
-                        </md-button>
-                    </md-menu-item>
-                </a>
-                <a href="#">
-                    <md-menu-item class="md-indent">
-                        <md-button>
-                            <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
-                        </md-button>
-                    </md-menu-item>
-                </a>
-            </md-menu-content>
-        </md-menu>
+                <md-button
+                    class="md-icon-button nav-botao-mais"
+                    aria-label="More"
+                    ng-click="$mdOpenMenu()" style="margin-right: 25px">
+                    <i class="material-icons">more_vert</i>
+                </md-button>
+                <md-menu-content>
+                    <a href="#">
+                        <md-menu-item class="md-indent">
+                            <md-button>
+                                <span class="md-alt-text"> &nbsp;Dashboard&nbsp; </span>
+                            </md-button>
+                        </md-menu-item>
+                    </a>
+                    <a href="#">
+                        <md-menu-item class="md-indent">
+                            <md-button>
+                                <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
+                            </md-button>
+                        </md-menu-item>
+                    </a>
+                </md-menu-content>
+            </md-menu>
         </div>
     </md-toolbar>
 </div>

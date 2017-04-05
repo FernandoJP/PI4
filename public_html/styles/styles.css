@@ -144,6 +144,11 @@ md-menu-item md-icon{
     color:#222;
 }
 
+#menu-mobile .md-subheader{
+    margin-top:10px;
+    margin-bottom: -15px;
+}
+
 a{
     text-decoration: none !important; 
     color:#222;

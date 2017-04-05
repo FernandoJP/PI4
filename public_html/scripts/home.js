@@ -1,4 +1,3 @@
-
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast, $http) {
         if (JSON.parse(localStorage.getItem("produtos"))) {
@@ -7,14 +6,15 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $scope.qtdProdutosCarrinho = 0;
         }
 
+        $(".principal").LoadingOverlay("show");
         $http.get("http://67.205.164.145/api/book").then(function (response) {
             $scope.produtos = response.data;
             for (var i = 0; i < $scope.produtos.length; i++) {
                 $scope.produtos[i].quantity = 10;
                 $scope.produtos[i].desiredQuantity = 0;
                 $scope.produtos[i].showQuantity = false;
-                console.log($scope.produtos);
             }
+            $(".principal").LoadingOverlay("hide", true);
         });
 
         $scope.showCustom = function (event, dadosProduto) {
@@ -26,12 +26,12 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                         '<md-dialog-content>' +
                         '<h1>' + dadosProduto.title + '</h1>' +
                         '<img class="dialog-img-livro" src="data:image/png;base64,' + dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.author + '. "/>' +
-                        '<div class="dialog-descricao-livro"><p>' + dadosProduto.ISBN + '</p></div>' +
+                        '<div class="dialog-descricao-livro"><p>' + dadosProduto.description + '</p></div>' +
                         '</md-dialog-content>' +
                         '<md-dialog-actions layout="row">' +
                         '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.price + '</span></div>' +
                         '<span flex></span>' +
-                        '<md-button class="md-raised md-primary">Comprar</md-button>' +
+                        '<a href="carrinho-compras.html" alt="Ir para a página de finalização da compra. "><md-button class="md-raised md-primary">Comprar</md-button></a>' +
                         '<md-dialog-actions>' +
                         '</md-dialog>',
                 controller: function DialogController($scope, $mdDialog) {
@@ -48,10 +48,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         };
         $scope.alterarQtdProdutos = function (operacao, produto) {
             var index = $scope.produtos.findIndex(x => x.id === produto.id);
-            console.log(index);
 
             if (operacao === 'adicionar') {
-                console.log(!(produto.desiredQuantity + '===' + $scope.produtos[index].quantity));
                 if (!(produto.desiredQuantity === $scope.produtos[index].quantity)) {
                     $scope.produtos[index].desiredQuantity++;
                 } else {
@@ -62,6 +60,19 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     $scope.produtos[index].desiredQuantity--;
                 }
             }
+
+            //atualizar quantidade no local storage
+            var produtos = JSON.parse(localStorage.getItem("produtos"));
+            for (var i = produtos.length - 1; i >= 0; i--) {
+                console.log('if '+produtos[i].id +' == '+ produtos.length-1);
+                if (produtos[i].id == produtos.length-1) {
+                    produtos[i].quantity = produto.desiredQuantity;
+                    break;
+                }
+            }
+            localStorage.setItem("produtos", JSON.stringify(produtos));
+            console.log('localStorage atualizado: ');
+            console.dir(JSON.parse(localStorage.getItem("produtos")));
         };
 
         $scope.adicionarAoCarrinho = function (produto) {
@@ -70,7 +81,16 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             } else {
                 var itensAdicionados = [];
             }
-            itensAdicionados.push({name: produto.name, price: produto.price, image: produto.image});
+
+            itensAdicionados.push({
+                id: itensAdicionados.length,
+                name: produto.title,
+                price: produto.price,
+                image: produto.image,
+                description: produto.description,
+                quantity: produto.desiredQuantity
+            });
+
             localStorage.setItem("produtos", JSON.stringify(itensAdicionados));
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //atualizando no badge de carrinhos
             $scope.showToast(produto.nome); //mostrando o toast com a ação de desfazer
@@ -84,10 +104,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     .position('top right');
             $mdToast.show(toast).then(function (response) {
                 if (response == 'ok') { //se clicou em desfazer 
-                    console.dir(JSON.parse(localStorage.getItem("produtos")));
                     var produtos = JSON.parse(localStorage.getItem("produtos"));
                     for (var i = produtos.length - 1; i >= 0; i--) {
-                        console.log('if ' + produtos[i].nome + ' === ' + nomeProduto);
                         if (produtos[i].nome == nomeProduto) {
                             produtos.splice(i, 1);
                             break;
@@ -110,10 +128,6 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             });
         };
     }]);
-function mostrarItensLocalStorage() {
-    console.dir(JSON.parse(localStorage.getItem("produtos")));
-}
-;
 
 app.config(function ($mdThemingProvider) {
     var customBlueMap = $mdThemingProvider.extendPalette('blue-grey', {
