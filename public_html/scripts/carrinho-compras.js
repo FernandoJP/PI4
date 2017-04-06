@@ -11,8 +11,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $scope.carrinho = JSON.parse(localStorage.getItem("produtos"));
         
-        for (var i = 0; i < carrinho.length; i++) {
-            
+        for (var i = 0; i < $scope.carrinho.length; i++) {
+            //ainda a ser implementado
         }
         
         $('#carrinho').append(

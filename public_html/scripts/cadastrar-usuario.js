@@ -73,6 +73,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             }
         }
 
+        $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //atualizando no badge de carrinhos
+
         $scope.voltar = function () {
             $scope.travarTab1 = false;
             $scope.travarTab2 = true;

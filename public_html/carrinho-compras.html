@@ -19,45 +19,43 @@
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Carrinho</span>
-                    <span class="md-subhead"> 
-                        <i class="fa fa-shopping-cart" style="font-size:1.4em;" aria-hidden="true"></i>
-                        <span style="margin-left:10px;">Você tem  <strong>
-            <ng-pluralize count="carrinho.length" when="{'0': 'nenhum livro no carrinho', '1': '1 livro', 'other': '{{carrinho.length| number:0}} livros'}">
-            </ng-pluralize></strong> e um total de <strong>R$10,00</strong> reais no carrinho de compras. </span> 
-</span>
-</md-card-title-text>
-<md-card-title-media>
-    <div class="md-media-lg card-media"></div>
-</md-card-title-media>
-</md-card-title>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
 
-<!-- Início da exibiçãodos produtos do carrinho -->
-<table class="tabela-produtos highlight bordered">
-    <thead>
-<tr>
-    <th></th>
-    <th>Livro</th>
-    <th>Preço</th>
-<th>Quantidade</th>
-<th></th>
-</tr>
-</thead>
+            <!-- Início da exibiçãodos produtos do carrinho -->
+            <table class="tabela-produtos highlight bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Livro</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-<tbody>
-    <tr ng-repeat="produto in carrinho">
-        <td><img ng-src="data:image/png;base64,{{produto.image}}" class="img-livro"/></td>
-        <td>{{produto.name}}</td>
+                <tbody>
+                    <tr ng-repeat="produto in carrinho">
+                        <td><img ng-src="data:image/png;base64,{{produto.image}}" class="img-livro"/></td>
+                        <td>{{produto.name}}</td>
                         <td>{{produto.price}}</td>
                         <td>{{produto.quantity}}</td>
                         <td>
-                            <md-button class="md-icon-button">
-                            <i class="material-icons bota                o-remover">close</i>
-                            </md-button>
-                     </td>
-                    </tr>    
+                <md-button class="md-icon-button">
+                    <i class="material-icons bota                o-remover">close</i>
+                </md-button>
+                </td>
+                </tr>    
                 </tbody>
             </table>
             <!-- Fim da exibição dos produtos do carrinho -->
+
+            <md-button class="md-raised md-primary finalizar-btn">
+                Finalizar Compra
+            </md-button>
         </md-card>
     </md-content>
 

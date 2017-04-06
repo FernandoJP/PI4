@@ -200,3 +200,10 @@ a{
         margin-right:auto;
     }
 }
+
+.finalizar-btn{
+    position: absolute;
+    right: 1px;
+    top: 18px;
+    width:200px;
+}
