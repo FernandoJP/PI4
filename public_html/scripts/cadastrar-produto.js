@@ -23,6 +23,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             console.log('abrindo sidbar');
             $mdSidenav(menuId).toggle();
         };
+        
+        $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //atualizando no badge de carrinhos
 
         $scope.admin = [{
                 link: '',
