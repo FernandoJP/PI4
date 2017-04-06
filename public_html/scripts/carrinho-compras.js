@@ -10,6 +10,14 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         }
 
         $scope.carrinho = JSON.parse(localStorage.getItem("produtos"));
+        
+        for (var i = 0; i < carrinho.length; i++) {
+            
+        }
+        
+        $('#carrinho').append(
+                '<tr><td><strong>Total</strong></td><td></td><td>R$10,00</td><td>10</td><td></td></tr>'
+        );
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
         };
