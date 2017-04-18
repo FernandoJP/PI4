@@ -47,48 +47,47 @@
                                 </md-input-container>
                                 <md-input-container class="md-accent col-50">
                                     <label>Título</label>
-                                    <input name="titulo" ng-model="dadosProduto.titulo" ng-required="true">
-                                    <div ng-messages="formularioDados.titulo.$error" ng-if="formularioDados.$submitted || formularioDados.titulo.$touched">
+                                    <input name="title" ng-model="dadosProduto.title" ng-required="true">
+                                    <div ng-messages="formularioDados.title.$error" ng-if="formularioDados.$submitted || formularioDados.title.$touched">
                                         <div ng-message="required">O campo título é de preenchimento obrigatório.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-accent col-50">
                                     <label>Autor</label>
-                                    <input name="autor" ng-model="dadosProduto.autor" ng-required="true" ng-pattern="/^([ \u00c0-\u01ffa-zA-Z'\-])+$/">
-                                    <div ng-messages="formularioDados.autor.$error" ng-if="formularioDados.$submitted || formularioDados.autor.$touched">
+                                    <input name="author" ng-model="dadosProduto.author" ng-required="true" ng-pattern="/^([ \u00c0-\u01ffa-zA-Z'\-])+$/">
+                                    <div ng-messages="formularioDados.author.$error" ng-if="formularioDados.$submitted || formularioDados.author.$touched">
                                         <div ng-message="required">O campo autor é de preenchimento obrigatório.</div>
                                         <div ng-message="pattern">Por favor informar um valor válido para o campo Autor.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-accent col-50">
                                     <label>Ano de Publicação</label>
-                                    <input name="anoPublicacao" ng-model="dadosProduto.anoPublicacao" ng-required="true" ng-pattern="/^(19|20)\d{2}$/">
-                                    <div ng-messages="formularioDados.anoPublicacao.$error" ng-if="formularioDados.$submitted || formularioDados.anoPublicacao.$touched">
+                                    <input name="year_published" ng-model="dadosProduto.year_published" ng-required="true" ng-pattern="/^(19|20)\d{2}$/">
+                                    <div ng-messages="formularioDados.year_published.$error" ng-if="formularioDados.$submitted || formularioDados.year_published.$touched">
                                         <div ng-message="required">O campo ano de publicação é de preenchimento obrigatório.</div>
                                         <div ng-message="pattern">Por favor informar um valor válido para o campo ano de publicação.</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="md-accent col-50">
                                     <label>Editora</label>
-                                    <input name="editora" ng-model="dadosProduto.editora" ng-required="true">
-                                    <div ng-messages="formularioDados.editora.$error" ng-if="formularioDados.$submitted || formularioDados.editora.$touched">
+                                    <input name="editor" ng-model="dadosProduto.editor" ng-required="true">
+                                    <div ng-messages="formularioDados.editor.$error" ng-if="formularioDados.$submitted || formularioDados.editor.$touched">
                                         <div ng-message="required">O campo editora é de preenchimento obrigatório.</div>
                                     </div>
                                 </md-input-container>
 
                                 <md-input-container class="md-accent col-50">
                                     <label>Preço</label>
-                                    <input type="number" name="preco" ng-model="dadosProduto.preco" ng-pattern="/^[1-9]\d*$/" ng-maxlength="9" ng-required="true">
-                                    <div ng-messages="formularioDados.preco.$error" ng-if="formularioDados.$submitted || formularioDados.preco.$touched">
+                                    <input type="number" name="price" ng-model="dadosProduto.price" ng-pattern="/^[1-9]\d*$/" ng-maxlength="9" ng-required="true">
+                                    <div ng-messages="formularioDados.price.$error" ng-if="formularioDados.$submitted || formularioDados.price.$touched">
                                         <div ng-message="required">O campo preço é de preenchimento obrigatório.</div>
                                         <div ng-message="pattern">Valor informado é muito pequeno. </div>
                                         <div ng-message="maxlength">Valor informado é muito grande. </div>
                                     </div>
                                 </md-input-container>
                                 <div class="col-50">
-                                    <label>Imagem do Produto</label>
-                                    <input id="input-imagem-produto" ng-model="dadosProduto.inputImagemProduto" type='file'>
-                                    <p ng-model="dadosProduto.inputImagemProduto" ng-bind="inputImagemProduto"></p>
+                                    <input type="file" ngf-select ng-model="dadosProduto.image" name="image" accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
                                     <img id="img" height="150">
                                 </div>
                                 <md-input-container class="md-accent col-50">
@@ -120,6 +119,9 @@
         <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
         <script src="plugins/cidade-estado/cidades-estados.js"></script> 
         <script src="plugins/angular-sweet-alert/sweetalert.min.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
         <script src="scripts/cadastrar-produto.js"></script>
+
     </body>
 </html>

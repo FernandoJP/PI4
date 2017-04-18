@@ -1,7 +1,7 @@
 
-var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados']);
+var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados', 'ngFileUpload']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog) {
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', 'Upload', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, Upload) {
 
         $scope.date = new Date();
         var self = this;
@@ -11,12 +11,26 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         };
 
         $scope.validarDados = function (dadosProduto, formularioDados) {
-            $scope.submitted = true;
-            console.log(dadosProduto);
-            if (formularioDados.$valid) {
-                //enviar requisição via $http
-
+            //$scope.submitted = true;
+            Upload.upload({
+            url: 'http://67.205.164.145/api/book/',
+            data: {
+                image: dadosProduto.image, 
+                title: dadosProduto.title,
+                author: dadosProduto.author,
+                editor: dadosProduto.editor,
+                year_published: dadosProduto.year_published,
+                price: dadosProduto.price,
+                isbn: dadosProduto.isbn
             }
+            }).then(function (resp) {
+                console.log(resp.data);
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.image.name);
+            });
         }
 
         $scope.toggleSidenav = function (menuId) {
