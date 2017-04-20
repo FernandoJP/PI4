@@ -1,3 +1,10 @@
+.produto-image{
+    display: block;
+    margin: auto;
+    margin-top: 5px;  
+    max-width: 150px;
+    max-height: 250px;
+}
 #produtos md-card-title-text span:hover{
     text-decoration: underline;
     cursor: pointer;
@@ -81,13 +88,11 @@ md-toast{
 }
 
 .secao-action-buttons, .secao-qtd-produtos{
-
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #produtos > md-card > div{
     height: 310px;
 }
 
-md-card{
-
-}

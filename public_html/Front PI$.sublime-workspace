@@ -1,0 +1,701 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"book_id",
+				"book_ids"
+			],
+			[
+				"for",
+				"for\tfor …"
+			],
+			[
+				"Function",
+				"FunctionEmployee"
+			],
+			[
+				"Person",
+				"PersonSearcher"
+			],
+			[
+				"Address",
+				"AddressSearcher"
+			],
+			[
+				"base64",
+				"base64_encode"
+			],
+			[
+				"file",
+				"file_type"
+			],
+			[
+				"_mode",
+				"_module_content"
+			],
+			[
+				"digi",
+				"digital_content_type_id"
+			],
+			[
+				"video",
+				"video_description"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "scripts/home.js",
+			"settings":
+			{
+				"buffer_size": 6951,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 5058,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "styles/home.css",
+			"settings":
+			{
+				"buffer_size": 1479,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scripts/cadastrar-produto.js",
+			"settings":
+			{
+				"buffer_size": 6439,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 253.0,
+		"last_filter": "fix",
+		"selected_items":
+		[
+			[
+				"fix",
+				"PHP_CodeSniffer: Fix File"
+			],
+			[
+				"f",
+				"PHP_CodeSniffer: Fix File"
+			],
+			[
+				"fi",
+				"PHP_CodeSniffer: Fix File"
+			],
+			[
+				"",
+				"ANF: Copy Current File"
+			],
+			[
+				"beau",
+				"PHP CodeBeautifier"
+			],
+			[
+				"sniff",
+				"PHP_CodeSniffer: Fix File"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"php",
+				"PHP Coding Standards Fixer: Fix this file (PHP-CS-Fixer)"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 557.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/a2w/Projects/PI4/front/PI4/public_html",
+		"/Users/a2w/Projects/PI4/front/PI4/public_html/scripts",
+		"/Users/a2w/Projects/PI4/front/PI4/public_html/styles"
+	],
+	"file_history":
+	[
+		"/Users/a2w/Projects/PI4/ecommerce/routes/api.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/ItemController.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Book.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Bussiness/BookBussiness.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/BookController.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Bussiness/ItemBussiness.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/factories/ModelFactory.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Item.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_04_11_180640_add_isbn_column.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/OrderController.php",
+		"/Users/a2w/Projects/PI4/ecommerce/composer.json",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_04_07_181913_add_isbn_column_item.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_04_07_145658_change_item_id_column_orders.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_26_001137_update_orders_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_04_07_143059_add_order_id_on_item.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Order.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Services/PersonSearcher.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_04_06_210429_add_orderid_column_items.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/AddressController.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_24_233248_update_book_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/ClientController.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/FunctionController.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_181345_create_persons_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_24_221129_update_person_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Services/BookSearcher.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Person.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Address.php",
+		"/Users/a2w/Projects/PI4/ecommerce/storage/logs/laravel.log",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Services/AddressSearcher.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Employee.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/PaymentType.php",
+		"/Users/a2w/Library/Application Support/Sublime Text 3/Packages/PHP_CodeSniffer/PHP_CodeSniffer.sublime-settings",
+		"/Users/a2w/Library/Application Support/Sublime Text 3/Packages/User/phpcs.sublime-settings",
+		"/Users/a2w/Library/Application Support/Sublime Text 3/Packages/Phpcs/phpcs.sublime-settings",
+		"/Users/a2w/Misc/pnld_code_update.sql",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Controllers/BooksController.php",
+		"/Users/a2w/Downloads/DEPARAM.txt",
+		"/Users/a2w/Downloads/DEPARAMEC.xlsx",
+		"/Users/a2w/Projects/PI4/ecommerce/config/database.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/FunctionEmployee.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_181342_create_functions_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_222344_create_carts_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_223432_create_books_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_222324_create_payment_types_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_202342_create_orders_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_201358_create_functions_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/database/migrations/2017_03_03_200806_create_addresses_table.php",
+		"/Users/a2w/Projects/PI4/ecommerce/app/Http/Kernel.php",
+		"/Users/a2w/Projects/PI4/app/Http/Kernel.php",
+		"/Users/a2w/Projects/PI4/.env",
+		"/Users/a2w/Vagrant/SE/romulus/app/controllers/v1/GaspExamController.php",
+		"/Users/a2w/Vagrant/SE/romulus/app/controllers/v1/ApplicationAuth.php",
+		"/Users/a2w/Vagrant/SE/romulus/app/controllers/v1/DisciplineReportController.php",
+		"/Users/a2w/Vagrant/SE/thundera/app/js/config.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/views/ead/ClassEadController.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/views/ead/classEad.html",
+		"/Users/a2w/Vagrant/SE/thundera/app/css/app.css",
+		"/Users/a2w/Vagrant/SE/thundera/app/views/ead/modules-form.html",
+		"/Users/a2w/Vagrant/SE/thundera/app/views/ead/EadModuleFormController.js",
+		"/Users/a2w/Vagrant/SE/thundera/app/js/constants.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/css/app.css",
+		"/Users/a2w/Vagrant/SE/magrathea/vendor/angular-file-saver/docs/dist/examples.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/js/config.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/js/constants.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/js/app.js",
+		"/Users/a2w/Vagrant/SE/thundera/app/js/app.js",
+		"/Users/a2w/Vagrant/SE/thundera/index.html",
+		"/Users/a2w/Vagrant/SE/magrathea/vendor/pdfjs-dist/ng-pdfviewer.min.js",
+		"/Users/a2w/Vagrant/SE/romulus/app/routes.php",
+		"/Users/a2w/Vagrant/SE/romulus/app/controllers/v1/Content.php",
+		"/Users/a2w/Vagrant/SE/magrathea/app/js/directives.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/views/ead/detailsEad.html",
+		"/Users/a2w/Vagrant/SE/thundera/app/views/ead/EadController.js",
+		"/Users/a2w/Vagrant/SE/magrathea/app/views/ead/DetailsEadController.js",
+		"/Users/a2w/Vagrant/SE/romulus/app/config/local/database.php",
+		"/Users/a2w/Projects/LaravelTest/Test/routes/web.php",
+		"/Users/a2w/Misc/codigos_pt1.csv",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/services/routes/web.php",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/services/app/Http/Controllers/StandforBooksController.php",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/libs/ftdId_DbWrapper.php",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/services/.env",
+		"/Users/a2w/Misc/codigos.csv",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/digital/logado/includes/header.inc.php",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/libs/models/ct_item.php",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/services/routes/api.php",
+		"/Users/a2w/Vagrant/Digital_Solaria_Teste/id-ftd/www/sacd/book-search.php",
+		"/Users/a2w/Vagrant/Digital/id-ftd/www/libs/flourish/fDatabase.php",
+		"/Users/a2w/Vagrant/Digital/id-ftd/www/digital/logado/index.php",
+		"/Users/a2w/Vagrant/Digital/id-ftd/www/id/simple_proxy.php",
+		"/Users/a2w/Vagrant/Digital/id-ftd/www/libs/ftdUserEnv.php",
+		"/Users/a2w/Vagrant/Digital/id-ftd/www/libs/ftdId_init.php",
+		"/Users/a2w/Vagrant/Digital/id-ftd/www/curl_teste.php",
+		"/Users/a2w/Vagrant/Digital/puphpet/config.yaml"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"/Users/a2w/Vagrant/SE/magrathea",
+			"/Users/a2w/Vagrant/SE/thundera",
+			"/Users/a2w/Vagrant/SE/magrathea",
+			"/Users/a2w/Vagrant/SE/thundera",
+			"/Users/a2w/Vagrant/SE/magrathea",
+			"/Users/a2w/Vagrant/SE/thundera",
+			"/Users/a2w/Vagrant/SE/magrathea",
+			"/Users/a2w/Vagrant/SE/thundera"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"toast",
+			"$SCO",
+			"toast",
+			"livro adi",
+			"toast",
+			"dialog",
+			"toast",
+			"desfaze",
+			"toast",
+			"imag",
+			";\n",
+			"request",
+			"items",
+			"book",
+			"Book",
+			"book",
+			"Book",
+			"book",
+			"Book",
+			"book",
+			"name",
+			"title",
+			"book",
+			"Book",
+			"book",
+			"state",
+			"searcher",
+			"title",
+			"name",
+			"driver",
+			"answers",
+			"exam_Id",
+			"what_s",
+			"pdf",
+			"answers",
+			"toArra",
+			"error",
+			"console.log",
+			"650px",
+			"pdf.Ins",
+			"template",
+			"addCOnt",
+			"viewpdf",
+			"ngDial",
+			"modalins",
+			"ngDialo",
+			"deseja",
+			"$sce",
+			"pdf",
+			"page",
+			"EADMod",
+			"eadmodulefor",
+			"pdf",
+			"module",
+			"pdf",
+			"ngPdf",
+			"pdf",
+			"angular.module",
+			"app.mod",
+			"module",
+			"loadRequi",
+			"pdf",
+			"ngPDFViewer",
+			"module",
+			"pdf",
+			"modalExam",
+			"modal",
+			"module",
+			"pdf",
+			"modules-form",
+			"modules",
+			"pdf",
+			";\n",
+			"pdfViewerService",
+			"pdfUrl",
+			"pdfviewe",
+			"pdf",
+			"changePDF",
+			"changePDF(",
+			"pdf",
+			"previewRecurso",
+			"changePDF",
+			"resources_global",
+			"_resources",
+			"_resource",
+			"_resources",
+			"previewRecurso",
+			"contents",
+			"content",
+			"c.",
+			"contents",
+			"filterContent",
+			"video",
+			"videos",
+			"video",
+			"VIDEO",
+			"video",
+			"video.",
+			"video",
+			"classes",
+			"row.module",
+			"classses",
+			"classes(",
+			"assista",
+			"recurs",
+			"preview",
+			"preview-recurso",
+			"preview",
+			"preview-recurso",
+			"classes(",
+			"assista",
+			"addContent",
+			"addConte",
+			"eye",
+			"teste",
+			"adicionar con",
+			"405",
+			"\n\n",
+			"\n\n\n",
+			"\n\n",
+			"11308714",
+			"11313825",
+			"\n\n",
+			"ead",
+			"public",
+			"Standfor",
+			"\n\n",
+			"11329341"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "scripts/home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6951,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4925,
+								4930
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1107.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2358,
+								2358
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1042.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "styles/home.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1478,
+								1478
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1639.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scripts/cadastrar-produto.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6439,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1875,
+								1875
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 6.0,
+						"translation.y": 510.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 67.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.phpcs_result_view":
+	{
+		"height": 168.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 168.0
+	},
+	"pinned_build_system": "",
+	"project": "Front PI$.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"model",
+				"database/factories/ModelFactory.php"
+			],
+			[
+				"api",
+				"routes/api.php"
+			],
+			[
+				"routes/a",
+				"routes/api.php"
+			],
+			[
+				"addres",
+				"app/Address.php"
+			],
+			[
+				"gaspexamcont",
+				"romulus/app/controllers/v1/GaspExamController.php"
+			],
+			[
+				"disciplinerepo",
+				"romulus/app/controllers/v1/DisciplineReportController.php"
+			],
+			[
+				"gaspexamcontroller",
+				"app/controllers/v1/GaspExamController.php"
+			],
+			[
+				"rw",
+				"routes/web.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Projects/subl/PI4.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"$$CookieReaderProvider"
+			]
+		],
+		"width": 890.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 241.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

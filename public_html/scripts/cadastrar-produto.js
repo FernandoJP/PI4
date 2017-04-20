@@ -1,7 +1,7 @@
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados', 'ngFileUpload']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', 'Upload', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, Upload) {
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', 'Upload','$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, Upload, $mdToast) {
 
         $scope.date = new Date();
         var self = this;
@@ -24,15 +24,37 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 isbn: dadosProduto.isbn
             }
             }).then(function (resp) {
+                if(dadosProduto.quantidade > 0){
+                    $http({
+                        method: "POST",
+                        url: "http://67.205.164.145/api/item/",
+                        data: {
+                            book_id: resp.data.id,
+                            quantity: dadosProduto.quantidade
+                        }
+                    }).
+                    then(function(respItem){
+                        console.log(respItem.data);
+                    });
+                }
                 console.log(resp.data);
+                $scope.showToast('Livro adicionado com sucesso', 'md-primary');
             }, function (resp) {
                 console.log('Error status: ' + resp.status);
+                console.log(resp.data);
+                $scope.showToast(resp.data, 'md-warn');
             }, function (evt) {
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.image.name);
             });
         }
-
+        $scope.showToast = function (message, type) {
+                var toast = $mdToast.simple()
+                        .textContent(message)
+                        .hideDelay(4000)
+                        .position('top right');
+                $mdToast.show(toast);
+            };
         $scope.toggleSidenav = function (menuId) {
             console.log('abrindo sidbar');
             $mdSidenav(menuId).toggle();
