@@ -18,7 +18,6 @@
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Produtos</span>
-                    <span class="md-subhead">dfjsdjfksddsfsdf</span>
                 </md-card-title-text>
                 <md-card-title-media>
                     <div class="md-media-lg card-media"></div>
@@ -28,8 +27,9 @@
             <!-- Início da exibição de produtos -->
             <div class='md-padding' layout="row" layout-wrap id="produtos">
                 <md-card ng-repeat="produto in produtos" class="md-whiteframe-3dp">
-                    <md-card-title-media>
-                        <div class="md-media-lg card-media" ng-click="showCustom($event, produto)" md-ink-ripple>
+                    <md-card-title-media >
+                        <md-content md-ink-ripple>
+                        <div class="md-media-lg card-media" ng-click="showCustom($event, produto)" >
                             <img ng-src="http://67.205.164.145/storage/books/{{produto.id}}.jpg" class="md-card-image produto-image" alt="Livro {{produto.title}}" title="Livro {{produto.title}}">
                             <md-card-title>
                                 <md-card-title-text>
@@ -43,6 +43,7 @@
                                 </p>
                             </md-card-content>
                         </div>
+                            </md-content>
                     </md-card-title-media>
                     <md-card-actions layout="row" layout-align="end center">
                         <section ng-hide="!produto.showAmount" class="secao-qtd-produtos animate-show-hide">
@@ -56,7 +57,7 @@
                         </section>
                         <section ng-hide="produto.showAmount" class="secao-action-buttons">
                             <md-button class="md-raised md-accent" ng-click="adicionarAoCarrinho(produto); alterarQtdProdutos('adicionar', produto); produto.showAmount = true">
-                                <i class="material-icons">add_shopping_cart</i>
+                                <i class="material-icons shopping-card-icon">add_shopping_cart</i>
                             </md-button>
                             <a href="carrinho-compras.html" alt="Ir para a página de finalização da compra. ">
                                 <md-button class="md-raised md-primary">

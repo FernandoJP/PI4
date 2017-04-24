@@ -17,7 +17,13 @@
     justify-content: center;
 }
 
+#produtos .shopping-card-icon{
+    position: relative;
+    top: 7px;
+}
+
 #produtos md-card{
+    width:250px;
     cursor:pointer;
 }
 
@@ -69,11 +75,6 @@
     .dialog-descricao-livro{
         float: none;
     }
-}
-
-/* Toast */
-md-toast{
-    margin-top:60px;
 }
 
 .secao-qtd-produtos{

@@ -24,9 +24,10 @@
                     <div class="md-media-lg card-media"></div>
                 </md-card-title-media>
             </md-card-title>
-
+            
+            <p ng-hide="carrinho">Não há nenhum produto inserido no carrinho! <a href="index.html" alt="Ir para a página inicial. ">Clique aqui</a> para adicionar produtos no carrinho. </p>
             <!-- Início da exibiçãodos produtos do carrinho -->
-            <table class="tabela-produtos highlight bordered">
+            <table class="tabela-produtos highlight bordered" ng-hide="!carrinho">
                 <thead>
                     <tr>
                         <th></th>
@@ -39,13 +40,23 @@
 
                 <tbody>
                     <tr ng-repeat="produto in carrinho">
-                        <td><img ng-src="data:image/png;base64,{{produto.image}}" class="img-livro"/></td>
+                        <td><img ng-src="http://67.205.164.145/{{produto.image}}" class="img-livro"/></td>
                         <td>{{produto.name}}</td>
                         <td>{{produto.price}}</td>
-                        <td>{{produto.quantity}}</td>
                         <td>
-                <md-button class="md-icon-button">
-                    <i class="material-icons bota                o-remover">close</i>
+                            <section class="secao-qtd-produtos animate-show-hide">
+                                <md-button class="md-icon-button botao-retirar md-raised md-primary left md-icon-button" ng-click="alterarQtdProdutos('remover', produto)">
+                                    <i class="material-icons">remove</i>
+                                </md-button>
+                                <div class="qtd-produtos" ng-model="desiredQuantity">{{produto.desiredQuantity}}</div>
+                                <md-button class="md-icon-button botao-adicionar md-raised md-primary left md-icon-button" ng-click="alterarQtdProdutos('adicionar', produto)">
+                                    <i class="material-icons">add</i>
+                                </md-button>
+                            </section>
+                        </td>
+                        <td>
+                <md-button class="md-icon-button" ng-click="removerProduto(produto)">
+                    <i class="material-icons botao-remover">close</i>
                 </md-button>
                 </td>
                 </tr>    

@@ -1,6 +1,6 @@
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast, $http) {
-        if (JSON.parse(localStorage.getItem("produtos"))) {
+        if (localStorage.getItem("produtos") > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
         } else {
             $scope.qtdProdutosCarrinho = 0;
@@ -18,6 +18,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         });
 
         $scope.showCustom = function (event, dadosProduto) {
+            console.log(dadosProduto);
             $mdDialog.show({
                 clickOutsideToClose: true,
                 scope: $scope,
@@ -25,7 +26,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 template: '<md-dialog class="dialog-detalhes-livro">' +
                         '<md-dialog-content>' +
                         '<h1>' + dadosProduto.title + '</h1>' +
-                        '<img class="dialog-img-livro" src="data:image/png;base64,' + dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.author + '. "/>' +
+                        '<img class="dialog-img-livro" src="http://67.205.164.145/'+dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.author + '. "/>' +
                         '<div class="dialog-descricao-livro"><p>' + dadosProduto.description + '</p></div>' +
                         '</md-dialog-content>' +
                         '<md-dialog-actions layout="row">' +
@@ -66,7 +67,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             for (var i = produtos.length - 1; i >= 0; i--) {
                 console.log('if '+produtos[i].id +' == '+ produtos.length-1);
                 if (produtos[i].id == produtos.length-1) {
-                    produtos[i].quantity = produto.desiredQuantity;
+                    produtos[i].desiredQuantity = produto.desiredQuantity;
                     break;
                 }
             }
@@ -76,7 +77,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         };
 
         $scope.adicionarAoCarrinho = function (produto) {
-            if (JSON.parse(localStorage.getItem("produtos"))) {
+            if (localStorage.getItem("produtos").length > 0) {
                 var itensAdicionados = JSON.parse(localStorage.getItem("produtos"));
             } else {
                 var itensAdicionados = [];
@@ -88,7 +89,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 price: produto.price,
                 image: produto.image,
                 description: produto.description,
-                quantity: produto.desiredQuantity
+                desiredQuantity:1,
+                quantity: 10
             });
 
             localStorage.setItem("produtos", JSON.stringify(itensAdicionados));

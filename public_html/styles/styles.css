@@ -207,3 +207,14 @@ a{
     top: 18px;
     width:200px;
 }
+
+/* Toast */
+md-toast{
+    margin-top:60px;
+}
+
+.principal a:hover{
+    color:blue;
+    transition:0.5s;
+    border-bottom: 1px solid #106cc8;
+}

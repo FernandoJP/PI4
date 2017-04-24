@@ -4,7 +4,7 @@
 }
 
 md-card md-card-title {
- padding: 24px 0px 0px;   
+    padding: 24px 0px 0px;   
 }
 
 md-card{
@@ -25,4 +25,23 @@ md-card{
     font-weight: bold;
     font-size:1.7em;
     color:red;
+}
+
+.secao-qtd-produtos{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.qtd-produtos{
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    margin-right: 6px;
+    margin-left: 6px;
+    float: left;
+}
+
+.secao-action-buttons, .secao-qtd-produtos{
+    margin-left: auto;
+    margin-right: auto;
 }
