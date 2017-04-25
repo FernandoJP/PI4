@@ -2,13 +2,11 @@
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast) {
-        if (localStorage.getItem("produtos").length > 0) {
+        if (localStorage.getItem("produtos") && localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
             $scope.carrinho = JSON.parse(localStorage.getItem("produtos"));
 
-            for (var i = 0; i < $scope.carrinho.length; i++) {
-                //ainda a ser implementado
-            }
+            //$scope.carrinho.push({id:Number.MAX_SAFE_INTEGER, price:valorTotal, desiredQuantity:qtdTotal});
 
             $('#carrinho').append(
                     '<tr><td><strong>Total</strong></td><td></td><td>R$10,00</td><td>10</td><td></td></tr>'
@@ -52,6 +50,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 var index = $scope.carrinho.findIndex(x => x.id === produto.id);
                 $scope.carrinho.splice(index, 1);
                 localStorage.setItem("produtos", $scope.carrinho);
+                console.log('produto removido', $scope.carrinho);
             };
 
             $scope.showCustomToast = function (msg) {
@@ -68,7 +67,16 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $scope.qtdProdutosCarrinho = 0;
         }
 
-
+        $scope.atualizarTotal = function (oQue) {
+            $scope.qtdTotal = 0, $scope.valorTotal = 0;
+            for (var i = 0; i < $scope.carrinho.length; i++) {
+                $scope.qtdTotal += +$scope.carrinho[i].desiredQuantity;
+                $scope.valorTotal += +$scope.carrinho[i].price;
+            }
+            if(oQue === 'preco') return $scope.valorTotal;
+            else if(oQue === 'quantidade') return $scope.qtdTotal;
+            else console.error('Erro na função atualizarTotal()!! ');
+        }
     }]);
 
 function mostrarItensLocalStorage() {

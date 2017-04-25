@@ -77,7 +77,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         };
 
         $scope.adicionarAoCarrinho = function (produto) {
-            if (localStorage.getItem("produtos").length > 0) {
+            if (localStorage.getItem("produtos") && localStorage.getItem("produtos").length > 0) {
                 var itensAdicionados = JSON.parse(localStorage.getItem("produtos"));
             } else {
                 var itensAdicionados = [];
