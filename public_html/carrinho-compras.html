@@ -24,10 +24,9 @@
                     <div class="md-media-lg card-media"></div>
                 </md-card-title-media>
             </md-card-title>
-            
-            <p ng-hide="carrinho">Não há nenhum produto inserido no carrinho! <a href="index.html" alt="Ir para a página inicial. ">Clique aqui</a> para adicionar produtos no carrinho. </p>
+            <p ng-show="carrinho == null || carrinho.length === 0">Não há nenhum produto inserido no carrinho! <a href="index.html" alt="Ir para a página inicial. ">Clique aqui</a> para adicionar produtos no carrinho. </p>
             <!-- Início da exibiçãodos produtos do carrinho -->
-            <table class="tabela-produtos highlight bordered" ng-hide="!carrinho">
+            <table class="tabela-produtos highlight bordered" ng-hide="carrinho == null || carrinho.length === 0">
                 <thead>
                     <tr>
                         <th></th>
@@ -37,9 +36,9 @@
                         <th></th>
                     </tr>
                 </thead>
-
+                {{carrinho}}
                 <tbody>
-                    <tr ng-repeat="produto in carrinho">
+                    <tr ng-repeat="produto in carrinho track by produto.id">
                         <td><img ng-src="http://67.205.164.145/{{produto.image}}" class="img-livro"/></td>
                         <td>{{produto.name}}</td>
                         <td>{{produto.price}}</td>
@@ -59,8 +58,18 @@
                     <i class="material-icons botao-remover">close</i>
                 </md-button>
                 </td>
-                </tr>    
+                </tr>  
+                    <tr class="total-carrinho">
+                        <td><strong>Total:</strong></td>
+                        <td></td>
+                        <td>{{atualizarTotal('preco')}}</td>
+                        <td>{{atualizarTotal('quantidade')}}</td>
+                        <td></td>
+                    </tr>
                 </tbody>
+            </table>
+            <table>
+                
             </table>
             <!-- Fim da exibição dos produtos do carrinho -->
 
