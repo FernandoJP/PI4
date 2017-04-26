@@ -3,6 +3,12 @@ var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ng
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http) {
 
+        if (localStorage.getItem("produtos") > 0) {
+            $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
+        } else {
+            $scope.qtdProdutosCarrinho = 0;
+        }
+
         $scope.date = new Date();
         var self = this;
         $scope.travarTab1 = false;
@@ -72,9 +78,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
             }
         }
-
-        $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //atualizando no badge de carrinhos
-
+        
         $scope.voltar = function () {
             $scope.travarTab1 = false;
             $scope.travarTab2 = true;

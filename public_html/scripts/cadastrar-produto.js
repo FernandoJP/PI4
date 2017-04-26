@@ -3,6 +3,12 @@ var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ng
 
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', 'Upload','$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, Upload, $mdToast) {
 
+        if (localStorage.getItem("produtos") > 0) {
+            $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
+        } else {
+            $scope.qtdProdutosCarrinho = 0;
+        }
+
         $scope.date = new Date();
         var self = this;
         self.selectedIndex = 0;
@@ -59,8 +65,6 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             console.log('abrindo sidbar');
             $mdSidenav(menuId).toggle();
         };
-        
-        $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //atualizando no badge de carrinhos
 
         $scope.admin = [{
                 link: '',
@@ -130,4 +134,4 @@ function readFile() {
     FR.readAsDataURL( this.files[0] );
   }
 }
-document.getElementById("inp").addEventListener("change", readFile);
+//document.getElementById("inp").addEventListener("change", readFile);
