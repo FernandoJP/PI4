@@ -97,9 +97,6 @@
             </md-menu-bar>
         </div>
         <span flex></span>
-        <md-button class="md-icon-button search-btn" aria-label="Search" ng-click="showSearch = !showSearch">
-            <i class="material-icons">search</i>
-        </md-button>
         <a href="carrinho-compras.html" title="Ir para o carrinho de compras. " alt="Ir para o carrinho de compras. ">
             <md-button class="md-icon-button">
                 <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
@@ -122,46 +119,5 @@
                 </a>
             </md-menu-content>
         </md-menu>
-    </md-toolbar>
-    <md-toolbar class="md-hue-1" ng-show="showSearch">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" ng-click="showSearch = !showSearch" aria-label="Voltar" style="margin-left:5px;">
-                <i class="material-icons">arrow_back</i>
-            </md-button>
-            <h3 flex="10">
-                Voltar
-            </h3>
-            <md-input-container class="search-input" md-theme="input" flex>
-                <label>&nbsp;</label>
-                <input ng-model="search.who" placeholder="pesquisar produtos">
-            </md-input-container>
-            <md-button class="md-icon-button" aria-label="Search" ng-click="showSearch = !showSearch">
-                <i class="material-icons">search</i>
-            </md-button>
-            <md-menu id="menu-desktop" md-position-mode="target-right target">
-                <md-button
-                    class="md-icon-button nav-botao-mais"
-                    aria-label="More"
-                    ng-click="$mdOpenMenu()" style="margin-right: 25px">
-                    <i class="material-icons">more_vert</i>
-                </md-button>
-                <md-menu-content>
-                    <a href="#">
-                        <md-menu-item class="md-indent">
-                            <md-button>
-                                <span class="md-alt-text"> &nbsp;Dashboard&nbsp; </span>
-                            </md-button>
-                        </md-menu-item>
-                    </a>
-                    <a href="#">
-                        <md-menu-item class="md-indent">
-                            <md-button>
-                                <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
-                            </md-button>
-                        </md-menu-item>
-                    </a>
-                </md-menu-content>
-            </md-menu>
-        </div>
     </md-toolbar>
 </div>

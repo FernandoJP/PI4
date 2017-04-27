@@ -5,13 +5,182 @@
         <meta name="viewport" content="width=device-width"> 
         <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="plugins/angular-sweet-alert/sweetalert.css">
+        <link rel="stylesheet" href="plugins/slider/angular-carousel.css">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/home.css">
         <link href="plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet"> 
     </head>
     <body layout="row" ng-controller="AppCtrl">
-        <div ng-include="'header.html'"></div>
+
+        <!-- INICIO DO CABEÇALHO -->
+    <md-sidenav md-component-id="app-side-left" layout="column" class="md-whiteframe-z1">
+        <md-toolbar layout="row" class="md-toolbar-tools md-hue-1">
+            <md-button hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="toggleSidenav('app-side-left')" style="margin-right: -8px;">
+                <md-icon>menu</md-icon>
+            </md-button>
+            <h2 style="display: inline;">&nbsp;Gerenciar Site</h2>
+        </md-toolbar>
+        <!-- BEGIN LEFT SIDE NAVIGATION -->
+        <md-content role="navigation">
+            <ul class="docs-menu">
+                <li class="parent-list-item">
+                <md-list id="menu-mobile">
+                    <md-subheader>Site</md-subheader>
+                    <md-list-item>
+                        <a href="index.html">
+                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                                <div class="inset">
+                                    <i class="fa fa-home fa-2x"></i>
+                                </div>
+                                <div class="inset">Página Inicial</div>
+                            </md-item-content> 
+                        </a>
+                    </md-list-item>
+                    <md-list-item>
+                        <a href="carrinho-compras.html">
+                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                                <div class="inset">
+                                    <i class="fa fa-shopping-cart fa-2x"></i>
+                                </div>
+                                <div class="inset">Carrinho de Compras</div>
+                            </md-item-content> 
+                        </a>
+                    </md-list-item>
+                    <md-subheader>Cadastro</md-subheader>
+                    <md-list-item>
+                        <a href="cadastrar-produto.html">
+                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                                <div class="inset">
+                                    <i class="fa fa-cart-plus fa-2x"></i>
+                                </div>
+                                <div class="inset">Cadastrar Produto</div>
+                            </md-item-content> 
+                        </a>
+                    </md-list-item>
+                    <md-list-item>
+                        <a href="cadastrar-usuario.html">
+                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                                <div class="inset">
+                                    <i class="fa fa-user-plus fa-2x"></i>
+                                </div>
+                                <div class="inset">Cadastrar Usuário</div>
+                            </md-item-content>
+                        </a>
+                    </md-list-item>
+                    </li>
+            </ul>
+        </md-content>
+    </md-sidenav>
+    <!-- END LEFT SIDE NAVIGATION -->
+    <div layout="column">
+        <!-- BEGIN TOP TOOLBAR -->
+        <md-toolbar layout="row" class="md-toolbar-tools md-hue-2" layout-align="left center" style="padding-right: 35px;">
+            <md-button hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="toggleSidenav('app-side-left')">
+                <md-icon>menu</md-icon>
+            </md-button>
+            <!-- BEGIN LOGO BUTTON -->
+            <md-button layout="row" class="md-toolbar-tools" layout-align="left center" href="#" style="width: 135px;">
+                <md-tooltip>Ir para a página inicial</md-tooltip>
+                <a href="index.html" alt="Ir para a página inicial. "><h2><span class="capitalize">Pineapple</span></h2></a>
+            </md-button>
+
+            <!-- START TOP NAVIGATION -->
+            <div id="topNav" hide show-gt-sm layout="row">
+                <md-menu-bar>
+                    <md-menu>
+                        <md-button onclick="javascript:window.location.href = 'index.html';" class="md-primary capitalize"><span class="md-alt-text">Página Inicial</span></md-button>
+                    </md-menu>
+                    <md-menu id="menu-desktop">
+                        <button ng-click="$mdOpenMenu()">Cadastros</button>
+                        <md-menu-content>
+                            <a href="cadastrar-produto.html">
+                                <md-menu-item class="md-indent">
+                                    <md-button>
+                                        <span class="md-alt-text">Cadastrar Produto</span>
+                                    </md-button>
+                                </md-menu-item>
+                            </a>
+                            <a href="cadastrar-usuario.html">
+                                <md-menu-item class="md-indent">
+                                    <md-button>
+                                        <span class="md-alt-text">Cadastrar Usuário</span>
+                                    </md-button>
+                                </md-menu-item>
+                            </a>
+                        </md-menu-content>
+                    </md-menu>
+                </md-menu-bar>
+            </div>
+            <span flex></span>
+            <md-button class="md-icon-button search-btn" aria-label="Search" ng-click="showSearch = !showSearch">
+                <i class="material-icons">search</i>
+            </md-button>
+            <a href="carrinho-compras.html" title="Ir para o carrinho de compras. " alt="Ir para o carrinho de compras. ">
+                <md-button class="md-icon-button">
+                    <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
+                </md-button>
+            </a>
+            <md-menu id="menu-desktop" md-position-mode="target-right target">
+                <md-button
+                    class="md-icon-button nav-botao-mais"
+                    aria-label="More"
+                    ng-click="$mdOpenMenu()">
+                    <i class="material-icons">more_vert</i>
+                </md-button>
+                <md-menu-content>
+                    <a href="#">
+                        <md-menu-item class="md-indent">
+                            <md-button>
+                                <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
+                            </md-button>
+                        </md-menu-item>
+                    </a>
+                </md-menu-content>
+            </md-menu>
+        </md-toolbar>
+        <md-toolbar class="md-hue-1" ng-show="showSearch">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" ng-click="showSearch = !showSearch" aria-label="Voltar" style="margin-left:5px;">
+                    <i class="material-icons">arrow_back</i>
+                </md-button>
+                <h3 flex="10">
+                    Voltar
+                </h3>
+                <md-input-container class="search-input" md-theme="input" flex>
+                    <label>&nbsp;</label>
+                    <input ng-model="criterioDeBusca" placeholder="pesquisar produtos">
+                </md-input-container>
+                <md-button class="md-icon-button" aria-label="Search" ng-click="showSearch = !showSearch">
+                    <i class="material-icons">search</i>
+                </md-button>
+                <md-menu id="menu-desktop" md-position-mode="target-right target">
+                    <md-button
+                        class="md-icon-button nav-botao-mais"
+                        aria-label="More"
+                        ng-click="$mdOpenMenu()" style="margin-right: 25px">
+                        <i class="material-icons">more_vert</i>
+                    </md-button>
+                    <md-menu-content>
+                        <a href="#">
+                            <md-menu-item class="md-indent">
+                                <md-button>
+                                    <span class="md-alt-text"> &nbsp;Dashboard&nbsp; </span>
+                                </md-button>
+                            </md-menu-item>
+                        </a>
+                        <a href="#">
+                            <md-menu-item class="md-indent">
+                                <md-button>
+                                    <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
+                                </md-button>
+                            </md-menu-item>
+                        </a>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </md-toolbar>
+    </div>
+    <!-- FIM DO CABEÇALHO -->
 
     <md-content flex md-scroll-y id="conteudo">
         <md-card class="principal md-whiteframe-6dp">
@@ -26,24 +195,24 @@
 
             <!-- Início da exibição de produtos -->
             <div class='md-padding' layout="row" layout-wrap id="produtos">
-                <md-card ng-repeat="produto in produtos" class="md-whiteframe-3dp">
+                <md-card ng-repeat="produto in produtos| filter:{title:criterioDeBusca}" class="md-whiteframe-3dp">
                     <md-card-title-media >
                         <md-content md-ink-ripple>
-                        <div class="md-media-lg card-media" ng-click="showCustom($event, produto)" >
-                            <img ng-src="http://67.205.164.145/storage/books/{{produto.id}}.jpg" class="md-card-image produto-image" alt="Livro {{produto.title}}" title="Livro {{produto.title}}">
-                            <md-card-title>
-                                <md-card-title-text>
-                                    <span class="md-headline" style="text-align:center">{{produto.title}}</span>
-                                    <span class="md-subhead" style="text-align:right">{{produto.author}}</span>
-                                </md-card-title-text>
-                            </md-card-title>
-                            <md-card-content>
-                                <p>
-                                    <b>R$: </b>{{produto.price}}
-                                </p>
-                            </md-card-content>
-                        </div>
-                            </md-content>
+                            <div class="md-media-lg card-media" ng-click="showCustom($event, produto)" >
+                                <img ng-src="http://67.205.164.145/storage/books/{{produto.id}}.jpg" class="md-card-image produto-image" alt="Livro {{produto.title}}" title="Livro {{produto.title}}">
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline" style="text-align:center">{{produto.title}}</span>
+                                        <span class="md-subhead" style="text-align:right">{{produto.author}}</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-content>
+                                    <p>
+                                        <b>R$: </b>{{produto.price}}
+                                    </p>
+                                </md-card-content>
+                            </div>
+                        </md-content>
                     </md-card-title-media>
                     <md-card-actions layout="row" layout-align="end center">
                         <section ng-hide="!produto.showAmount" class="secao-qtd-produtos animate-show-hide">
@@ -81,6 +250,7 @@
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script src="scripts/home.js"></script>
     <script src="plugins/loadingoverlay/loadingoverlay.js"></script>
 </body>
