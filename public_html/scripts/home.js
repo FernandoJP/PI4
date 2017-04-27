@@ -32,7 +32,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                         '<md-dialog-actions layout="row">' +
                         '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.price + '</span></div>' +
                         '<span flex></span>' +
-                        '<a href="carrinho-compras.html" alt="Ir para a página de finalização da compra. "><md-button class="md-raised md-primary">Comprar</md-button></a>' +
+                        '<a href="javascript:window.location.href = \'carrinho-compras.html\'" alt="Ir para a página de finalização da compra. "><md-button class="md-raised md-primary">Comprar</md-button></a>' +
                         '<md-dialog-actions>' +
                         '</md-dialog>',
                 controller: function DialogController($scope, $mdDialog) {
