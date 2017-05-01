@@ -1,7 +1,7 @@
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast) {
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast, $http) {
         if (localStorage.getItem("produtos") && localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
             $scope.carrinho = JSON.parse(localStorage.getItem("produtos"));
@@ -11,6 +11,26 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $('#carrinho').append(
                     '<tr><td><strong>Total</strong></td><td></td><td>R$10,00</td><td>10</td><td></td></tr>'
                     );
+
+            $scope.realizarVenda = function () {
+                $http({
+                    method: "POST",
+                    url: "http://pi4.app/api/client/1/order/",
+                    data: {
+                        person_id: 1,
+                        payment_type_id: 1,
+                        books: JSON.parse(localStorage.getItem("produtos"))
+                    }
+                }).
+                then(function(respItem){
+                    $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem[0].order_id);    
+                    for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
+                        $scope.removerProduto($scope.carrinho[i].id);
+                    }
+                }, function(respItem){
+                    $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
+                });
+            };
             $scope.toggleSidenav = function (menuId) {
                 $mdSidenav(menuId).toggle();
             };

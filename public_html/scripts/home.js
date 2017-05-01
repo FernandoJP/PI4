@@ -10,7 +10,10 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $http.get("http://67.205.164.145/api/book").then(function (response) {
             $scope.produtos = response.data;
             for (var i = 0; i < $scope.produtos.length; i++) {
-                $scope.produtos[i].quantity = 10;
+                console.log(response.data[i].id);
+                console.log($scope.checkStock(response.data[i].id));
+                $scope.produtos[i].book_id = response.data[i].id;
+                $scope.produtos[i].quantity = 1;
                 $scope.produtos[i].desiredQuantity = 0;
                 $scope.produtos[i].showQuantity = false;
             }
@@ -72,6 +75,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 }
             }
             localStorage.setItem("produtos", JSON.stringify(produtos));
+            console.log(produtos);
             console.log('localStorage atualizado: ');
             console.dir(JSON.parse(localStorage.getItem("produtos")));
         };
@@ -85,12 +89,13 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
             itensAdicionados.push({
                 id: itensAdicionados.length,
+                book_id: produto.book_id,
                 name: produto.title,
                 price: produto.price,
                 image: produto.image,
                 description: produto.description,
                 desiredQuantity:1,
-                quantity: 10
+                quantity: 2
             });
 
             localStorage.setItem("produtos", JSON.stringify(itensAdicionados));
@@ -129,6 +134,14 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
             });
         };
+
+        $scope.checkStock = function(book_id){
+            $http.get("http://pi4.app/api/item/" + book_id).then(function (response) {
+                if(response.data.quantity !== undefined){
+                    return response.data.quantity;
+                }
+            });
+        }
     }]);
 
 app.config(function ($mdThemingProvider) {

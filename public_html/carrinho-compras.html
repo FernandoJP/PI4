@@ -40,7 +40,7 @@
                     <tr ng-repeat="produto in carrinho track by produto.id">
                         <td><img ng-src="http://67.205.164.145/{{produto.image}}" class="img-livro"/></td>
                         <td>{{produto.name}}</td>
-                        <td>{{produto.price}}</td>
+                        <td><b>R$:</b> {{produto.price}}</td>
                         <td>
                             <section class="secao-qtd-produtos animate-show-hide">
                                 <md-button class="md-icon-button botao-retirar md-raised md-primary left md-icon-button" ng-click="alterarQtdProdutos('remover', produto)">
@@ -61,7 +61,7 @@
                     <tr class="total-carrinho">
                         <td><strong>Total:</strong></td>
                         <td></td>
-                        <td>{{atualizarTotal('preco')}}</td>
+                        <td><b>R$:</b> {{atualizarTotal('preco')}}</td>
                         <td>{{atualizarTotal('quantidade')}}</td>
                         <td></td>
                     </tr>
@@ -72,7 +72,7 @@
             </table>
             <!-- Fim da exibição dos produtos do carrinho -->
 
-            <md-button class="md-raised md-primary finalizar-btn">
+            <md-button class="md-raised md-primary finalizar-btn" ng-click="realizarVenda()">
                 Finalizar Compra
             </md-button>
         </md-card>
