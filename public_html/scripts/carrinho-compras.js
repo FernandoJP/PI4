@@ -15,7 +15,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $scope.realizarVenda = function () {
                 $http({
                     method: "POST",
-                    url: "http://pi4.app/api/client/1/order/",
+                    url: "http://67.205.164.145/api/client/1/order/",
                     data: {
                         person_id: 1,
                         payment_type_id: 1,
@@ -23,7 +23,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     }
                 }).
                 then(function(respItem){
-                    $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem[0].order_id);    
+                    console.log(respItem);
+                    $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);    
                     for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
                         $scope.removerProduto($scope.carrinho[i].id);
                     }

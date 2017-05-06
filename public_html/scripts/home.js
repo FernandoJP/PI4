@@ -14,12 +14,6 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 $scope.produtos[i].desiredQuantity = 0;
                 $scope.produtos[i].showQuantity = false;
                 $scope.produtos[i].quantity = 0;
-                var x =$http.get("http://pi4.app/api/item/" + response.data[i].id)
-                .then(function (response) {
-                    console.log($scope.produtos[i]);
-                    console.log(response);
-                });
-                
             }
             
             $(".principal").LoadingOverlay("hide", true);
@@ -58,11 +52,15 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             var index = $scope.produtos.findIndex(x => x.id === produto.id);
 
             if (operacao === 'adicionar') {
-                if (!(produto.desiredQuantity === $scope.produtos[index].quantity)) {
-                    $scope.produtos[index].desiredQuantity++;
-                } else {
-                    $scope.showCustomToast('Não há em estoque essa quantidade! ');
-                }
+                $http.get("http://67.205.164.145/api/item/" + $scope.produtos[index].id)
+                .then(function (response) {
+                    $scope.produtos[index].quantity = response.data.quantity
+                    if (!(produto.desiredQuantity === $scope.produtos[index].quantity)) {
+                        $scope.produtos[index].desiredQuantity++;
+                    } else {
+                        $scope.showCustomToast('Não há em estoque essa quantidade! ');
+                    }
+                });
             } else if (operacao === 'remover') {
                 if ($scope.produtos[index].desiredQuantity !== 1) {
                     $scope.produtos[index].desiredQuantity--;
