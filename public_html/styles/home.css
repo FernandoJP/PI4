@@ -98,18 +98,18 @@
 }
 
 #slides_control > div{
-  height: 200px;
+    height: 200px;
 }
 img{
-  margin:auto;
-  width: 400px;
+    margin:auto;
+    width: 400px;
 }
 #slides_control {
-  position:absolute;
-  width: 400px;
-  left:50%;
-  top:20px;
- margin-left:-200px;
+    position:absolute;
+    width: 400px;
+    left:50%;
+    top:20px;
+    margin-left:-200px;
 }
 
 #conteudo md-card.principal {
@@ -117,4 +117,10 @@ img{
     position: relative;
     top: 60px;
     margin: 10px 30px 30px 30px;
+}
+
+@media (max-width: 960px) {
+    .wrapper{
+        width: 350px !important;
+    }
 }

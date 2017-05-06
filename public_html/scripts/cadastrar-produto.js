@@ -17,7 +17,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         };
 
         $scope.validarDados = function (dadosProduto, formularioDados) {
-            //$scope.submitted = true;
+            $scope.submitted = true;
             Upload.upload({
             url: 'http://67.205.164.145/api/book/',
             data: {
@@ -27,7 +27,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 editor: dadosProduto.editor,
                 year_published: dadosProduto.year_published,
                 price: dadosProduto.price,
-                isbn: dadosProduto.isbn
+                isbn: dadosProduto.isbn,
+                description:dadosProduto.descricao
             }
             }).then(function (resp) {
                 if(dadosProduto.quantidade > 0){

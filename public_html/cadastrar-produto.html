@@ -78,7 +78,7 @@
 
                                 <md-input-container class="md-accent col-50">
                                     <label>Preço</label>
-                                    <input type="number" name="price" ng-model="dadosProduto.price" ng-pattern="/^[1-9]\d*$/" ng-maxlength="9" ng-required="true">
+                                    <input type="number" name="price" ng-model="dadosProduto.price" ng-pattern="/^[^-]*$/" ng-maxlength="9" ng-required="true">
                                     <div ng-messages="formularioDados.price.$error" ng-if="formularioDados.$submitted || formularioDados.price.$touched">
                                         <div ng-message="required">O campo preço é de preenchimento obrigatório.</div>
                                         <div ng-message="pattern">Valor informado é muito pequeno. </div>
@@ -87,21 +87,25 @@
                                 </md-input-container>
                                 <div class="col-50">
                                     <input type="file" ngf-select ng-model="dadosProduto.image" name="image" accept="image/*" ngf-max-size="2MB" required
-             ngf-model-invalid="errorFile">
+                                           ngf-model-invalid="errorFile">
                                     <img id="img" height="150">
                                 </div>
                                 <md-input-container class="md-accent col-50">
                                     <label>Quantidade</label>
-                                    <input type="number" name="quantidade" ng-model="dadosProduto.quantidade" ng-pattern="/^[1-9]\d*$/" ng-maxlength="9" ng-required="true">
+                                    <input type="number" name="quantidade" ng-model="dadosProduto.quantidade" ng-pattern="/^[^-]*$/" ng-maxlength="9" ng-required="true">
                                     <div ng-messages="formularioDados.quantidade.$error" ng-if="formularioDados.$submitted || formularioDados.quantidade.$touched">
                                         <div ng-message="required">O campo quantidade é de preenchimento obrigatório.</div>
                                         <div ng-message="pattern">Valor informado é muito pequeno. </div>
                                         <div ng-message="maxlength">Valor informado é muito grande. </div>
                                     </div>
                                 </md-input-container>
+                                <md-input-container class="md-block">
+                                    <label>Descrição</label>
+                                    <textarea ng-model="dadosProduto.descricao" md-maxlength="1000" rows="5" md-select-on-focus style="height: 135px;"></textarea>
+                                </md-input-container>
                                 <div class="form-actions noborder">             
                                     <md-button class="md-raised"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
-                                    <md-button class="md-raised md-primary" ng-click="validarDados(dadosProduto, formularioDados)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
+                                    <md-button type="submit" class="md-raised md-primary" ng-click="validarDados(dadosProduto, formularioDados)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
                                 </div>
                             </div>
                         </form>              

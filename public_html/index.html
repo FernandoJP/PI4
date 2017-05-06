@@ -184,26 +184,35 @@
     <!-- FIM DO CABEÇALHO -->
 
     <md-content flex md-scroll-y id="conteudo">
-        
-                <div class="wrapper">
+
+        <div class="wrapper">
             <div class="carousel">
                 <div class="inner">
-                    <div class="slide active">
-                        <h1>1</h1>
+                    <div class="slide" ng-repeat="produto in produtosSlider" ng-class="{'active':produto.active}" style="background-image:url({{produto.slideImg}});">
+                        <h1>{{produto.title}}</h1>
+                        <md-button class="md-raised md-primary" ng-click="showCustom($event, produto)">
+                            Confira
+                        </md-button>
+                    </div>
+                   <!-- <div class="slide">
+                        <h1>O Poder do Hábito</h1>
+                        <md-button class="md-raised md-primary">
+                            Confira
+                        </md-button>
                     </div>
                     <div class="slide">
-                        <h1>2</h1>
+                        <h1>As Armas da Persuasão</h1>
+                        <md-button class="md-raised md-primary">
+                            Confira
+                        </md-button>
                     </div>
-                    <div class="slide">
-                        <h1>3</h1>
-                    </div>
-                </div>
+                </div>-->
                 <div class="arrow arrow-left"></div>
                 <div class="arrow arrow-right"></div>
             </div>
-
+</div>
         </div>
-        
+
         <md-card class="principal md-whiteframe-6dp">
             <md-card-title>
                 <md-card-title-text>

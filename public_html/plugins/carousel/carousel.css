@@ -200,15 +200,13 @@ html, body{
 }
 
 .wrapper h1{
-	width:100px;
-  height:100px;
-  background-color:rgba(146, 45, 141,0.7);
+  background-color:rgba(0, 0, 0,0.7);
 	margin:auto;
   line-height:100px;
 	color:#fff;
 	font-size:2.4em;
-  border-radius:50%;
 }
+/*
 .slide:nth-child(1){
 	background-image:url(../../images/slide1.png);
  }
@@ -218,11 +216,17 @@ html, body{
 }
 
 .slide:nth-child(3){
-	background-image:url(../../images/slide1.png);
-}
+	background-image:url(../../images/slide3.jpg);
+}*/
 
 .wrapper{
     top:30px;
     z-index: 1;
     width:700px;
+    
+}
+
+.carousel button{
+    position:relative;
+    bottom:1px;
 }

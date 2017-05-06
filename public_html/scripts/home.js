@@ -1,6 +1,6 @@
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast, $http) {
-        if (localStorage.getItem("produtos") > 0) {
+        if (localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
         } else {
             $scope.qtdProdutosCarrinho = 0;
@@ -21,7 +21,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         });
 
         $scope.showCustom = function (event, dadosProduto) {
-            console.log(dadosProduto);
+            console.log('dadosProduto = ', dadosProduto);
             $mdDialog.show({
                 clickOutsideToClose: true,
                 scope: $scope,
@@ -29,7 +29,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 template: '<md-dialog class="dialog-detalhes-livro">' +
                         '<md-dialog-content>' +
                         '<h1>' + dadosProduto.title + '</h1>' +
-                        '<img class="dialog-img-livro" src="http://67.205.164.145/'+dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.author + '. "/>' +
+                        '<img class="dialog-img-livro" src="http://67.205.164.145/' + dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.author + '. "/>' +
                         '<div class="dialog-descricao-livro"><p>' + dadosProduto.description + '</p></div>' +
                         '</md-dialog-content>' +
                         '<md-dialog-actions layout="row">' +
@@ -45,7 +45,6 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 }
             });
         }
-
         ;
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
@@ -68,8 +67,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             //atualizar quantidade no local storage
             var produtos = JSON.parse(localStorage.getItem("produtos"));
             for (var i = produtos.length - 1; i >= 0; i--) {
-                console.log('if '+produtos[i].id +' == '+ produtos.length-1);
-                if (produtos[i].id == produtos.length-1) {
+                console.log('if ' + produtos[i].id + ' == ' + produtos.length - 1);
+                if (produtos[i].id == produtos.length - 1) {
                     produtos[i].desiredQuantity = produto.desiredQuantity;
                     break;
                 }
@@ -94,7 +93,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 price: produto.price,
                 image: produto.image,
                 description: produto.description,
-                desiredQuantity:1,
+                desiredQuantity: 1,
                 quantity: 2
             });
 
@@ -135,9 +134,45 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             });
         };
 
-        $scope.checkStock = function(book_id){
+        $scope.produtosSlider = [
+            {
+                "id": 6,
+                "title": "Guerra Civil",
+                "author": "Stuart Moore",
+                "editor": "Novo Século - SP",
+                "year_published": "2014",
+                "price": "0.0000",
+                "image": "/storage/books/6.jpg",
+                "created_at": "2017-05-05 22:55:16",
+                "updated_at": "2017-05-05 22:55:16",
+                "deleted_at": null,
+                "description": null,
+                "isbn": "9788542804126",
+                "slideImg": "images/slide1.png",
+                "active": false
+
+            },
+            {
+                "id": 6,
+                "title": "Teste",
+                "author": "Teste",
+                "editor": "Teste",
+                "year_published": "2014",
+                "price": "0.0000",
+                "image": "/storage/books/6.jpg",
+                "created_at": "2017-05-05 22:55:16",
+                "updated_at": "2017-05-05 22:55:16",
+                "deleted_at": null,
+                "description": null,
+                "isbn": "9788542804126",
+                "slideImg": "images/slide1.png",
+                "active": true
+            }
+        ]
+
+        $scope.checkStock = function (book_id) {
             $http.get("http://pi4.app/api/item/" + book_id).then(function (response) {
-                if(response.data.quantity !== undefined){
+                if (response.data.quantity !== undefined) {
                     return response.data.quantity;
                 }
             });
