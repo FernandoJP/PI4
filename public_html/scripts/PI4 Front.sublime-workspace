@@ -1,0 +1,497 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"prod",
+				"produtos"
+			],
+			[
+				"prot",
+				"produtos"
+			],
+			[
+				"pro",
+				"produtos"
+			],
+			[
+				"remover",
+				"removerProduto"
+			],
+			[
+				"order",
+				"order_id"
+			],
+			[
+				"resp",
+				"respItem"
+			],
+			[
+				"produ",
+				"produtos"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"local",
+				"localStorage"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/var/www/pi4/front/public_html/carrinho-compras.html",
+			"settings":
+			{
+				"buffer_size": 4812,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "home.js",
+			"settings":
+			{
+				"buffer_size": 7542,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/pi4/front/public_html/index.html",
+			"settings":
+			{
+				"buffer_size": 14160,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "carrinho-compras.js",
+			"settings":
+			{
+				"buffer_size": 5548,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 44.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"mate",
+				"Material Theme: Advanced configuration"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 194.0,
+		"history":
+		[
+			"view.encoding()"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/pi4/front/public_html"
+	],
+	"file_history":
+	[
+		"/var/www/pi4/front/public_html/scripts/carrinho-compras.js",
+		"/var/www/pi4/front/public_html/index.html",
+		"/var/www/pi4/front/public_html/scripts/scripts.js",
+		"/var/www/pi4/front/public_html/carrinho-compras.html",
+		"/var/www/pi4/front/public_html/styles/styles.css",
+		"/var/www/pi4/front/public_html/styles/home.css",
+		"/var/www/pi4/front/public_html/scripts/home.js",
+		"/var/www/pi4/front/public_html/header.html",
+		"/var/www/pi4/ecommerce/database/factories/ModelFactory.php",
+		"/var/www/pi4/ecommerce/database/migrations/2017_03_03_181346_create_orders_table.php",
+		"/var/www/pi4/ecommerce/config/database.php",
+		"/var/www/pi4/ecommerce/routes/api.php",
+		"/var/www/pi4/ecommerce/app/Person.php",
+		"/var/www/pi4/ecommerce/app/Order.php",
+		"/var/www/pi4/ecommerce/database/migrations/2017_03_26_001137_update_orders_table.php",
+		"/var/www/pi4/ecommerce/database/migrations/2017_03_25_234540_update_order_table.php",
+		"/var/www/pi4/ecommerce/database/migrations/2017_03_25_235355_update_order_column.php",
+		"/var/www/pi4/ecommerce/app/Http/Controllers/ClientController.php",
+		"/home/oedviewer/conversor/oed_convert_viaweb.php",
+		"/etc/php/7.0/cli/php.ini",
+		"/home/oedviewer/conversor/oed_convert.php"
+	],
+	"find":
+	{
+		"height": 72.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"/var/www/pi4/front/public_html/scripts",
+			"home.js",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"check",
+			"console.log",
+			"check",
+			"produtos",
+			"removerPro",
+			"remover",
+			"remo",
+			"remover",
+			"showcust",
+			"ng-cl",
+			"post",
+			"$scope.check",
+			"produtos[i].id",
+			"produtos[i]",
+			"produtos",
+			"quantity",
+			"produtos",
+			"stock",
+			"console.log",
+			"checkSto",
+			"stock",
+			"check",
+			"console.log",
+			"localStorage",
+			"localSto",
+			"produtos",
+			"checkSt",
+			"$http",
+			"quantity",
+			"desiredQuanti",
+			"total",
+			"then",
+			"localStorage",
+			"removeItem",
+			"removeIt",
+			"removeItem",
+			"close",
+			"hover",
+			"hobr",
+			"hover",
+			"a{",
+			"Comprar",
+			"comprar",
+			"font-si",
+			"'",
+			"\");",
+			"'",
+			"adicionar",
+			" $mdThemingProvider.theme('input', 'default')",
+			"\\x{200b}",
+			"\\u200b",
+			"\\u0",
+			"67",
+			"adicionar",
+			"produto",
+			"adicionaraoCa",
+			"adicionarAoCarrinho",
+			"localStorage",
+			"produto",
+			"getI",
+			"itensAdicionados",
+			"image",
+			"localSto",
+			"image",
+			"address",
+			"Address",
+			"address",
+			"payment_type_id",
+			"person",
+			"ext",
+			"mongo",
+			"mcryp",
+			"ext",
+			"ext-cur",
+			"zip",
+			"tar ",
+			"getFilefromUr",
+			"getFilefromUe",
+			"createPacka"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/var/www/pi4/front/public_html/carrinho-compras.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4812,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3332,
+								3332
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 82.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7542,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1144,
+								1148
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/var/www/pi4/front/public_html/index.html",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 14160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5787.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "carrinho-compras.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5548,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1801,
+								1801
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 66.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 138.0
+	},
+	"pinned_build_system": "",
+	"project": "PI4 Front.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"cars",
+				"scripts/carrinho-compras.js"
+			],
+			[
+				"scrip",
+				"scripts/scripts.js"
+			],
+			[
+				"car",
+				"scripts/carrinho-compras.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/pi4.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 354.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 575.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 375.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

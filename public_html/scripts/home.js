@@ -9,14 +9,19 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $(".principal").LoadingOverlay("show");
         $http.get("http://67.205.164.145/api/book").then(function (response) {
             $scope.produtos = response.data;
-            for (var i = 0; i < $scope.produtos.length; i++) {
-                console.log(response.data[i].id);
-                console.log($scope.checkStock(response.data[i].id));
+            for (var i = 0; i < $scope.produtos.length; i++) {               
                 $scope.produtos[i].book_id = response.data[i].id;
-                $scope.produtos[i].quantity = 1;
                 $scope.produtos[i].desiredQuantity = 0;
                 $scope.produtos[i].showQuantity = false;
+                $scope.produtos[i].quantity = 0;
+                var x =$http.get("http://pi4.app/api/item/" + response.data[i].id)
+                .then(function (response) {
+                    console.log($scope.produtos[i]);
+                    console.log(response);
+                });
+                
             }
+            
             $(".principal").LoadingOverlay("hide", true);
         });
 
