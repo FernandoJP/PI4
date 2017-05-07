@@ -49,3 +49,57 @@ md-card{
 .total-carrinho{
     font-size:16px;
 }
+
+.dialog-finalizar-compra{
+    padding: 25px 25px 5px 25px;
+}
+
+.finalizar-btn{
+    position: absolute;
+    right: 1px;
+    top: 18px;
+    width:200px;
+}
+
+@media (max-width: 460px) {
+    .finalizar-btn{
+        relative: absolute;
+        left: 15px;
+        margin-top: 60px;
+    } 
+}
+
+md-dialog ::-webkit-scrollbar {
+    margin-right: -10px;
+  width: 2px;
+  height: 2px;
+}
+md-dialog ::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+md-dialog ::-webkit-scrollbar-thumb {
+  background: #408080;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+md-dialog ::-webkit-scrollbar-thumb:hover {
+  background: #408080;
+}
+md-dialog ::-webkit-scrollbar-thumb:active {
+  background: #408080;
+}
+md-dialog ::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+md-dialog ::-webkit-scrollbar-track:hover {
+  background: #c0c0c0;
+}
+md-dialog ::-webkit-scrollbar-track:active {
+  background: #c0c0c0;
+}
+md-dialog ::-webkit-scrollbar-corner {
+  background: transparent;
+}

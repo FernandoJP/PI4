@@ -1,6 +1,6 @@
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons']);
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$mdToast', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $mdToast, $http) {
-        if (localStorage.getItem("produtos").length > 0) {
+        if (localStorage.getItem("produtos") && localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
         } else {
             $scope.qtdProdutosCarrinho = 0;

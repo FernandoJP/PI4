@@ -202,13 +202,6 @@ a{
     
 }
 
-.finalizar-btn{
-    position: absolute;
-    right: 1px;
-    top: 18px;
-    width:200px;
-}
-
 /* Toast */
 md-toast{
     margin-top:60px;
@@ -219,3 +212,5 @@ md-toast{
     transition:0.5s;
     border-bottom: 1px solid #106cc8;
 }
+
+.ng-cloak { display:none; }

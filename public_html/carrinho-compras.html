@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="plugins/font-awesome-4.6.3/css/font-awesome.min.css"> 
         <link rel="stylesheet" href="plugins/materialize/css/materialize.css">
     </head>
-    <body layout="row" ng-controller="AppCtrl">
+    <body layout="row" ng-controller="AppCtrl" class="ng-cloak">
         <div ng-include="'header.html'"></div>
 
     <md-content flex md-scroll-y id="conteudo">
@@ -26,7 +26,7 @@
             </md-card-title>
             <p ng-show="carrinho == null || carrinho.length === 0">Não há nenhum produto inserido no carrinho! <a href="index.html" alt="Ir para a página inicial. ">Clique aqui</a> para adicionar produtos no carrinho. </p>
             <!-- Início da exibiçãodos produtos do carrinho -->
-            <table class="tabela-produtos highlight bordered" ng-hide="carrinho == null || carrinho.length === 0">
+            <table class="tabela-produtos highlight bordered responsive-table" ng-hide="carrinho == null || carrinho.length === 0">
                 <thead>
                     <tr>
                         <th></th>
@@ -72,8 +72,8 @@
             </table>
             <!-- Fim da exibição dos produtos do carrinho -->
 
-            <md-button class="md-raised md-primary finalizar-btn" ng-click="realizarVenda()">
-                Finalizar Compra
+            <md-button class="md-raised md-primary finalizar-btn" ng-click="showModal()">
+                Confirmar
             </md-button>
         </md-card>
     </md-content>
@@ -88,5 +88,6 @@
     <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
     <script src="scripts/scripts.js"></script>
     <script src="scripts/carrinho-compras.js"></script>
+    <script src="plugins/loadingoverlay/loadingoverlay.js"></script>
 </body>
 </html>

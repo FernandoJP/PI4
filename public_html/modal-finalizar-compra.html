@@ -1,0 +1,83 @@
+<md-dialog class="dialog-finalizar-compra" style="max-width: 460px;"> 
+    <h2>Informações Adicionais</h2>
+    <md-dialog-content layout-gt-sm="row">
+        <form name="formulario">      
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm style="padding-left:3px;">
+                    <label style="left: 3px;">CEP</label>
+                    <input ng-model="cep" name="cep" ng-model="dadosFinalizacaoCompra.cep" ng-required="true" ng-pattern="/[0-9]{2}[0-9]{3}-[0-9]{3}|[0-9]{2}[0-9]{3}[0-9]{3}$/" style="width: 85%;" id="cep" ng-blur="preecherEndereco()">
+                    <md-button class="md-icon-button" onclick="$('rua').focus()">
+                        <md-icon>search</md-icon>
+                    </md-button>
+                    <div ng-messages="formulario.cep.$error" ng-if="formulario.$submitted || formulario.cep.$touched">
+                        <div ng-message="required">O campo CEP é de preenchimento obrigatório.</div>
+                        <div ng-message="pattern">Por favor informar um CEP válido. </div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block md-accent row" flex-gt-sm>
+                    <label>Rua</label>
+                    <input ng-model="dadosFinalizacaoCompra.rua" name="rua" ng-model="dadosFinalizacaoCompra.rua" ng-required="true" style="width:95%;" id="rua">
+                    <div ng-messages="formulario.rua.$error" ng-if="formulario.$submitted || formulario.rua.$touched">
+                        <div ng-message="required">Este campo é de preenchimento obrigatório.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block md-accent row" flex-gt-sm>
+                    <label>Bairro</label>
+                    <input ng-model="dadosFinalizacaoCompra.bairro" name="bairro" ng-model="dadosFinalizacaoCompra.bairro" ng-required="true" style="width:95%;" id="bairro">
+                    <div ng-messages="formulario.bairro.$error" ng-if="formulario.$submitted || formulario.bairro.$touched">
+                        <div ng-message="required">Este campo é de preenchimento obrigatório.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block md-accent row" flex-gt-sm>
+                    <label>Cidade</label>
+                    <input ng-model="dadosFinalizacaoCompra.cidade" name="cidade" ng-model="dadosFinalizacaoCompra.cidade" ng-required="true" style="width:95%;">
+                    <div ng-messages="formulario.bairro.$error" ng-if="formulario.$submitted || formulario.cidade.$touched">
+                        <div ng-message="required">Este campo é de preenchimento obrigatório.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block md-accent row" flex-gt-sm>
+                    <label>Estado</label>
+                    <input ng-model="dadosFinalizacaoCompra.uf" name="uf" ng-model="dadosFinalizacaoCompra.uf" ng-required="true" style="width:95%;">
+                    <div ng-messages="formulario.uf.$error" ng-if="formulario.$submitted || formulario.uf.$touched">
+                        <div ng-message="required">Este campo é de preenchimento obrigatório.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <md-input-container class="md-block md-accent row">
+                <label>Número</label>
+                <input type="number" name="numero" ng-model="dadosFinalizacaoCompra.numero" ng-pattern="/^[^-]*$/" ng-maxlength="9" ng-required="true" style="width:95%;">
+                <div ng-messages="formulario.numero.$error" ng-if="formulario.$submitted || formulario.numero.$touched"> 
+                    <div ng-message="required">O campo número é de preenchimento obrigatório.</div>
+                    <div ng-message="pattern">Valor informado é muito pequeno. </div>
+                    <div ng-message="maxlength">Valor informado é muito grande. </div>
+                </div>
+            </md-input-container>
+
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Forma de pagamento</label>
+                    <md-select name="formaPgto" ng-required="true" ng-model="dadosFinalizacaoCompra.formaPgto">
+                        <md-option ng-repeat="formaPgto in formasPgto">
+                            {{formaPgto.formaPgto}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="formulario.formaPgto.$error" ng-if="formulario.$submitted || formulario.formaPgto.$touched">
+                        <div ng-message="required">Este campo é de preenchimento obrigatório.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <md-button type="submit" class="md-raised md-primary" ng-click="realizarVenda(dadosFinalizacaoCompra, formulario)" style="display:none;" id="finalizar-btn">Finalizar Compra</md-button>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <span flex></span>
+        <md-button class="md-raised md-primary" onclick="$('#finalizar-btn').click()" >Finalizar Compra</md-button>
+    </md-dialog-actions>
+</md-dialog>

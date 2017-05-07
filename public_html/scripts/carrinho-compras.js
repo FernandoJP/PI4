@@ -5,41 +5,92 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         if (localStorage.getItem("produtos") && localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
             $scope.carrinho = JSON.parse(localStorage.getItem("produtos"));
-
+            $scope.dadosFinalizacaoCompra = [];    
             //$scope.carrinho.push({id:Number.MAX_SAFE_INTEGER, price:valorTotal, desiredQuantity:qtdTotal});
 
             $('#carrinho').append(
                     '<tr><td><strong>Total</strong></td><td></td><td>R$10,00</td><td>10</td><td></td></tr>'
                     );
 
-            $scope.realizarVenda = function () {
-                $http({
-                    method: "POST",
-                    url: "http://67.205.164.145/api/client/1/order/",
-                    data: {
-                        person_id: 1,
-                        payment_type_id: 1,
-                        books: JSON.parse(localStorage.getItem("produtos"))
-                    }
-                }).
-                then(function(respItem){
-                    console.log(respItem);
-                    $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);    
-                    for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
-                        $scope.removerProduto($scope.carrinho[i].id);
-                    }
-                }, function(respItem){
-                    $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
-                });
+            $scope.realizarVenda = function (dadosFinalizacaoCompra, formulario) {
+
+                $scope.submitted = true;
+                if (formulario.$valid) {
+                                    console.log('dadosFinalizacaoCompra',dadosFinalizacaoCompra);
+                    $http({
+                        method: "POST",
+                        url: "http://67.205.164.145/api/client/1/order/",
+                        data: {
+                            person_id: 1,
+                            payment_type_id: 1,
+                            books: JSON.parse(localStorage.getItem("produtos"))
+                        }
+                    }).
+                            then(function (respItem) {
+                                console.log(respItem);
+                                $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
+                                for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
+                                    $scope.removerProduto($scope.carrinho[i].id);
+                                }
+                            }, function (respItem) {
+                                $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
+                            });
+
+                }
+
             };
+
+            $scope.preecherEndereco = function () {
+                //Nova variável "cep" somente com dígitos.
+                var cep = $scope.cep.replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+                        //$("md-dialog").LoadingOverlay("show");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("//viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                            console.log('requisicao feita');
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $scope.dadosFinalizacaoCompra.rua = dados.logradouro;
+                                $scope.dadosFinalizacaoCompra.bairro = dados.bairro;
+                                $scope.dadosFinalizacaoCompra.cidade = dados.localidade;
+                                $scope.dadosFinalizacaoCompra.uf = dados.uf;
+                                $('#rua').focus();
+                                $('#bairro').focus();
+                                $('#rua').focus();
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                alert("CEP não encontrado.");
+                            }
+                            //$("md-dialog").LoadingOverlay("hide", true);
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        console.log("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor
+
+                }
+            };
+
             $scope.toggleSidenav = function (menuId) {
                 $mdSidenav(menuId).toggle();
             };
 
             $scope.alterarQtdProdutos = function (operacao, produto) {
-                console.log('produto', produto);
                 var index = $scope.carrinho.findIndex(x => x.id === produto.id);
-
                 if (operacao === 'adicionar') {
                     if (!(produto.desiredQuantity === $scope.carrinho[index].quantity)) {
                         $scope.carrinho[index].desiredQuantity++;
@@ -64,6 +115,21 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 localStorage.setItem("produtos", JSON.stringify(produtos));
                 console.log('localStorage atualizado: ');
                 console.dir(JSON.parse(localStorage.getItem("produtos")));
+            };
+
+            $scope.showModal = function (event, dadosProduto) {
+                console.log('dadosProduto = ', dadosProduto);
+                $mdDialog.show({
+                    clickOutsideToClose: true,
+                    scope: $scope,
+                    preserveScope: true,
+                    templateUrl: 'modal-finalizar-compra.html',
+                    controller: function DialogController($scope, $mdDialog) {
+                        $scope.closeDialog = function () {
+                            $mdDialog.hide();
+                        };
+                    }
+                });
             };
 
             $scope.removerProduto = function (produto) {
@@ -94,10 +160,20 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 $scope.qtdTotal += +$scope.carrinho[i].desiredQuantity;
                 $scope.valorTotal += +$scope.carrinho[i].price;
             }
-            if(oQue === 'preco') return $scope.valorTotal;
-            else if(oQue === 'quantidade') return $scope.qtdTotal;
-            else console.error('Erro na função atualizarTotal()!! ');
-        }
+            if (oQue === 'preco')
+                return $scope.valorTotal;
+            else if (oQue === 'quantidade')
+                return $scope.qtdTotal;
+            else
+                console.error('Erro na função atualizarTotal()!! ');
+        };
+
+
+        $scope.formasPgto = [
+            {'formaPgto': 'Cartão de crédito'},
+            {'formaPgto': 'Cartão de débito'},
+            {'formaPgto': 'Boleto bancário'}
+        ];
     }]);
 
 function mostrarItensLocalStorage() {
