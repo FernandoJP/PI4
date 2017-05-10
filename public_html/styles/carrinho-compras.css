@@ -69,6 +69,21 @@ md-card{
     } 
 }
 
+@media (max-width: 555px) {
+    th, td, tr{
+        font-size:12px;
+    }
+    
+    .img-livro{
+       height: 60px;
+    }
+    
+    .md-icon{
+        box-shadow: none !important;
+        background: none !important;
+    }
+}
+
 md-dialog ::-webkit-scrollbar {
     margin-right: -10px;
   width: 2px;
