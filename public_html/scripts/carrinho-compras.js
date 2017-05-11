@@ -16,13 +16,28 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
                 $scope.submitted = true;
                 if (formulario.$valid) {
-                                    console.log('dadosFinalizacaoCompra',dadosFinalizacaoCompra);
+                    if($scope.data.cb1 == false){
+                        var addressPostRequest = $http({
+                            method:"POST",
+                            url: "http://pi4.app/api/client/1/address",
+                            data: {
+                                address: dadosFinalizacaoCompra.rua,
+                                cep: dadosFinalizacaoCompra.cep,
+                                city: dadosFinalizacaoCompra.cidade,
+                                state: dadosFinalizacaoCompra.uf
+                            }
+                        }).then(function(response){
+                            $scope.address = response;
+                        });
+                    }
+                    console.log('dadosFinalizacaoCompra',dadosFinalizacaoCompra);
                     $http({
                         method: "POST",
-                        url: "http://67.205.164.145/api/client/1/order/",
+                        url: "http://pi4.app/api/client/1/order/",
                         data: {
                             person_id: 1,
                             payment_type_id: 1,
+                            address_id: $scope.address.id,
                             books: JSON.parse(localStorage.getItem("produtos"))
                         }
                     }).
@@ -117,6 +132,13 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 console.dir(JSON.parse(localStorage.getItem("produtos")));
             };
 
+            var addressRequest = $http.get('http://pi4.app/api/client/1/address')
+                     .then(function(response){
+                        $scope.addresses = response.data;
+                     });
+            addressRequest.then(function(addresses) {
+                console.log($scope.addresses);
+            });
             $scope.showModal = function (event, dadosProduto) {
                 console.log('dadosProduto = ', dadosProduto);
                 $mdDialog.show({
@@ -167,7 +189,10 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             else
                 console.error('Erro na função atualizarTotal()!! ');
         };
-
+        $scope.selectAddress = function (address){
+            $scope.address = address;
+            console.log($scope.address);
+        };
 
         $scope.formasPgto = [
             {'formaPgto': 'Cartão de crédito'},
