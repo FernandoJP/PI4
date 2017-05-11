@@ -54,6 +54,10 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 }
 
             };
+            
+                    /*$scope.init = function(){
+            $('.principal').css('width',$('.tabela-produtos > tbody > tr').width());
+        }*/
 
             $scope.preecherEndereco = function () {
                 //Nova variável "cep" somente com dígitos.

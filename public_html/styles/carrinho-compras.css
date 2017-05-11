@@ -1,3 +1,8 @@
+body, md-content{
+    overflow-y: scroll !important;
+    overflow-x: scroll !important;
+}
+
 
 .principal > md-card-title{
     max-height: 80px;
@@ -73,48 +78,57 @@ md-card{
     th, td, tr{
         font-size:12px;
     }
-    
+
     .img-livro{
-       height: 60px;
+        height: 60px;
     }
-    
+
     .md-icon{
         box-shadow: none !important;
         background: none !important;
+    }
+
+    .botao-adicionar, .botao-retirar{
+        background: none !important;
+    box-shadow: none !important;
+    color: #222 !important;
+    padding: 0 !important;
+    width: 20px !important;
+        margin: 0 !important;
     }
 }
 
 md-dialog ::-webkit-scrollbar {
     margin-right: -10px;
-  width: 2px;
-  height: 2px;
+    width: 2px;
+    height: 2px;
 }
 md-dialog ::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
+    width: 0px;
+    height: 0px;
 }
 md-dialog ::-webkit-scrollbar-thumb {
-  background: #408080;
-  border: 0px none #ffffff;
-  border-radius: 50px;
+    background: #408080;
+    border: 0px none #ffffff;
+    border-radius: 50px;
 }
 md-dialog ::-webkit-scrollbar-thumb:hover {
-  background: #408080;
+    background: #408080;
 }
 md-dialog ::-webkit-scrollbar-thumb:active {
-  background: #408080;
+    background: #408080;
 }
 md-dialog ::-webkit-scrollbar-track {
-  background: #c0c0c0;
-  border: 0px none #ffffff;
-  border-radius: 50px;
+    background: #c0c0c0;
+    border: 0px none #ffffff;
+    border-radius: 50px;
 }
 md-dialog ::-webkit-scrollbar-track:hover {
-  background: #c0c0c0;
+    background: #c0c0c0;
 }
 md-dialog ::-webkit-scrollbar-track:active {
-  background: #c0c0c0;
+    background: #c0c0c0;
 }
 md-dialog ::-webkit-scrollbar-corner {
-  background: transparent;
+    background: transparent;
 }
