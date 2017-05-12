@@ -2,3 +2,7 @@
     position: relative;
     top: 5px;
 }
+
+#form-body md-input-container{
+    min-width: 300px;
+}
