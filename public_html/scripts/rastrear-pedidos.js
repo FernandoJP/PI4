@@ -14,7 +14,20 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         
         $scope.rastrearPedido = function(codigoRastreamento, formularioDados){
             console.log(codigoRastreamento);
-        }
+        };
+        
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            }
+            else {
+                return results[1] || 0;
+            }
+        };
+        if ($.urlParam('orderId')) {
+            $scope.codigoRastreamento = $.urlParam('orderId');
+        };
     }]);
 
 function mostrarItensLocalStorage() {
