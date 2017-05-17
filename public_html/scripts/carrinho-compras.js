@@ -12,14 +12,14 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     '<tr><td><strong>Total</strong></td><td></td><td>R$10,00</td><td>10</td><td></td></tr>'
                     );
 
-            $scope.realizarVenda = function (dadosFinalizacaoCompra, formulario) {
-
+            $scope.realizarVenda = function (dadosFinalizacaoCompra, formulario, cb1) {
                 $scope.submitted = true;
+                console.log(cb1)
                 if (formulario.$valid) {
-                    if($scope.data.cb1 == false){
+                    if(cb1 == false || cb1 == undefined){
                         var addressPostRequest = $http({
                             method:"POST",
-                            url: "http://pi4.app/api/client/1/address",
+                            url: "http://67.205.164.145/api/client/1/address",
                             data: {
                                 address: dadosFinalizacaoCompra.rua,
                                 cep: dadosFinalizacaoCompra.cep,
@@ -27,29 +27,53 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                                 state: dadosFinalizacaoCompra.uf
                             }
                         }).then(function(response){
-                            $scope.address = response;
+                            $scope.address = response.data[0];
+                            console.log(response);
+                        });
+
+                        addressPostRequest.then(function(response){
+                        $http({
+                            method: "POST",
+                            url: "http://67.205.164.145/api/client/1/order/",
+                            data: {
+                                person_id: 1,
+                                payment_type_id: 1,
+                                address_id: $scope.address.id,
+                                books: JSON.parse(localStorage.getItem("produtos"))
+                            }
+                        }).
+                        then(function (respItem) {
+                            console.log(respItem);
+                            $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
+                            for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
+                                $scope.removerProduto($scope.carrinho[i].id);
+                            }
+                        }, function (respItem) {
+                            $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
+                        });
+                    });
+                    } else {
+                        $http({
+                            method: "POST",
+                            url: "http://67.205.164.145/api/client/1/order/",
+                            data: {
+                                person_id: 1,
+                                payment_type_id: 1,
+                                address_id: $scope.address.id,
+                                books: JSON.parse(localStorage.getItem("produtos"))
+                            }
+                        }).
+                        then(function (respItem) {
+                            console.log(respItem);
+                            $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
+                            for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
+                                $scope.removerProduto($scope.carrinho[i].id);
+                            }
+                        }, function (respItem) {
+                            $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
                         });
                     }
-                    console.log('dadosFinalizacaoCompra',dadosFinalizacaoCompra);
-                    $http({
-                        method: "POST",
-                        url: "http://pi4.app/api/client/1/order/",
-                        data: {
-                            person_id: 1,
-                            payment_type_id: 1,
-                            address_id: $scope.address.id,
-                            books: JSON.parse(localStorage.getItem("produtos"))
-                        }
-                    }).
-                            then(function (respItem) {
-                                console.log(respItem);
-                                $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
-                                for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
-                                    $scope.removerProduto($scope.carrinho[i].id);
-                                }
-                            }, function (respItem) {
-                                $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
-                            });
+
 
                 }
 
@@ -136,7 +160,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 console.dir(JSON.parse(localStorage.getItem("produtos")));
             };
 
-            var addressRequest = $http.get('http://pi4.app/api/client/1/address')
+            var addressRequest = $http.get('http://67.205.164.145/api/client/1/address')
                      .then(function(response){
                         $scope.addresses = response.data;
                      });
