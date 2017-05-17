@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="plugins/font-awesome-4.6.3/css/font-awesome.min.css"> 
         <link rel="stylesheet" href="plugins/materialize/css/materialize.css">
     </head>
-    <body layout="row" ng-controller="AppCtrl" class="ng-cloak">
+    <body layout="row" ng-controller="AppCtrl" data-ng-init="init()" class="ng-cloak">
         <div ng-include="'header.html'"></div>
 
     <md-content flex md-scroll-y id="conteudo">
@@ -40,7 +40,7 @@
                     <tr ng-repeat="produto in carrinho track by produto.id">
                         <td><img ng-src="http://67.205.164.145/{{produto.image}}" class="img-livro"/></td>
                         <td>{{produto.name}}</td>
-                        <td><b>R$:</b> {{produto.price}}</td>
+                        <td><b>R$:</b> {{produto.price | currency:"R$"}}</td>
                         <td>
                             <section class="secao-qtd-produtos animate-show-hide">
                                 <md-button class="md-icon-button botao-retirar md-raised md-primary left md-icon-button" ng-click="alterarQtdProdutos('remover', produto)">
@@ -61,7 +61,7 @@
                     <tr class="total-carrinho">
                         <td><strong>Total:</strong></td>
                         <td></td>
-                        <td><b>R$:</b> {{atualizarTotal('preco')}}</td>
+                        <td><b>R$:</b> {{atualizarTotal('preco') | currency:"R$"}}</td>
                         <td>{{atualizarTotal('quantidade')}}</td>
                         <td></td>
                     </tr>
@@ -76,6 +76,7 @@
                 Confirmar
             </md-button>
         </md-card>
+                <div ng-include="'footer.html'"></div>
     </md-content>
 
     <script src="plugins/jquery/jquery-3.1.1.min.js"></script>

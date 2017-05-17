@@ -88,6 +88,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             console.log('abrindo sidbar');
             $mdSidenav(menuId).toggle();
         };
+              
 
         $scope.admin = [{
                 link: '',
