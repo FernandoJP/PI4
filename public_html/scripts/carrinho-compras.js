@@ -191,7 +191,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 console.log('produto', produto);
                 var index = $scope.carrinho.findIndex(x => x.id === produto.id);
                 $scope.carrinho.splice(index, 1);
-                localStorage.setItem("produtos", $scope.carrinho);
+                localStorage.setItem("produtos", JSON.stringify($scope.carrinho));
                 console.log('produto removido', $scope.carrinho);
             };
 

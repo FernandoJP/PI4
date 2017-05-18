@@ -121,9 +121,10 @@
     border-radius: 5px;
 }
 .checkmark-circle .checkmark.draw:after {
-    -webkit-animation-delay: 100ms;
-    -moz-animation-delay: 100ms;
-    animation-delay: 100ms;
+        opacity: 0;
+    -webkit-animation-delay: 250ms;
+    -moz-animation-delay: 250ms;
+    animation-delay: 250ms;
     -webkit-animation-duration: 1.5s;
     -moz-animation-duration: 1.5s;
     animation-duration: 1.5s;
