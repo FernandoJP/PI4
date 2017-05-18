@@ -161,9 +161,9 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             },
             {
                 "id": 6,
-                "title": "Teste",
-                "author": "Teste",
-                "editor": "Teste",
+                "title": "Guerra Civil",
+                "author": "Stuart Moore",
+                "editor": "Novo Século - SP",
                 "year_published": "2014",
                 "price": "0.0000",
                 "image": "/storage/books/6.jpg",

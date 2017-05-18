@@ -78,7 +78,7 @@
 
                                 <md-input-container class="md-accent col-50">
                                     <label>Preço</label>
-                                    <input type="number" name="price" ng-model="dadosProduto.price" ng-pattern="/^[^-]*$/" ng-maxlength="9" ng-required="true">
+                                    <input type="text" name="price" ng-model="dadosProduto.price" ng-pattern="/^[^-]*$/" ng-maxlength="9" ng-required="true">
                                     <div ng-messages="formularioDados.price.$error" ng-if="formularioDados.$submitted || formularioDados.price.$touched">
                                         <div ng-message="required">O campo preço é de preenchimento obrigatório.</div>
                                         <div ng-message="pattern">Valor informado é muito pequeno. </div>

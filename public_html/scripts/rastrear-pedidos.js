@@ -11,11 +11,21 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         $scope.toggleSidenav = function (menuId) {
             $mdSidenav(menuId).toggle();
         };
-        
-        $scope.rastrearPedido = function(codigoRastreamento, formularioDados){
-            console.log(codigoRastreamento);
-        };
-        
+
+        $scope.rastrearPedido = function (codigoRastreamento, formularioDados) {
+            formularioDados.$submitted;
+            if (formularioDados.$valid) {
+                $http({
+                    method: "GET",
+                    url: "http://67.205.164.145/api/client/1/order/" + codigoRastreamento,
+                }).
+                        then(function (data) {
+                            console.log(data);
+                        }, function (data) {
+                            console.error('Houve um erro ao fazer a busca do pedido.', data);
+                        });
+            }};
+
         $.urlParam = function (name) {
             var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
             if (results == null) {
@@ -29,12 +39,12 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
         if ($.urlParam('orderId')) {
             $scope.codigoRastreamento = $.urlParam('orderId');
         }
-        if($.urlParam('orderFinished') != null){
+        if ($.urlParam('orderFinished') != null) {
             console.log($.urlParam('orderFinished'));
             $scope.vendaRealizada = $.urlParam('orderFinished');
         }
-        
-        $scope.close = function(){
+
+        $scope.close = function () {
             $('.alert').parent().fadeOut();
         }
     }]);

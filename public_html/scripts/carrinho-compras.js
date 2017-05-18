@@ -87,7 +87,10 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
             $scope.preecherEndereco = function () {
                 //Nova variável "cep" somente com dígitos.
-                var cep = $scope.cep.replace(/\D/g, '');
+                if($scope.cep){
+                                    var cep = $scope.cep.replace(/\D/g, '');
+                }
+
 
                 //Verifica se campo cep possui valor informado.
                 if (cep != "") {

@@ -1,7 +1,7 @@
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados', 'ngFileUpload']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', 'Upload','$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, Upload, $mdToast) {
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', 'Upload', '$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, Upload, $mdToast) {
 
         if (localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
@@ -18,50 +18,52 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $scope.validarDados = function (dadosProduto, formularioDados) {
             $scope.submitted = true;
-            Upload.upload({
-            url: 'http://67.205.164.145/api/book/',
-            data: {
-                image: dadosProduto.image, 
-                title: dadosProduto.title,
-                author: dadosProduto.author,
-                editor: dadosProduto.editor,
-                year_published: dadosProduto.year_published,
-                price: dadosProduto.price,
-                isbn: dadosProduto.isbn,
-                description:dadosProduto.descricao
+            if (formularioDados.$valid) {
+                Upload.upload({
+                    url: 'http://67.205.164.145/api/book/',
+                    data: {
+                        image: dadosProduto.image,
+                        title: dadosProduto.title,
+                        author: dadosProduto.author,
+                        editor: dadosProduto.editor,
+                        year_published: dadosProduto.year_published,
+                        price: dadosProduto.price,
+                        isbn: dadosProduto.isbn,
+                        description: dadosProduto.descricao
+                    }
+                }).then(function (resp) {
+                    if (dadosProduto.quantidade > 0) {
+                        $http({
+                            method: "POST",
+                            url: "http://67.205.164.145/api/item/",
+                            data: {
+                                book_id: resp.data.id,
+                                quantity: dadosProduto.quantidade
+                            }
+                        }).
+                                then(function (respItem) {
+                                    console.log(respItem.data);
+                                });
+                    }
+                    console.log(resp.data);
+                    $scope.showToast('Livro adicionado com sucesso', 'md-primary');
+                }, function (resp) {
+                    console.log('Error status: ' + resp.status);
+                    console.log(resp.data);
+                    $scope.showToast(resp.data, 'md-warn');
+                }, function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.data.image.name);
+                });
             }
-            }).then(function (resp) {
-                if(dadosProduto.quantidade > 0){
-                    $http({
-                        method: "POST",
-                        url: "http://67.205.164.145/api/item/",
-                        data: {
-                            book_id: resp.data.id,
-                            quantity: dadosProduto.quantidade
-                        }
-                    }).
-                    then(function(respItem){
-                        console.log(respItem.data);
-                    });
-                }
-                console.log(resp.data);
-                $scope.showToast('Livro adicionado com sucesso', 'md-primary');
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-                console.log(resp.data);
-                $scope.showToast(resp.data, 'md-warn');
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.image.name);
-            });
-        }
+        };
         $scope.showToast = function (message, type) {
-                var toast = $mdToast.simple()
-                        .textContent(message)
-                        .hideDelay(4000)
-                        .position('top right');
-                $mdToast.show(toast);
-            };
+            var toast = $mdToast.simple()
+                    .textContent(message)
+                    .hideDelay(4000)
+                    .position('top right');
+            $mdToast.show(toast);
+        };
         $scope.toggleSidenav = function (menuId) {
             console.log('abrindo sidbar');
             $mdSidenav(menuId).toggle();
@@ -126,13 +128,13 @@ function DemoController(brCidadesEstados) {
 }
 
 function readFile() {
-  if (this.files && this.files[0]) {  
-    var FR= new FileReader();
-    FR.addEventListener("load", function(e) {
-      document.getElementById("img").src       = e.target.result;
-      document.getElementById("b64").innerHTML = e.target.result;
-    }); 
-    FR.readAsDataURL( this.files[0] );
-  }
+    if (this.files && this.files[0]) {
+        var FR = new FileReader();
+        FR.addEventListener("load", function (e) {
+            document.getElementById("img").src = e.target.result;
+            document.getElementById("b64").innerHTML = e.target.result;
+        });
+        FR.readAsDataURL(this.files[0]);
+    }
 }
 //document.getElementById("inp").addEventListener("change", readFile);
