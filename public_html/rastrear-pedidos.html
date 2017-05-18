@@ -22,7 +22,12 @@
             </md-card-title>
             <div layout="row" layout-padding layout-wrap layout-fill class="padding" ng-if="vendaRealizada">
                 <div class="alert alert-success" layout-padding layout-wrap layout-fill >
-                    Venda realizada com sucesso! O número de protocolo é<strong>{{codigoRastreamento}}.</strong>
+
+                    <div class="checkmark-circle">
+                        <div class="background"></div>
+                        <div class="checkmark draw"></div>
+                    </div>
+                    <span>Venda realizada com sucesso! O número de protocolo é <strong>{{codigoRastreamento}}.</strong></span>
                     <button type="button" class="md-icon-button close" data-dismiss="alert" aria-label="Close" ng-click="close()">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -47,6 +52,22 @@
 
                 </div>
             </form>
+            <table class="tabela-pedidos highlight bordered" ng-show="id">
+                <thead>
+                    <tr>
+                        <th>Id do pedido</th>
+                        <th>Data do pedido</th>
+                        <th>Hora do pedido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{created_at| date:'dd-MM-yyyy'}}</td>
+                        <td>{{created_at| date:'HH:mm:ss'}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </md-card>
         <div ng-include="'footer.html'"></div>
     </md-content>

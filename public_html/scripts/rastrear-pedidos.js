@@ -14,13 +14,14 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $scope.rastrearPedido = function (codigoRastreamento, formularioDados) {
             formularioDados.$submitted;
-            if (formularioDados.$valid) {
+            if (formularioDados.$valid || formularioDados == 'Não precisa') {
                 $http({
                     method: "GET",
                     url: "http://67.205.164.145/api/client/1/order/" + codigoRastreamento,
                 }).
                         then(function (data) {
-                            console.log(data);
+                            $scope.id = data.data[0].id;
+                            $scope.created_at = new Date(data.data[0].created_at);
                         }, function (data) {
                             console.error('Houve um erro ao fazer a busca do pedido.', data);
                         });
@@ -40,8 +41,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $scope.codigoRastreamento = $.urlParam('orderId');
         }
         if ($.urlParam('orderFinished') != null) {
-            console.log($.urlParam('orderFinished'));
             $scope.vendaRealizada = $.urlParam('orderFinished');
+            $scope.rastrearPedido($scope.codigoRastreamento, 'Não precisa');
         }
 
         $scope.close = function () {
