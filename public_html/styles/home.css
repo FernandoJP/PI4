@@ -100,7 +100,7 @@
 #slides_control > div{
     height: 200px;
 }
-img{
+.principal img{
     margin:auto;
     width: 400px;
 }
@@ -115,7 +115,7 @@ img{
 #conteudo md-card.principal {
     min-height: 600px;
     position: relative;
-    top: 60px;
+    top: 10px;
     margin: 10px 30px 30px 30px;
 }
 
@@ -123,4 +123,28 @@ img{
     .wrapper{
         width: 350px !important;
     }
+}
+
+#slides_control > div{
+    height: 200px;
+}
+
+#slides_control {
+    position:absolute;
+    width: 400px;
+    left:50%;
+    top:20px;
+    margin-left:-200px;
+}
+
+.jk-carousel {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+}
+
+.jk-carousel img{
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

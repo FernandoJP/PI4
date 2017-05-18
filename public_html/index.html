@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/home.css">
-        <link rel="stylesheet" href="plugins/carousel/carousel.css">
+        <link rel="stylesheet" href="node_modules/angular-jk-carousel/dist/jk-carousel.css">
         <link href="plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet"> 
     </head>
     <body layout="row" ng-controller="AppCtrl" class="ng-cloak">
@@ -207,20 +207,15 @@
 
     <md-content flex md-scroll-y id="conteudo">
 
-        <div class="wrapper">
-            <div class="carousel">
-                <div class="inner">
-                    <div class="slide" ng-repeat="produto in produtosSlider" ng-class="{'active':produto.active}" style="background-image:url({{produto.slideImg}});">
-                        <h1>{{produto.title}}</h1>
-                        <md-button class="md-raised md-primary" ng-click="showCustom($event, produto)">
-                            Confira
-                        </md-button>
-                    </div>
-                    <div class="arrow arrow-left"></div>
-                    <div class="arrow arrow-right"></div>
-                </div>
-            </div>
-        </div>
+        <h3>AutoSlide Carousel</h3>
+        <jk-carousel
+            data="dataArray"
+            item-template-url="'caroulsel-template.html'"
+            max-width="962" 
+            max-height="337"
+            auto-slide="true"
+            auto-slide-time="3000" >
+        </jk-carousel>
 
         <md-card class="principal md-whiteframe-6dp">
             <md-card-title>
@@ -249,7 +244,7 @@
                                 </md-card-title>
                                 <md-card-content>
                                     <p>
-                                        <b>R$: </b>{{produto.price | currency:""}}
+                                        <b>R$: </b>{{produto.price| currency:""}}
                                     </p>
                                 </md-card-content>
                             </div>
@@ -291,12 +286,12 @@
     <script src="plugins/jquery/jquery-3.1.1.min.js"></script>
     <!-- Angular Material Dependencies -->
     <script src="plugins/angular/angular.min.js"></script>
+    <script src="node_modules/angular-jk-carousel/dist/jk-carousel.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
-    <script src="plugins/carousel/carousel.js"></script> 
     <script src="scripts/home.js"></script>
     <script src="plugins/loadingoverlay/loadingoverlay.js"></script>
 </body>
