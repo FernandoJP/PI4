@@ -25,9 +25,18 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 return results[1] || 0;
             }
         };
+
         if ($.urlParam('orderId')) {
             $scope.codigoRastreamento = $.urlParam('orderId');
-        };
+        }
+        if($.urlParam('orderFinished') != null){
+            console.log($.urlParam('orderFinished'));
+            $scope.vendaRealizada = $.urlParam('orderFinished');
+        }
+        
+        $scope.close = function(){
+            $('.alert').parent().fadeOut();
+        }
     }]);
 
 function mostrarItensLocalStorage() {

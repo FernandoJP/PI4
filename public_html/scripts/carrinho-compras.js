@@ -44,10 +44,11 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                         }).
                         then(function (respItem) {
                             console.log(respItem);
-                            $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
+                            //$scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
                             for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
                                 $scope.removerProduto($scope.carrinho[i].id);
                             }
+                            window.location.href="rastrear-pedidos.html?orderId="+respItem.data[0].order_id+"&orderFinished=true";
                         }, function (respItem) {
                             $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
                         });
@@ -65,10 +66,11 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                         }).
                         then(function (respItem) {
                             console.log(respItem);
-                            $scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
+                            //$scope.showCustomToast('Venda realizada com sucesso, seu número de protocolo é ' + respItem.data[0].order_id);
                             for (var i = $scope.carrinho.length - 1; i >= 0; i--) {
                                 $scope.removerProduto($scope.carrinho[i].id);
                             }
+                            window.location.href="rastrear-pedidos.html?orderId="+respItem.data[0].order_id+"&orderFinished=true";
                         }, function (respItem) {
                             $scope.showCustomToast('Não há itens em estoque para o produto solicitado');
                         });

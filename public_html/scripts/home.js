@@ -60,14 +60,17 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     } else {
                         $scope.showCustomToast('Não há em estoque essa quantidade! ');
                     }
+                    $scope.atualizar();
                 });
             } else if (operacao === 'remover') {
                 if ($scope.produtos[index].desiredQuantity !== 1) {
                     $scope.produtos[index].desiredQuantity--;
+                    $scope.atualizar();
                 }
             }
 
-            //atualizar quantidade no local storage
+            $scope.atualizar = function(){
+                            //atualizar quantidade no local storage
             var produtos = JSON.parse(localStorage.getItem("produtos"));
             for (var i = produtos.length - 1; i >= 0; i--) {
                 console.log('if ' + produtos[i].id + ' == ' + produtos.length - 1);
@@ -79,7 +82,8 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             localStorage.setItem("produtos", JSON.stringify(produtos));
             console.log(produtos);
             console.log('localStorage atualizado: ');
-            console.dir(JSON.parse(localStorage.getItem("produtos")));
+            }
+
         };
 
         $scope.adicionarAoCarrinho = function (produto) {

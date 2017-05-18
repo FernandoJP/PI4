@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width"> 
         <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="plugins/angular-sweet-alert/sweetalert.css">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/rastrear-pedidos.css">
         <link rel="stylesheet" href="plugins/font-awesome-4.6.3/css/font-awesome.min.css"> 
@@ -21,6 +20,16 @@
                     <span class="md-headline">Acompanhar Pedidos</span>
                 </md-card-title-text>
             </md-card-title>
+            <div layout="row" layout-padding layout-wrap layout-fill class="padding" ng-if="vendaRealizada">
+                <div class="alert alert-success" layout-padding layout-wrap layout-fill >
+                    Venda realizada com sucesso! O número de protocolo é<strong>{{codigoRastreamento}}.</strong>
+                    <button type="button" class="md-icon-button close" data-dismiss="alert" aria-label="Close" ng-click="close()">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+            </div>
+
+
             <form name="formularioDados">
                 <div id="form-body">
 

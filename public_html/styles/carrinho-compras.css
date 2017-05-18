@@ -3,6 +3,9 @@ body, md-content{
     overflow-x: scroll !important;
 }
 
+.selectedIndex {
+  background: yellow;
+}
 
 .principal > md-card-title{
     max-height: 80px;
