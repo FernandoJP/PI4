@@ -20,9 +20,12 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     url: "http://67.205.164.145/api/client/1/order/" + codigoRastreamento,
                 }).
                         then(function (data) {
+                            $scope.erro = false;
                             $scope.id = data.data[0].id;
-                            $scope.created_at = new Date(data.data[0].created_at);
+                            var created_at = new Date(data.data[0].created_at);
+                            $scope.created_at = created_at.setHours(created_at.getHours() - 3);
                         }, function (data) {
+                            $scope.erro = true;
                             console.error('Houve um erro ao fazer a busca do pedido.', data);
                         });
             }};

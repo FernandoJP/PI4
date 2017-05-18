@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" href="styles/rastrear-pedidos.css">
         <link rel="stylesheet" href="plugins/font-awesome-4.6.3/css/font-awesome.min.css"> 
-        <link rel="stylesheet" href="plugins/materialize/css/materialize.css">
+        <link rel="stylesheet" href="plugins/materialize/css/materialize_1.css">
     </head>
     <body layout="row" ng-controller="AppCtrl" data-ng-init="init()" class="ng-cloak">
         <div ng-include="'header.html'"></div>
@@ -52,7 +52,8 @@
 
                 </div>
             </form>
-            <table class="tabela-pedidos highlight bordered" ng-show="id">
+            <h3 ng-show="erro" style="padding: 25px;">Não foi encontrado nenhum pedido com esse número de protocolo.</h3>
+            <table class="tabela-pedidos highlight bordered" ng-show="id && !erro">
                 <thead>
                     <tr>
                         <th>Id do pedido</th>
