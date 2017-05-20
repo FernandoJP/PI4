@@ -1,3 +1,14 @@
 <div>
-  <img ng-src="{{slideItem.src}}" >
+    <img ng-src="{{slideItem.src}}" />
+    <md-button class="md-raised md-primary left" ng-click="ctrl.abrir(slideItem)" >
+        Confira
+        </md-button>
 </div>
+<script>
+    $(':contains("Confira")').first().click(function(){
+        console.log('clicou no #1');
+    });
+        $(':contains("Confira")').second().click(function(){
+        console.log('clicou no #2');
+    });
+    </script>
