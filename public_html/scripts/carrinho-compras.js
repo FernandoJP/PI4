@@ -213,7 +213,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             $scope.qtdTotal = 0, $scope.valorTotal = 0;
             for (var i = 0; i < $scope.carrinho.length; i++) {
                 $scope.qtdTotal += +$scope.carrinho[i].desiredQuantity;
-                $scope.valorTotal += +$scope.carrinho[i].price;
+                $scope.valorTotal += +$scope.carrinho[i].price * $scope.carrinho[i].desiredQuantity;
             }
             if (oQue === 'preco')
                 return $scope.valorTotal;

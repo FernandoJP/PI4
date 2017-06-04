@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="StarterApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width"> 
+        <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/rastrear-pedidos.css">
+        <link rel="stylesheet" href="plugins/font-awesome-4.6.3/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="plugins/materialize/css/materialize_1.css">
+    </head>
+    <body layout="row" ng-controller="AppCtrl" data-ng-init="init()" class="ng-cloak">
+        
+        <!-- Inicio do header -->
+        <md-sidenav md-component-id="app-side-left" layout="column" class="md-whiteframe-z1 ng-cloak">
+    <md-toolbar layout="row" class="md-toolbar-tools md-hue-1">
+        <md-button hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="toggleSidenav('app-side-left')" style="margin-right: -8px;">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <h2 style="display: inline;">&nbsp;Gerenciar Site</h2>
+    </md-toolbar>
+    <!-- BEGIN LEFT SIDE NAVIGATION -->
+    <md-content flex role="navigation">
+        <ul class="docs-menu">
+            <li class="parent-list-item">
+            <md-list id="menu-mobile">
+                <md-subheader>Site</md-subheader>
+                <md-list-item>
+                    <a href="index.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <div class="inset">Página Inicial</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="carrinho-compras.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-shopping-cart fa-2x"></i>
+                            </div>
+                            <div class="inset">Carrinho de Compras</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="rastrear-pedidos.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-file-text-o fa-2x"></i>
+                            </div>
+                            <div class="inset">Acompanhar Pedidos</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-subheader>Cadastro</md-subheader>
+                <md-list-item>
+                    <a href="cadastrar-produto.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-cart-plus fa-2x"></i>
+                            </div>
+                            <div class="inset">Cadastrar Produto</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="cadastrar-usuario.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-user-plus fa-2x"></i>
+                            </div>
+                            <div class="inset">Cadastrar Usuário</div>
+                        </md-item-content>
+                    </a>
+                </md-list-item>
+            </md-list>
+            </li>
+
+        </ul>
+    </md-content>
+</md-sidenav>
+<!-- END LEFT SIDE NAVIGATION -->
+<div>
+    <!-- BEGIN TOP TOOLBAR -->
+    <md-toolbar layout="row" class="md-toolbar-tools md-hue-2" layout-align="left center" style="padding-right: 35px;">
+        <!-- BEGIN LOGO BUTTON -->
+        <md-button layout="row" class="md-toolbar-tools" layout-align="left center" href="#" style="width: 135px;">
+            <md-tooltip>Ir para a página inicial</md-tooltip>
+            <a href="index.html" alt="Ir para a página inicial. "><h2><span class="capitalize">Pineapple</span></h2></a>
+        </md-button>
+
+        <!-- START TOP NAVIGATION -->
+        <div id="topNav" hide show-gt-sm layout="row">
+            <md-menu-bar>
+                <md-menu>
+                    <md-button onclick="javascript:window.location.href = 'index.html';" class="md-primary capitalize"><span class="md-alt-text">Página Inicial</span></md-button>
+                </md-menu>
+            </md-menu-bar>
+        </div>
+        <span flex></span>
+        <a href="carrinho-compras.html" title="Ir para o carrinho de compras. " alt="Ir para o carrinho de compras. ">
+            <md-button class="md-icon-button">
+                <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
+            </md-button>
+        </a>
+        <md-menu id="menu-desktop" md-position-mode="target-right target">
+            <md-button
+                class="md-icon-button nav-botao-mais"
+                aria-label="More"
+                ng-click="$mdOpenMenu()">
+                <i class="material-icons">more_vert</i>
+            </md-button>
+            <md-menu-content>
+                <a href="#">
+                    <md-menu-item class="md-indent">
+                        <md-button>
+                            <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
+                        </md-button>
+                    </md-menu-item>
+                </a>
+            </md-menu-content>
+        </md-menu>
+    </md-toolbar>
+</div>
+        <!-- fim do header -->
+
+    <md-content flex md-scroll-y id="conteudo">
+        <md-content class="page-login" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" style="background-color: #f3f3f3;    overflow-x: hidden;">
+                    <div id="login">
+            <div class="md-toolbar-tools">
+                        <h2><span>Autenticar no sistema</span></h2>
+                    </div>
+                    <form name="formAutenticacao" class="md-whiteframe-6dp">
+                        <md-input-container class="md-icon-float md-accent input-username" style="margin-top: 40px;">
+                            <label>Nome de usuário</label>
+                            <md-icon md-font-icon="fa fa-user" style="color:#444444"></md-icon>
+                            <input name="userName" ng-model="dadosAutenticacao.userName" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusA = true" ng-blur="focusA = false">
+                            <div ng-messages="formAutenticacao.userName.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.userName.$touched">
+                                <div ng-message="required">O campo nome de usuário é de preenchimento obrigatório.</div>
+                            </div>
+                        </md-input-container><br />
+                        <md-input-container class="md-icon-float md-accent input-senha">
+                            <label>Senha</label>
+                            <md-icon md-font-icon="fa fa-lock" style="color:#444444"></md-icon>
+                            <input name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
+                            <div ng-messages="formAutenticacao.senha.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.senha.$touched">
+                                <div ng-message="required">O campo senha é de preenchimento obrigatório.</div>
+                            </div>
+                        </md-input-container>
+                        <md-button class="md-raised md-primary" ng-disabled="!formAutenticacao.$valid" ng-click="fazerLogin(formAutenticacao, dadosAutenticacao)" style="display: block;">&nbsp Login &nbsp</md-button>
+                    </form>
+                    </div>
+        </md-content>
+        <div ng-include="'footer.html'"></div>
+    </md-content>
+
+    <script src="plugins/jquery/jquery-3.1.1.min.js"></script>
+    <!-- Angular Material Dependencies -->
+    <script src="plugins/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script> 
+    <script src="scripts/login.js"></script>
+    <script src="plugins/loadingoverlay/loadingoverlay.js"></script>
+</body>
+</html>

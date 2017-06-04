@@ -147,3 +147,8 @@ function DemoController(brCidadesEstados) {
         vm.cities = brCidadesEstados.buscarCidadesPorSigla(sigla);
     };
 }
+
+$(function(){
+     $('input[name="cpf"]').mask('099.099.099-09');
+     $('input[name="cep"]').mask('00000-000');
+});

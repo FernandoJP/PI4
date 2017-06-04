@@ -327,36 +327,78 @@ md-toast{
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+    width: 7px;
+    height: 7px;
 }
 ::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
+    width: 0px;
+    height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c3e50;
-  border: 0px none #ffffff;
-  border-radius: 50px;
+    background: #2c3e50;
+    border: 0px none #ffffff;
+    border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2c3e50;
+    background: #2c3e50;
 }
 ::-webkit-scrollbar-thumb:active {
-  background: #000000;
+    background: #000000;
 }
 ::-webkit-scrollbar-track {
-  background: #ffffff;
-  border: 0px none #ffffff;
-  border-radius: 50px;
+    background: #ffffff;
+    border: 0px none #ffffff;
+    border-radius: 50px;
 }
 ::-webkit-scrollbar-track:hover {
-  background: #ffffff;
+    background: #ffffff;
 }
 ::-webkit-scrollbar-track:active {
-  background: #ffffff;
+    background: #ffffff;
 }
 ::-webkit-scrollbar-corner {
-  background: transparent;
+    background: transparent;
+}
+
+.page-login md-card {
+    padding: 0!important;
+}
+
+#login{
+    padding: 0px;
+    background-color: white;
+    margin-top: 100px;
+}
+
+#login form{
+    padding-bottom: 15px;
+}
+
+#login .md-toolbar-tools
+{
+    color:white;
+    background-color: #3C436B;
+}
+#login button{
+    margin-left:26px;
+}
+
+#login md-card-content{
+    margin-left: auto;
+    margin-right: auto;
+}
+#login md-input-container, #login md-button{
+    min-width: 300px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+@media (max-width: 450px) {
+    #login{
+        width: 300px;
+    }
+    .footer-distributed .payment-methods, .footer-distributed .footer-right{
+        visibility: hidden;
+    }
 }
 
