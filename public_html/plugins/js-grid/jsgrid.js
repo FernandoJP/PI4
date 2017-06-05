@@ -85,7 +85,7 @@
 
         rowClick: function(args) {
             if(this.editing) {
-                this.editItem($(args.event.target).closest("tr"));
+                //this.editItem($(args.event.target).closest("tr"));
             }
         },
         rowDoubleClick: $.noop,
