@@ -1,0 +1,8 @@
+#conteudo md-card-title {
+    max-height: 50px;
+}
+
+.jsgrid-insert-mode-button{
+    display: none;
+    visibility: hidden;
+}
