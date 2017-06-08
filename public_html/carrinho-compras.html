@@ -72,7 +72,7 @@
             </table>
             <!-- Fim da exibição dos produtos do carrinho -->
 
-            <md-button class="md-raised md-primary finalizar-btn" ng-click="showModal()">
+            <md-button class="md-raised md-primary finalizar-btn" ng-click="showModal()" ng-hide="carrinho == null || carrinho.length === 0">
                 Confirmar
             </md-button>
         </md-card>

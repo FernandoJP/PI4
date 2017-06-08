@@ -100,17 +100,6 @@
                                                         </md-select>
                                                     </md-input-container>
                                                 </div>
-                                                    <md-input-container class="md-accent col-50">
-                                                        <label>Tipo de Acesso</label>
-                                                        <md-select class="md-accent"  name="tipoAcesso" ng-model="dadosPessoais.tipoAcesso" ng-required="true">
-                                                            <md-option value="cliente">Cliente</md-option>
-                                                            <md-option value="funcionario">Funcionário</md-option>
-                                                        </md-select>
-                                                        <div ng-messages="formularioDados.tipoAcesso.$error" ng-if="formularioDados.$submitted || formularioDados.tipoAcesso.$touched">
-                                                            <div ng-message="required">O campo tipo de acesso é de preenchimento obrigatório.</div>
-                                                        </div>
-                                                    </md-input-container>
-
                                                     <md-input-container class="md-accent col-50" style="top: 12px;">
                                                         <label>Cargo</label>
                                                         <input name="cargo" ng-model="dadosPessoais.cargo" ng-required="true">
@@ -118,10 +107,10 @@
                                                             <div ng-message="required">O campo cargo é de preenchimento obrigatório.</div>
                                                         </div>
                                                     </md-input-container>
-                                                </div>
-                                                <div class="form-actions noborder">             
+                                                                                                <div class="form-actions noborder">             
                                                     <md-button class="md-raised" onclick="javascript:window.location.href='index.html'"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
                                                     <md-button type="submit" class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais, formularioDados)"><i class="material-icons">keyboard_arrow_right</i>Próximo</md-button>
+                                                </div>
                                                 </div>
                                         </div>
                                     </form>

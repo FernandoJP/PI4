@@ -57,10 +57,10 @@
                             </md-item-content> 
                         </a>
                     </md-list-item>
-                    <md-subheader>Gerenciamento</md-subheader>
+                    <md-subheader ng-hide="clienteLogado">Gerenciamento</md-subheader>
                                                           <md-list-item style="margin-top: 2px;">
                         <a href="editar-produtos.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <md-item-content md-ink-ripple layout="row" layout-align="start center" ng-hide="clienteLogado">
                                 <div class="inset">
                                     <i class="material-icons">mode_edit</i>
                                 </div>
@@ -68,8 +68,8 @@
                             </md-item-content> 
                         </a>
                     </md-list-item>
-                    <md-subheader>Cadastro</md-subheader>
-                    <md-list-item>
+                    <md-subheader ng-hide="clienteLogado">Cadastro</md-subheader>
+                    <md-list-item ng-hide="clienteLogado">
                         <a href="cadastrar-produto.html">
                             <md-item-content md-ink-ripple layout="row" layout-align="start center">
                                 <div class="inset">
@@ -79,7 +79,7 @@
                             </md-item-content> 
                         </a>
                     </md-list-item>
-                    <md-list-item>
+                    <md-list-item ng-hide="clienteLogado">
                         <a href="cadastrar-usuario.html">
                             <md-item-content md-ink-ripple layout="row" layout-align="start center">
                                 <div class="inset">
@@ -113,7 +113,7 @@
                     <md-menu>
                         <md-button onclick="javascript:window.location.href = 'index.html';" class="md-primary capitalize"><span class="md-alt-text">Página Inicial</span></md-button>
                     </md-menu>
-                    <md-menu id="menu-desktop">
+                    <md-menu id="menu-desktop" ng-hide="clienteLogado">
                         <button ng-click="$mdOpenMenu()">Cadastros</button>
                         <md-menu-content>
                             <a href="cadastrar-produto.html">
@@ -135,7 +135,7 @@
                     <md-menu>
                         <md-button onclick="javascript:window.location.href = 'rastrear-pedidos.html';" class="md-primary capitalize"><span class="md-alt-text">Acompanhar Pedidos</span></md-button>
                     </md-menu>
-                    <md-menu>
+                    <md-menu ng-hide="clienteLogado">
                         <md-button onclick="javascript:window.location.href = 'editar-produtos.html';" class="md-primary capitalize"><span class="md-alt-text">Editar Produtos</span></md-button>
                     </md-menu>
                 </md-menu-bar>
@@ -167,7 +167,7 @@
                     </a>
                     <a href="#">
                         <md-menu-item class="md-indent">
-                            <md-button>
+                            <md-button onclick="logout()">
                                 <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
                             </md-button>
                         </md-menu-item>

@@ -21,6 +21,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $scope.showCustom = function (event, dadosProduto) {
             console.log('dadosProduto = ', dadosProduto);
+            var preco = 'R$'+Number(dadosProduto.price).toFixed(2).replace(".", ",");;
             $mdDialog.show({
                 clickOutsideToClose: true,
                 scope: $scope,
@@ -29,12 +30,16 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                         '<md-dialog-content>' +
                         '<h1>' + dadosProduto.title + '</h1>' +
                         '<img class="dialog-img-livro" src="http://67.205.164.145/' + dadosProduto.image + '" title="Livro ' + dadosProduto.title + '. " alt="Livro ' + dadosProduto.author + '. "/>' +
-                        '<div class="dialog-descricao-livro"><p>' + dadosProduto.description + '</p></div>' +
+                        '<div class="dialog-descricao-livro"><p>Todo o reino de Westeros ao alcance das mãos</p>'+
+
+'<p>A série Crônicas de Gelo e Fogo dispensa apresentações. São mais de 30 milhões de livros vendidos ao redor do mundo – e cerca de 2 milhões do Brasil. Os números, assim como a profusão de tramas e personagens impressiona e atrai mais fãs a cada dia.</p>'+
+'<p>Para satisfazer a ânsia dos aficionados e dos novos leitores, a Leya publica uma nova edição limitada do Box Crônicas de Gelo e Fogo com os cinco livros já escritos - A Fúria dos Reis, A Tormenta de Espadas, O Festim dos Corvos e A Dança dos Dragões – em versão pocket.</p>' +
+'<p>Em uma terra onde o verão pode durar décadas e o inverno toda uma vida, os problemas estão apenas começando. O frio está de volta e, nas florestas ao norte de Winterfell, forças sobrenaturais se espalham por trás da Muralha que protege a região. No centro do conflito estão os Stark do reino de Winterfell, uma família tão áspera quanto as terras que lhe pertencem.</p>' +
+'<pDos lugares onde o frio é brutal até os distantes reinos de plenitude e sol, George R. R. Martin narra uma história de lordes e damas, cavaleiros e mercenários, assassinos e bastardos, que se juntam em um tempo de presságios malignos. Entre disputas por reinos, tragédias e traições, vitória e terror, o destino dos Stark, seus aliados e seus inimigos é incerto.</p></div>'+
                         '</md-dialog-content>' +
                         '<md-dialog-actions layout="row">' +
-                        '<div class="dialog-preco-livro">Preço:<span>' + dadosProduto.price + '</span></div>' +
+                        '<div class="dialog-preco-livro">Preço:<span>' + preco + '</span></div>' +
                         '<span flex></span>' +
-                        '<a href="javascript:window.location.href = \'carrinho-compras.html\'" alt="Ir para a página de finalização da compra. "><md-button class="md-raised md-primary">Comprar</md-button></a>' +
                         '<md-dialog-actions>' +
                         '</md-dialog>',
                 controller: function DialogController($scope, $mdDialog) {
@@ -192,6 +197,11 @@ $scope.dataArray = [
                     return response.data.quantity;
                 }
             });
+        };
+        if(localStorage.getItem('clienteLogado') === 'true'){
+            $scope.clienteLogado = true;
+        }else if(localStorage.getItem('funcionarioLogado')  === 'true'){
+            $scope.funcionarioLogado = true;
         }
     }]);
 
@@ -214,4 +224,10 @@ app.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('input', 'default')
             .primaryPalette('grey')
 });
+
+    function logout() {
+        localStorage.setItem("funcionarioLogado", false);
+        localStorage.setItem("clienteLogado", false);
+        window.location.href = 'login.html';
+    }
  

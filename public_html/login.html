@@ -92,45 +92,14 @@
             <md-tooltip>Ir para a página inicial</md-tooltip>
             <a href="index.html" alt="Ir para a página inicial. "><h2><span class="capitalize">Pineapple</span></h2></a>
         </md-button>
-
-        <!-- START TOP NAVIGATION -->
-        <div id="topNav" hide show-gt-sm layout="row">
-            <md-menu-bar>
-                <md-menu>
-                    <md-button onclick="javascript:window.location.href = 'index.html';" class="md-primary capitalize"><span class="md-alt-text">Página Inicial</span></md-button>
-                </md-menu>
-            </md-menu-bar>
-        </div>
-        <span flex></span>
-        <a href="carrinho-compras.html" title="Ir para o carrinho de compras. " alt="Ir para o carrinho de compras. ">
-            <md-button class="md-icon-button">
-                <i class="material-icons">shopping_cart</i><span class="badge">{{qtdProdutosCarrinho}}</span>
-            </md-button>
-        </a>
-        <md-menu id="menu-desktop" md-position-mode="target-right target">
-            <md-button
-                class="md-icon-button nav-botao-mais"
-                aria-label="More"
-                ng-click="$mdOpenMenu()">
-                <i class="material-icons">more_vert</i>
-            </md-button>
-            <md-menu-content>
-                <a href="#">
-                    <md-menu-item class="md-indent">
-                        <md-button>
-                            <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
-                        </md-button>
-                    </md-menu-item>
-                </a>
-            </md-menu-content>
-        </md-menu>
     </md-toolbar>
 </div>
         <!-- fim do header -->
 
     <md-content flex md-scroll-y id="conteudo">
         <md-content class="page-login" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" style="background-color: #f3f3f3;    overflow-x: hidden;">
-                    <div id="login">
+                   
+            <div id="login">
             <div class="md-toolbar-tools">
                         <h2><span>Autenticar no sistema</span></h2>
                     </div>
@@ -146,12 +115,13 @@
                         <md-input-container class="md-icon-float md-accent input-senha">
                             <label>Senha</label>
                             <md-icon md-font-icon="fa fa-lock" style="color:#444444"></md-icon>
-                            <input name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
+                            <input type="password" name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
                             <div ng-messages="formAutenticacao.senha.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.senha.$touched">
                                 <div ng-message="required">O campo senha é de preenchimento obrigatório.</div>
                             </div>
                         </md-input-container>
                         <md-button class="md-raised md-primary" ng-disabled="!formAutenticacao.$valid" ng-click="fazerLogin(formAutenticacao, dadosAutenticacao)" style="display: block;">&nbsp Login &nbsp</md-button>
+                        <h4 class="erro-login" ng-if="erroLogin">O nome de usuário ou a senha estão inválidos. </h4>
                     </form>
                     </div>
         </md-content>

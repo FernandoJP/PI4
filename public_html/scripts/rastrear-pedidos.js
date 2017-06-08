@@ -50,6 +50,11 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $scope.close = function () {
             $('.alert').parent().fadeOut();
+        };
+        if(localStorage.getItem('clienteLogado') === 'true'){
+            $scope.clienteLogado = true;
+        }else if(localStorage.getItem('funcionarioLogado')  === 'true'){
+            $scope.funcionarioLogado = true;
         }
     }]);
 

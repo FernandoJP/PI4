@@ -232,6 +232,12 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             {'formaPgto': 'Cartão de débito'},
             {'formaPgto': 'Boleto bancário'}
         ];
+        
+        if(localStorage.getItem('clienteLogado') === 'true'){
+            $scope.clienteLogado = true;
+        }else if(localStorage.getItem('funcionarioLogado')  === 'true'){
+            $scope.funcionarioLogado = true;
+        }
     }]);
 
 function mostrarItensLocalStorage() {

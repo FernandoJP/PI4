@@ -7,76 +7,76 @@
     </md-toolbar>
     <!-- BEGIN LEFT SIDE NAVIGATION -->
     <md-content role="navigation">
-            <ul class="docs-menu">
-                <li class="parent-list-item">
-                <md-list id="menu-mobile">
-                    <md-subheader>Site</md-subheader>
-                    <md-list-item>
-                        <a href="index.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                                <div class="inset">
-                                    <i class="fa fa-home fa-2x"></i>
-                                </div>
-                                <div class="inset">Página Inicial</div>
-                            </md-item-content> 
-                        </a>
-                    </md-list-item>
-                    <md-list-item>
-                        <a href="carrinho-compras.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                                <div class="inset">
-                                    <i class="fa fa-shopping-cart fa-2x"></i>
-                                </div>
-                                <div class="inset">Carrinho de Compras</div>
-                            </md-item-content> 
-                        </a>
-                    </md-list-item>
-                    <md-list-item>
-                        <a href="rastrear-pedidos.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                                <div class="inset">
-                                    <i class="fa fa-file-text-o fa-2x"></i>
-                                </div>
-                                <div class="inset">Acompanhar Pedidos</div>
-                            </md-item-content> 
-                        </a>
-                    </md-list-item>
-                    <md-subheader>Gerenciamento</md-subheader>
-                                                          <md-list-item style="margin-top: 2px;">
-                        <a href="editar-produtos.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                                <div class="inset">
-                                    <i class="material-icons">mode_edit</i>
-                                </div>
-                                <div class="inset">Editar Produtos</div>
-                            </md-item-content> 
-                        </a>
-                    </md-list-item>
-                    <md-subheader>Cadastro</md-subheader>
-                    <md-list-item>
-                        <a href="cadastrar-produto.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                                <div class="inset">
-                                    <i class="fa fa-cart-plus fa-2x"></i>
-                                </div>
-                                <div class="inset">Cadastrar Produto</div>
-                            </md-item-content> 
-                        </a>
-                    </md-list-item>
-                    <md-list-item>
-                        <a href="cadastrar-usuario.html">
-                            <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                                <div class="inset">
-                                    <i class="fa fa-user-plus fa-2x"></i>
-                                </div>
-                                <div class="inset">Cadastrar Usuário</div>
-                            </md-item-content>
-                        </a>
-                    </md-list-item>
-                </md-list>
-                </li>
-            </ul>
-        </md-content>
+        <ul class="docs-menu">
+            <li class="parent-list-item">
+            <md-list id="menu-mobile">
+                <md-subheader>Site</md-subheader>
+                <md-list-item>
+                    <a href="index.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                            <div class="inset">Página Inicial</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="carrinho-compras.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-shopping-cart fa-2x"></i>
+                            </div>
+                            <div class="inset">Carrinho de Compras</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="rastrear-pedidos.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-file-text-o fa-2x"></i>
+                            </div>
+                            <div class="inset">Acompanhar Pedidos</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-subheader ng-hide="clienteLogado">Gerenciamento</md-subheader>
+                <md-list-item style="margin-top: 2px;" ng-hide="clienteLogado">
+                    <a href="editar-produtos.html">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="material-icons">mode_edit</i>
+                            </div>
+                            <div class="inset">Editar Produtos</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-subheader ng-hide="clienteLogado">Cadastro</md-subheader>
+                <md-list-item>
+                    <a href="cadastrar-produto.html" ng-hide="clienteLogado">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-cart-plus fa-2x"></i>
+                            </div>
+                            <div class="inset">Cadastrar Produto</div>
+                        </md-item-content> 
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a href="cadastrar-usuario.html" ng-hide="clienteLogado">
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                            <div class="inset">
+                                <i class="fa fa-user-plus fa-2x"></i>
+                            </div>
+                            <div class="inset">Cadastrar Usuário</div>
+                        </md-item-content>
+                    </a>
+                </md-list-item>
+            </md-list>
+            </li>
+        </ul>
+    </md-content>
 </md-sidenav>
 <!-- END LEFT SIDE NAVIGATION -->
 <div layout="column" layout-fill flex>
@@ -97,7 +97,7 @@
                 <md-menu>
                     <md-button onclick="javascript:window.location.href = 'index.html';" class="md-primary capitalize"><span class="md-alt-text">Página Inicial</span></md-button>
                 </md-menu>
-                <md-menu id="menu-desktop">
+                <md-menu id="menu-desktop" ng-hide="clienteLogado">
                     <button ng-click="$mdOpenMenu()">Cadastros</button>
                     <md-menu-content>
                         <a href="cadastrar-produto.html">
@@ -119,9 +119,9 @@
                 <md-menu>
                     <md-button onclick="javascript:window.location.href = 'rastrear-pedidos.html';" class="md-primary capitalize"><span class="md-alt-text">Acompanhar Pedidos</span></md-button>
                 </md-menu>
-                                    <md-menu>
-                        <md-button onclick="javascript:window.location.href = 'editar-produtos.html';" class="md-primary capitalize"><span class="md-alt-text">Editar Produtos</span></md-button>
-                    </md-menu>
+                <md-menu ng-hide="clienteLogado">
+                    <md-button onclick="javascript:window.location.href = 'editar-produtos.html';" class="md-primary capitalize"><span class="md-alt-text">Editar Produtos</span></md-button>
+                </md-menu>
             </md-menu-bar>
         </div>
         <span flex></span>
@@ -140,7 +140,7 @@
             <md-menu-content>
                 <a href="#">
                     <md-menu-item class="md-indent">
-                        <md-button>
+                        <md-button onclick="logout()">
                             <span class="md-alt-text"> &nbsp;Logout&nbsp; </span>
                         </md-button>
                     </md-menu-item>
@@ -149,3 +149,10 @@
         </md-menu>
     </md-toolbar>
 </div>
+<script>
+    function logout() {
+        localStorage.setItem("funcionarioLogado", false);
+        localStorage.setItem("clienteLogado", false);
+        window.location.href = 'login.html';
+    }
+</script>
