@@ -107,10 +107,10 @@
                                                             <div ng-message="required">O campo cargo é de preenchimento obrigatório.</div>
                                                         </div>
                                                     </md-input-container>
-                                                                                                <div class="form-actions noborder">             
+                                                </div>
+                                                                                                                                            <div class="form-actions noborder">             
                                                     <md-button class="md-raised" onclick="javascript:window.location.href='index.html'"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
                                                     <md-button type="submit" class="md-raised md-primary" ng-click="validarDadosPessoais(dadosPessoais, formularioDados)"><i class="material-icons">keyboard_arrow_right</i>Próximo</md-button>
-                                                </div>
                                                 </div>
                                         </div>
                                     </form>
@@ -136,7 +136,7 @@
                                                     <label>Senha</label>
                                                     <md-icon md-font-icon="fa fa-lock" style="color:#444444" ng-class="{
                                                 'clarear': focusB == true}"></md-icon>
-                                                    <input name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
+                                                    <input type="password" name="senha" ng-model="dadosAutenticacao.senha" ng-required="true" ng-minlength="4" ng-maxlength="50" required="" ng-focus="focusB = true" ng-blur="focusB = false">
                                                     <div ng-messages="formAutenticacao.senha.$error" ng-if="formAutenticacao.$submitted || formAutenticacao.senha.$touched">
                                                         <div ng-message="required">O campo senha é de preenchimento obrigatório.</div>
                                                     </div>
@@ -144,10 +144,10 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-actions noborder"> 
+                                        <div class="form-actions noborder" style="margin-top: 1px;margin-bottom: 20px;"> 
                                             <md-button class="md-raised" ng-click="voltar()"><i class="material-icons">keyboard_arrow_left</i>Voltar</md-button>
                                             <md-button class="md-raised" onclick="javascript:window.location.href='index.html'"><i class="material-icons" style="font-size: 1.4em">close</i> Cancelar</md-button>
-                                            <md-button class="md-raised md-primary" ng-click="validarDadosAutenticacao(dadosAutenticacao)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
+                                            <md-button class="md-raised md-primary" ng-click="validarDadosAutenticacao(dadosAutenticacao, formAutenticacao)"><i class="material-icons" style="font-size:1.3em;">save</i> Salvar</md-button>
                                         </div>
                                     </form>
                                 </md-tab-body>

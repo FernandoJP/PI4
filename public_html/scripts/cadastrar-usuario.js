@@ -1,14 +1,15 @@
 
 var app = angular.module('StarterApp', ['ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'ngMdIcons', 'br.cidades.estados']);
 
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http) {
-
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog', '$http', '$mdToast', function ($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, $mdToast) {
+        
         if (localStorage.getItem("produtos").length > 0) {
             $scope.qtdProdutosCarrinho = JSON.parse(localStorage.getItem("produtos")).length; //configurar quantidade de itens no carrinho
         } else {
             $scope.qtdProdutosCarrinho = 0;
         }
 
+        $scope.dadoNome = ""; $scope.dadoCpf = ""; $scope.dadoEmail = ""; $scope.dadoIsEmployee = ""; 
         $scope.date = new Date();
         var self = this;
         $scope.travarTab1 = false;
@@ -30,8 +31,9 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
             console.log(tpAcesso);
             $scope.selectedIndex = 2;
             ;      
+            $scope.dadoNome = dadosPessoais.nome; $scope.dadoCpf = dadosPessoais.cpf; $scope.dadoEmail = dadosPessoais.email; $scope.dadoIsEmployee = tpAcesso; 
             
-            $http({
+            /*$http({
                 url: 'http://67.205.164.145/api/client',
                 method: "POST",
                 data: {
@@ -46,7 +48,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                     },
                             function (response) { // optional
                                 console.log(response.data);
-                            });
+                            });*/
 
             if (formularioDados.$valid) {
                 $scope.travarTab1 = true;
@@ -58,17 +60,19 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
 
         $scope.validarDadosAutenticacao = function (dadosPessoais, formularioDados) {
             $scope.submitted = true;
+            console.log('enviando: ',$scope.dadoNome, $scope.dadoCpf,dadosPessoais.userName);
             if (formularioDados.$valid) {
                 $http({
                     url: 'http://67.205.164.145/api/client',
                     method: "POST",
                     data: {
-                        "name": "Dr. Benjamin Roque Santiago Neto",
-                        "cpf": "112.425.222-12",
-                        "email": "inacsfdio86@sdfsfduol.com.br",
+                        "name": $scope.dadoNome,
+                        "cpf": $scope.dadoCpf,
+                        "email": dadosPessoais.userName,
                         "is_employee": 1
                     }
                 }).then(function (response) {
+                    $scope.showCustomToast('O usuário foi cadastrado com sucesso. ')
                     console.log(response);
                 },
                         function (response) { // optional
@@ -106,7 +110,16 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet', '$mdSidenav', '$mdDialog'
                 icon: 'fa fa-home fa-2x'
             }];
 
+            $scope.showCustomToast = function (msg) {
+                var toast = $mdToast.simple()
+                        .textContent(msg)
+                        .highlightAction(false)
+                        .hideDelay(4000)
+                        .position('top right');
+                $mdToast.show(toast).then(function (response) {
 
+                });
+            };
     }]);
 
 

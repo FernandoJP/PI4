@@ -107,7 +107,7 @@ md-sidenav .fa{
 }
 
 #formulario .form-actions{
-    float:right;   margin-top: 20px;
+    float:right;       margin-top: -70px;
 }
 
 #formulario .form-actions i{

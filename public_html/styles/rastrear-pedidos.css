@@ -79,7 +79,7 @@
     background: none;
     border: none;
     position: absolute;
-    top: 15px;
+    top: 11px;
     right: 10px;
     font-size: 20px;
     color: #fff;
@@ -92,10 +92,7 @@
 .form-actions{
     margin-top:-20px;
 }
-.tabela-pedidos{
-    margin: 40px 25px;
-    max-width: 500px;
-}
+
 .tabela-pedidos th{
     color:#fff;
     background-color:#167f92;
@@ -121,7 +118,7 @@
     border-radius: 5px;
 }
 .checkmark-circle .checkmark.draw:after {
-        opacity: 0;
+    opacity: 0;
     -webkit-animation-delay: 500ms;
     -moz-animation-delay: 500ms;
     animation-delay: 500ms;
